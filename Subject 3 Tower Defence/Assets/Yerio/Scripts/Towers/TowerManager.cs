@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerPlacementManager : MonoBehaviour
+public class TowerManager : MonoBehaviour
 {
     [Header("---Tower Placement---")]
     public float safePlacementRadius;
@@ -13,6 +13,9 @@ public class TowerPlacementManager : MonoBehaviour
     public Color cantPlaceTowerColor;
     public BaseTower TestTower;
     public GameObject VisualDetectionSphere;
+
+    [HideInInspector]
+    public WaveManager waveManager;
 
     [HideInInspector]
     public bool cantPlace;
@@ -29,7 +32,11 @@ public class TowerPlacementManager : MonoBehaviour
 
     private void Awake()
     {
+        waveManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<WaveManager>();
+
         GetAllTowers();
+
+        if(TestTower != null)
         SelectTower(TestTower);
     }
 
@@ -49,7 +56,7 @@ public class TowerPlacementManager : MonoBehaviour
         {
             if (tower != selectedTower)
             {
-                var distance = Vector3.Distance(selectedPos, tower.towerBase.transform.position);
+                var distance = Vector3.Distance(selectedPos, tower.towerBase.position);
 
                 tooCloseToTower = distance < otherTowerPlacementDistance;             
             }
@@ -60,9 +67,15 @@ public class TowerPlacementManager : MonoBehaviour
     public void SelectTower(BaseTower tower)
     {
         selectedTower = tower;
-        instantiatedDetectionSphere = Instantiate(VisualDetectionSphere, selectedTower.towerBase.transform.position, Quaternion.identity);
+        instantiatedDetectionSphere = Instantiate(VisualDetectionSphere, selectedTower.towerBase.position, Quaternion.identity);
         SetCorrectScaleForDetectionSphere(instantiatedDetectionSphere.transform);
         instantiatedSphereColor = instantiatedDetectionSphere.GetComponent<ChangeSphereColor>();
+    }
+
+    public void PlacedTower(BaseTower tower)
+    {
+        AddTowerToList(tower);
+        tower.UpdateOriginalHeadRotation();
     }
 
     public void DeselectTower()

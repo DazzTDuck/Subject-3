@@ -44,23 +44,27 @@ public class UIAnimations : MonoBehaviour
     [SerializeField, Header("---Decend Text---")]
     float decendTweenSpeed = 2f;
     [SerializeField]
-    Vector3 decendTo = Vector3.zero;
+    float decendValule = 50f;
 
-    public IEnumerator DecendText(GameObject _text, Vector3 _orignalPos, float _delayTime)
+    public IEnumerator DecendTextDown(GameObject _text)
     {
-        //Debug.Log(_text.transform.position);
+        //Debug.Log(_text.transform.localPosition);
 
-        //LeanTween.moveY(_text, decendAmount, decendLeanSpeed).setEaseInBack();
-        LeanTween.move(_text, decendTo, decendTweenSpeed).setEaseInOutBack();
+        LeanTween.moveY(_text, _text.transform.position.y - decendValule, decendTweenSpeed).setEaseInOutBack();
 
-        yield return new WaitForSeconds(_delayTime);
+        yield return new WaitForSeconds(decendTweenSpeed + 0.1f);
 
-        //LeanTween.moveY(_text, -decendAmount, decendLeanSpeed).setEaseOutBack();
-        LeanTween.move(_text, _orignalPos, decendTweenSpeed).setEaseInOutBack();
+        StopCoroutine("DecendTextDown");
+    }
+    public IEnumerator DecendTextUp(GameObject _text, Vector3 originalPos)
+    {
+        LeanTween.moveY(_text, _text.transform.position.y + decendValule, decendTweenSpeed).setEaseInOutBack();
 
-        yield return new WaitForSeconds(decendTweenSpeed + 0.2f);
+        yield return new WaitForSeconds(decendTweenSpeed + 0.1f);
 
-        StopCoroutine("DecendText");
+        _text.transform.position = originalPos;
+
+        StopCoroutine("DecendTextUp");
     }
 
     [Header("---Button animations---")]

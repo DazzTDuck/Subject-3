@@ -13,10 +13,9 @@ public class WaveManager : MonoBehaviour
     [Header("---Bewteen Waves---")]
     [SerializeField, Tooltip("Preperation time for the new wave in seconds"),]
     float prepTimeNewWave = 15f;
-    [SerializeField]
-    GameObject prepTimerPanel;
-    [SerializeField]
-    TMP_Text popupText;
+    [SerializeField] GameObject prepTimerPanel;
+    [SerializeField] Vector3 prepTimerOriginalPos;
+    [SerializeField] TMP_Text popupText;
    
     [Header("---Others---")]
     public TMP_Text wavesText; //Wave: 0 / 0
@@ -24,9 +23,9 @@ public class WaveManager : MonoBehaviour
 
     [Header("---Debug---")]
     public bool damageFirstEnemy;
-    public bool skipPreperation;
+    public bool stopWaves;
 
-    //public but not in inspector
+    //public but Hidden
     [HideInInspector]
     public List<BaseEnemy> enemiesAlive = new List<BaseEnemy>();
     [HideInInspector]
@@ -37,9 +36,9 @@ public class WaveManager : MonoBehaviour
     bool inPreperation;
     UIAnimations animations;
     Wave currentWave;
-    bool loadingWave = false;
     int currentEnemyIndex = 0;
     int currentWaveIndex = 0;
+    bool canLoad = false;
     bool canSpawn = false;
     float spawnTimer;
 
@@ -47,8 +46,9 @@ public class WaveManager : MonoBehaviour
     {
         animations = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIAnimations>();
         prepTimer = prepTimeNewWave;
-        
-        StartCoroutine(LevelStart());
+        prepTimerOriginalPos = prepTimerPanel.transform.position;
+
+        StartCoroutine(LoadWave());
     }
 
     private void Update()
@@ -61,13 +61,14 @@ public class WaveManager : MonoBehaviour
         DebugFunctions();
         UpdatePrepTimer();
 
+        SkipPreperation();
     }
 
     void WaveSetup()
     {
         currentWave = allWavesInLevel[currentWaveIndex];
         ResetEnemySpawning();
-        allEnemiesSpawned = false;       
+        allEnemiesSpawned = false;
         prepTimer = prepTimeNewWave;
         currentEnemyIndex = 0;
     }
@@ -83,21 +84,25 @@ public class WaveManager : MonoBehaviour
         if(!canSpawn && !allEnemiesSpawned)
         spawnTimer -= Time.deltaTime;
 
-        if(spawnTimer <= 0 && !allEnemiesSpawned && !inPreperation)
+        if(spawnTimer <= 0 && !allEnemiesSpawned && !inPreperation && canLoad)
         {
             ResetEnemySpawning();
         }
-
     }
     void UpdatePrepTimer()
     {
-        if (inPreperation)
-        {                     
+        if (inPreperation) //to update UI element
+        {
             var timerText = prepTimerPanel.GetComponentInChildren<TMP_Text>();
-
             prepTimer -= Time.deltaTime;
+            timerText.text = $"Preperation Time left      {prepTimer: 00:00}";
+        }
 
-            timerText.text = $"Preperation time left: {prepTimer:00:00}";
+        if(prepTimer <= 0)
+        {
+            inPreperation = false;
+            canLoad = true;
+            StartCoroutine(animations.DecendTextUp(prepTimerPanel, prepTimerOriginalPos));
         }
     }
 
@@ -138,50 +143,47 @@ public class WaveManager : MonoBehaviour
 
     void NextWave()
     {
-        if (currentWaveIndex < allWavesInLevel.Length - 1 && !loadingWave)
+        if (currentWaveIndex < allWavesInLevel.Length - 1 && !inPreperation)
         {
-            loadingWave = true;
-            StartCoroutine(LoadNextWave());
-
+            StartCoroutine(LoadWaveSetup());
         }
-        else if(!loadingWave && !inPreperation)
+        else if(currentWaveIndex > allWavesInLevel.Length - 1)
         {
             LoadNextLevel();
         }
     }
 
-    IEnumerator LoadNextWave()
+    void StartWave()
     {
-        StartCoroutine(animations.PopupText(popupText,"New Wave!"));
+        inPreperation = true;
+
+        if (inPreperation)
+        {
+            StartCoroutine(animations.DecendTextDown(prepTimerPanel));
+            canSpawn = false;
+            canLoad = false;
+        }
+    }
+    IEnumerator LoadWave()
+    {
+        StartWave();
+
+        yield return new WaitUntil(() => inPreperation == false);
+
+        WaveSetup();
+        StopCoroutine(LoadWave());
+        StopCoroutine(LoadWaveSetup());
+    }
+
+    IEnumerator LoadWaveSetup()
+    {
+        StartCoroutine(animations.PopupText(popupText, "New Wave!"));
 
         currentWaveIndex++;
 
         yield return new WaitForSeconds(animations.popupDelayTime);
 
-        StartCoroutine(animations.DecendText(prepTimerPanel, prepTimerPanel.transform.position, prepTimeNewWave));
-        inPreperation = true;
-
-        yield return new WaitForSeconds(prepTimeNewWave);
-
-        inPreperation = false;
-        
-        WaveSetup();
-
-        loadingWave = false;
-        StopCoroutine("LoadNextWave");
-    }
-
-    IEnumerator LevelStart()
-    {
-        StartCoroutine(animations.DecendText(prepTimerPanel, prepTimerPanel.transform.position, prepTimeNewWave));
-
-        canSpawn = false;
-        inPreperation = true;
-
-        yield return new WaitForSeconds(prepTimeNewWave);
-
-        inPreperation = false;
-        WaveSetup();
+        StartCoroutine(LoadWave());
     }
 
     void LoadNextLevel()
@@ -204,9 +206,15 @@ public class WaveManager : MonoBehaviour
             }
         }
 
-        if (skipPreperation)
+        if (stopWaves)
         {
-            
+            prepTimer = 20;
         }
+
+    }
+    void SkipPreperation()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+            prepTimer = 0;
     }
 }
