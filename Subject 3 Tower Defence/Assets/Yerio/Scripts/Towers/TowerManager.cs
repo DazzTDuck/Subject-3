@@ -6,13 +6,11 @@ public class TowerManager : MonoBehaviour
 {
     [Header("---Tower Placement---")]
     public float safePlacementRadius;
-    public float otherTowerPlacementDistance;
+    public float minTowerPlacementDistance;
     public LayerMask pathLayer;
     public LayerMask towerLayer;
     public Color canPlaceTowerColor;
     public Color cantPlaceTowerColor;
-
-    public CapsuleCollider capsuleCollider;
     
     public BaseTower TestTower;
     public GameObject VisualDetectionSphere;
@@ -23,7 +21,6 @@ public class TowerManager : MonoBehaviour
     [HideInInspector]
     public bool cantPlace;
 
-    bool tooCloseToTower;
     BaseTower selectedTower;
     GameObject instantiatedDetectionSphere;
     ChangeSphereColor instantiatedSphereColor;
@@ -53,24 +50,34 @@ public class TowerManager : MonoBehaviour
     #region Tower Place Detection
     void CanPlaceTowerDetection()
     {
-        var selectedPos = selectedTower.towerBase.transform.position;
+        var selectedPos = selectedTower.transform.position;
+        var minDistance = Mathf.Infinity;
+        BaseTower lastDetectedTower = null;
 
         foreach (var tower in allTowersIngame)
         {
             if (tower != selectedTower)
             {
-                var distance = Vector3.Distance(selectedPos, tower.towerBase.position);
+                var distance = Vector3.Distance(tower.transform.position, selectedPos);
 
-                tooCloseToTower = distance < otherTowerPlacementDistance;             
-            }
+                if (distance < minTowerPlacementDistance)
+                    if (distance < minDistance)
+                    {
+                        minDistance = distance;
+                        lastDetectedTower = tower;
+                    }
+            }      
         }
-        cantPlace = Physics.CheckSphere(selectedPos, safePlacementRadius, pathLayer) || tooCloseToTower;
+
+        cantPlace = Physics.CheckSphere(selectedPos, safePlacementRadius, pathLayer) || lastDetectedTower;
+        if(lastDetectedTower)
+        Debug.DrawLine(selectedPos, lastDetectedTower.transform.position, Color.green);
     }
 
     public void SelectTower(BaseTower tower)
     {
         selectedTower = tower;
-        instantiatedDetectionSphere = Instantiate(VisualDetectionSphere, selectedTower.towerBase.position, Quaternion.identity);
+        instantiatedDetectionSphere = Instantiate(VisualDetectionSphere, selectedTower.transform.position, Quaternion.identity);
         SetCorrectScaleForDetectionSphere(instantiatedDetectionSphere.transform);
         instantiatedSphereColor = instantiatedDetectionSphere.GetComponent<ChangeSphereColor>();
     }
@@ -78,6 +85,7 @@ public class TowerManager : MonoBehaviour
     public void PlacedTower(BaseTower tower)
     {
         AddTowerToList(tower);
+        tower.activeAI = true;
         tower.UpdateOriginalHeadRotation();
     }
 
@@ -91,7 +99,7 @@ public class TowerManager : MonoBehaviour
     {
         if (instantiatedDetectionSphere != null)
         {
-            instantiatedDetectionSphere.transform.position = selectedTower.towerBase.transform.position;
+            instantiatedDetectionSphere.transform.position = selectedTower.transform.position;
             instantiatedSphereColor.ChangeColor(cantPlace ? cantPlaceTowerColor : canPlaceTowerColor);
         }
     }
@@ -108,7 +116,7 @@ public class TowerManager : MonoBehaviour
         {
             Gizmos.color = cantPlace ? cantPlaceTowerColor : canPlaceTowerColor;
             if(selectedTower != null)
-            Gizmos.DrawSphere(selectedTower.towerBase.transform.position, safePlacementRadius);
+            Gizmos.DrawSphere(selectedTower.transform.position, safePlacementRadius);
         }
     }
     void GetAllTowers()
@@ -122,7 +130,14 @@ public class TowerManager : MonoBehaviour
     }
     public void AddTowerToList(BaseTower tower)
     {
-        allTowersIngame.Add(tower);
+        if (!allTowersIngame.Contains(tower))
+        {
+            allTowersIngame.Add(tower);
+        }
+        else
+        {
+            Debug.Log($"{tower} already in List, skipped adding to List");
+        }
     }
 
     public void RemoveTowerToList(BaseTower tower)

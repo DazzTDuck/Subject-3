@@ -4,26 +4,53 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    Vector3 shootTarget = Vector3.zero;
+    public GameObject hitEffect;
+    BaseEnemy targetEnemy = null;
+    Vector3 direction = Vector3.zero;
     float shootSpeed;
-
-    public void ShootProjectile(Vector3 target, float shootSpeed)
+    float damage;
+    float raycastLength = 1f;
+    public void ShootProjectile(BaseEnemy target, float shootSpeed, float projectileDamage, Vector3 direction)
     {
-        shootTarget = target;
+        this.targetEnemy = target;
+        damage = projectileDamage;
+        this.direction = direction;
         this.shootSpeed = shootSpeed;
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 3);
     }
 
-    public void ShootToTarget()
+    void ShootToTarget()
     {
-        if (shootTarget != Vector3.zero)
+        if (targetEnemy)
         {
-
+            transform.rotation = Quaternion.LookRotation(direction);
+            transform.position += direction * shootSpeed * Time.fixedDeltaTime;
         }
     }
 
-    private void Update()
+    void CheckProjectileDistance()
+    {
+        Vector3 hitPos = Vector3.zero;
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, direction, out hit, raycastLength))
+        {
+            if (hit.transform.gameObject.GetComponent<BaseEnemy>())
+            {
+                var enemy = hit.transform.gameObject.GetComponent<BaseEnemy>();
+                enemy.health.DoDamage(damage);
+            }
+
+            hitPos = hit.point;
+            var effect = Instantiate(hitEffect, hitPos, Quaternion.identity);
+            Destroy(effect, 0.6f);
+            Destroy(gameObject, 0.02f);
+        }
+    }
+
+    private void FixedUpdate()
     {
         ShootToTarget();
+        CheckProjectileDistance();
     }
 }

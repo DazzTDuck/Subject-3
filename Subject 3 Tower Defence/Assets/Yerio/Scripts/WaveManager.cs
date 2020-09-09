@@ -13,10 +13,10 @@ public class WaveManager : MonoBehaviour
     [Header("---Bewteen Waves---")]
     [SerializeField, Tooltip("Preperation time for the new wave in seconds"),]
     float prepTimeNewWave = 15f;
-    [SerializeField] GameObject prepTimerPanel;
-    [SerializeField] Vector3 prepTimerOriginalPos;
-    [SerializeField] TMP_Text popupText;
-   
+    [SerializeField] GameObject prepTimerPanel = null;
+    [SerializeField] TMP_Text popupText = null;
+    Vector3 prepTimerOriginalPos;
+
     [Header("---Others---")]
     public TMP_Text wavesText; //Wave: 0 / 0
     public Health playerHealth;
@@ -78,13 +78,13 @@ public class WaveManager : MonoBehaviour
         spawnTimer = currentWave.timesBetweenSpawning[currentEnemyIndex];
         canSpawn = true;
     }
-    
+
     void UpdateSpawnTimer()
     {
-        if(!canSpawn && !allEnemiesSpawned)
-        spawnTimer -= Time.deltaTime;
+        if (!canSpawn && !allEnemiesSpawned)
+            spawnTimer -= Time.deltaTime;
 
-        if(spawnTimer <= 0 && !allEnemiesSpawned && !inPreperation && canLoad)
+        if (spawnTimer <= 0 && !allEnemiesSpawned && !inPreperation && canLoad)
         {
             ResetEnemySpawning();
         }
@@ -98,7 +98,7 @@ public class WaveManager : MonoBehaviour
             timerText.text = $"Preperation Time left      {prepTimer: 00:00}";
         }
 
-        if(prepTimer <= 0)
+        if (prepTimer <= 0)
         {
             inPreperation = false;
             canLoad = true;
@@ -115,7 +115,7 @@ public class WaveManager : MonoBehaviour
             var enemy = Instantiate(currentEnemy, spawnPoint.position, currentEnemy.transform.rotation);
             enemiesAlive.Add(enemy.GetComponent<BaseEnemy>());
 
-            if(currentEnemyIndex == currentWave.enemies.Length - 1)
+            if (currentEnemyIndex == currentWave.enemies.Length - 1)
             {
                 allEnemiesSpawned = true;
             }
@@ -145,9 +145,10 @@ public class WaveManager : MonoBehaviour
     {
         if (currentWaveIndex < allWavesInLevel.Length - 1 && !inPreperation)
         {
+            inPreperation = true;
             StartCoroutine(LoadWaveSetup());
         }
-        else if(currentWaveIndex > allWavesInLevel.Length - 1)
+        else if (currentWaveIndex > allWavesInLevel.Length - 1)
         {
             LoadNextLevel();
         }
@@ -156,7 +157,6 @@ public class WaveManager : MonoBehaviour
     void StartWave()
     {
         inPreperation = true;
-
         if (inPreperation)
         {
             StartCoroutine(animations.DecendTextDown(prepTimerPanel));

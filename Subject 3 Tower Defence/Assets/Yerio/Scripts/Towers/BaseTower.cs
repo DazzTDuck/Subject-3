@@ -6,22 +6,27 @@ public class BaseTower : MonoBehaviour
 {
     public TowerManager towerManager;
 
+    public bool activeAI = false;
+
     [Header("---Shooting---")]
     public Transform towerHead;
-    public Transform towerBase;
     public Projectile projectile;
     public GameObject hitParticle;
     public Transform shootingPoint;
-    public float projectileHitDistance = 0.1f;
-    public float shootSpeed = 10f;
+    [SerializeField] float shootDelay = 0.7f;
+    [SerializeField] float towerDamage = 15f;
+    [SerializeField] float shootSpeed = 7f;
+    bool canShoot = false;
+    float shootTimer;
 
     [Header("---Enemy Detection---")]
-    [SerializeField] float minDetectionDistance = 5f;
-    [SerializeField] float maxDetectionDistance = 8f;
+    [SerializeField] float minDetectionDistance = 6f;
+    [Tooltip("makes the distance smaller so in this case the tower won't switch to the other enemy as fast when detected")]
+    [SerializeField] float extraDetectionDistance = 4f;
     [SerializeField] float headRotationSpeed = 5f;
 
+    //private variables
     BaseEnemy targetEnemyInRange;
-
     Quaternion originalHeadRotation;
     bool onTarget = false;
     Projectile instantiatedProjectile;
@@ -29,47 +34,69 @@ public class BaseTower : MonoBehaviour
     private void Awake()
     {
         UpdateOriginalHeadRotation();
+        shootTimer = shootDelay;
     }
 
     private void Update()
     {
-        ShootProjectileToTarget();
+        if (activeAI)
+        {
+            ShootProjectileToTarget();
 
-        TargetDetection();
+            TargetDetection();
 
-        RotateHeadToEnemy();
+            RotateHeadToEnemy();
+
+            ShootTimer();
+        }       
     }
 
     protected virtual void ShootProjectileToTarget()
     {
-        if (onTarget)
+        if (onTarget && canShoot)
         {
-
+            instantiatedProjectile = Instantiate(projectile, shootingPoint.position, Quaternion.identity);
+            instantiatedProjectile.ShootProjectile(targetEnemyInRange, shootSpeed, towerDamage, CalculateDirection());         
         }
+    }
+
+    protected virtual void ShootTimer()
+    {
+        shootTimer -= Time.deltaTime;
+
+        if(shootTimer <= 0 && !canShoot)
+        {
+            canShoot = true;
+            shootTimer = shootDelay;
+        }
+        else canShoot = false;
     }
 
     protected virtual void TargetDetection()
     {
         var enemies = towerManager.waveManager.enemiesAlive;
+        var minDistance = Mathf.Infinity;
+        BaseEnemy targetEnemy = null;
         float distance;
 
         foreach (var enemy in enemies)
         {
-            distance = Vector3.Distance(towerBase.position, enemy.transform.position);
+            distance = Vector3.Distance(enemy.transform.position, transform.position);
 
             if (distance < minDetectionDistance)
-                targetEnemyInRange = enemy;
-            else if (distance > maxDetectionDistance)
-                targetEnemyInRange = null;
-
-            Debug.DrawLine(towerBase.position, enemy.transform.position, Color.green);
+                if (distance < minDistance - extraDetectionDistance) //minus the minDistance makes it smaller so in this case the tower won't switch to the other enemy as fast
+                {
+                    minDistance = distance;
+                    targetEnemy = enemy;
+                }
         }
 
-        onTarget = targetEnemyInRange != null;
+        onTarget = targetEnemy;
+        targetEnemyInRange = targetEnemy;
 
         if (onTarget)
         {
-            Debug.DrawLine(shootingPoint.position, targetEnemyInRange.transform.position, Color.red);
+            Debug.DrawLine(shootingPoint.position, targetEnemy.transform.position, Color.red);
            //Debug.Log(distance);
         }
     }
@@ -80,7 +107,7 @@ public class BaseTower : MonoBehaviour
         Vector3 direction;
         if (onTarget)
         {
-            direction = targetEnemyInRange.transform.position - towerHead.position;
+            direction = CalculateDirection();
             rotateTo = Quaternion.LookRotation(direction);
         }
         else
@@ -92,14 +119,9 @@ public class BaseTower : MonoBehaviour
         //Debug.DrawRay(towerHead.position, direction, Color.green);
     }
 
-    void ProjectileHit()
+    Vector3 CalculateDirection()
     {
-
-    }
-
-    void InstanstiateHitParticle()
-    {
-
+        return targetEnemyInRange.transform.position - towerHead.position;
     }
     
     public void UpdateOriginalHeadRotation()
