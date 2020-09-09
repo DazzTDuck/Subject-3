@@ -11,6 +11,9 @@ public class TowerManager : MonoBehaviour
     public LayerMask towerLayer;
     public Color canPlaceTowerColor;
     public Color cantPlaceTowerColor;
+
+    public CapsuleCollider capsuleCollider;
+    
     public BaseTower TestTower;
     public GameObject VisualDetectionSphere;
 

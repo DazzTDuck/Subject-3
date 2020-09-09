@@ -85,8 +85,8 @@ MonoBehaviour:
   shootingPoint: {fileID: 2440380452471780044}
   projectileHitDistance: 0.1
   shootSpeed: 0
-  minDetectionDistance: 9
-  maxDetectionDistance: 9
+  minDetectionDistance: 7
+  maxDetectionDistance: 8
   headRotationSpeed: 5
 --- !u!1 &2440380453038165755
 GameObject:
@@ -115,7 +115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2440380453038165755}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.091, y: 1.396, z: 0.718}
+  m_LocalPosition: {x: 0.121, y: 1.376, z: 0.718}
   m_LocalScale: {x: 0.7958063, y: 0.7958063, z: 0.7958063}
   m_Children:
   - {fileID: 2440380453322321864}

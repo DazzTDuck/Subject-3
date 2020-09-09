@@ -16,13 +16,11 @@ public class BaseTower : MonoBehaviour
     public float shootSpeed = 10f;
 
     [Header("---Enemy Detection---")]
-    [SerializeField] float hitRadius = 6f;
+    [SerializeField] float minDetectionDistance = 5f;
+    [SerializeField] float maxDetectionDistance = 8f;
     [SerializeField] float headRotationSpeed = 5f;
 
     BaseEnemy targetEnemyInRange;
-
-    [Header("---Debug---")]
-    [SerializeField] bool showTowerHitRadius;
 
     Quaternion originalHeadRotation;
     bool onTarget = false;
@@ -53,35 +51,26 @@ public class BaseTower : MonoBehaviour
     protected virtual void TargetDetection()
     {
         var enemies = towerManager.waveManager.enemiesAlive;
-        Collider[] colliders = Physics.OverlapSphere(towerBase.position + towerBase.forward * 2, hitRadius);
+        float distance;
 
-        foreach (var coll in colliders)
+        foreach (var enemy in enemies)
         {
-            bool enemyInList = coll.gameObject.GetComponent<BaseEnemy>();
+            distance = Vector3.Distance(towerBase.position, enemy.transform.position);
 
-            if (enemyInList)
-            {
-                var enemy = coll.gameObject.GetComponent<BaseEnemy>();
-                if (enemies[0] == enemy)
-                {
-                    targetEnemyInRange = enemy;
-                    onTarget = true;
-                }
-                else
-                {                   
-                    //this runs at the same time as the statement above, so its conflicting with eachother, figure out how to fix this!
-                    targetEnemyInRange = null;
-                    onTarget = false;
-                }
+            if (distance < minDetectionDistance)
+                targetEnemyInRange = enemy;
+            else if (distance > maxDetectionDistance)
+                targetEnemyInRange = null;
 
-                Debug.Log(colliders.Length);
-            }
+            Debug.DrawLine(towerBase.position, enemy.transform.position, Color.green);
         }
+
+        onTarget = targetEnemyInRange != null;
 
         if (onTarget)
         {
             Debug.DrawLine(shootingPoint.position, targetEnemyInRange.transform.position, Color.red);
-            //Debug.Log(distance);
+           //Debug.Log(distance);
         }
     }
 
@@ -116,12 +105,6 @@ public class BaseTower : MonoBehaviour
     public void UpdateOriginalHeadRotation()
     {
         originalHeadRotation = towerHead.rotation;
-    }
-    
-    private void OnDrawGizmosSelected()
-    {
-        if (showTowerHitRadius)
-            Gizmos.DrawWireSphere(towerBase.position + towerBase.forward * 2, hitRadius);
     }
 
 }
