@@ -7,6 +7,7 @@ public class BaseTower : MonoBehaviour
     public TowerManager towerManager;
 
     public bool activeAI = false;
+    public float towerCost = 2f;
 
     [Header("---Shooting---")]
     public Transform towerHead;
@@ -20,7 +21,7 @@ public class BaseTower : MonoBehaviour
     float shootTimer;
 
     [Header("---Enemy Detection---")]
-    [SerializeField] float minDetectionDistance = 6f;
+    public float minDetectionDistance = 6f;
     [Tooltip("makes the distance smaller so in this case the tower won't switch to the other enemy as fast when detected")]
     [SerializeField] float extraDetectionDistance = 4f;
     [SerializeField] float headRotationSpeed = 5f;
