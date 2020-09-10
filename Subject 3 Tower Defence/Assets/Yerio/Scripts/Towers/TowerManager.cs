@@ -42,9 +42,12 @@ public class TowerManager : MonoBehaviour
 
     void Update()
     {
-        if (selectedTower != null) CanPlaceTowerDetection();
+        if (selectedTower)
+        {
+            CanPlaceTowerDetection();
 
-        UpdateDetectionSphere();
+            UpdateDetectionSphere();
+        }          
     }
 
     #region Tower Place Detection

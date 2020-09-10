@@ -33,6 +33,7 @@ public class BaseTower : MonoBehaviour
 
     private void Awake()
     {
+        towerManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<TowerManager>();
         UpdateOriginalHeadRotation();
         shootTimer = shootDelay;
     }
