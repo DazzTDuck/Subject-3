@@ -6,7 +6,7 @@ public class BaseEnemy : MonoBehaviour
 {
     [Header("---Enemy Properties---")]
 
-    [Range(0, 5), Tooltip("How fast the enemy can move")]
+    [Tooltip("How fast the enemy can move")]
     public float moveSpeed = 2f;
     [SerializeField, Tooltip("How fast the enemy can rotate when moving")]
     private float rotateSpeed = 4f;
@@ -25,10 +25,12 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField, Tooltip("Maximum amount of scrap that can be dropped on death")]
     private int maxAmountScrapOnDrop = 5;
 
-    [HideInInspector]
-    public Health health;
+
+    [HideInInspector] public Health health;
+    [HideInInspector] public float actualMoveSpeed;
 
     //private varibles
+    CurrencyManager currency;
     WaveManager waveManager;
     CheckpointHolder cpHolder;
     int checkpointIndex;
@@ -38,6 +40,8 @@ public class BaseEnemy : MonoBehaviour
     {
         cpHolder = GameObject.FindGameObjectWithTag("Manager").GetComponent<CheckpointHolder>();
         waveManager = FindObjectOfType<WaveManager>();
+        currency = Camera.main.GetComponent<CurrencyManager>();
+        actualMoveSpeed = moveSpeed;
 
         health = GetComponent<Health>();
 
@@ -72,7 +76,7 @@ public class BaseEnemy : MonoBehaviour
             checkpointIndex++;
             currentCheckpoint = cpHolder.checkpoints[checkpointIndex];
         }
-        var moveTo = Vector3.MoveTowards(transform.position, cpPosToMove, moveSpeed * Time.deltaTime);
+        var moveTo = Vector3.MoveTowards(transform.position, cpPosToMove, actualMoveSpeed * Time.deltaTime);
         moveTo.y = transform.position.y;
         transform.position = moveTo;
 
@@ -92,8 +96,14 @@ public class BaseEnemy : MonoBehaviour
 
     protected virtual void DropOnDeath()
     {
-        var amountScrapToDrop = Random.Range(minAmountScrapOnDrop, maxAmountScrapOnDrop);
-        Debug.Log($"Amount scrap dropped: {amountScrapToDrop}");
+        var amountScrapDropped = ScrapDropped();
+        currency.AddCurrency(amountScrapDropped);
+        //Debug.Log($"Amount scrap dropped: {amountScrapToDrop}");
+    }
+
+    public float ScrapDropped()
+    {
+        return Random.Range(minAmountScrapOnDrop, maxAmountScrapOnDrop);
     }
 
     protected virtual void DestroyObjectIfHealthZero()
@@ -101,8 +111,14 @@ public class BaseEnemy : MonoBehaviour
         if(health.currentHealth <= 0)
         {
             waveManager.RemoveEnemyFromList(this);
+            DropOnDeath();
             Destroy(gameObject);
         }
+    }
+
+    public void ChangeMovespeed(float moveSpeed)
+    {
+        actualMoveSpeed = moveSpeed;
     }
 }
 

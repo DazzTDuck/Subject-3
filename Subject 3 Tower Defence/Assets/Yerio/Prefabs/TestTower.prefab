@@ -95,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerManager: {fileID: 0}
   activeAI: 0
+  towerCost: 2
   towerHead: {fileID: 6717590214042127070}
   projectile: {fileID: -1038706737665988478, guid: 7b1fa1f34294f62448156a66e57db0ad,
     type: 3}
@@ -103,7 +104,7 @@ MonoBehaviour:
   shootingPoint: {fileID: 3551469947742726826}
   shootDelay: 0.7
   towerDamage: 10
-  shootSpeed: 7
+  shootSpeed: 18
   minDetectionDistance: 6.5
   extraDetectionDistance: 4
   headRotationSpeed: 5

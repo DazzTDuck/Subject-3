@@ -52,4 +52,10 @@ public class Health : MonoBehaviour
         }
 
     }
+
+    public void ChangeHealth(float newHealth)
+    {
+        maxHealth = newHealth;
+        currentHealth = newHealth;
+    }
 }

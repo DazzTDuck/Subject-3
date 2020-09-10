@@ -24,7 +24,12 @@ public class Projectile : MonoBehaviour
         if (targetEnemy)
         {
             transform.rotation = Quaternion.LookRotation(direction);
-            transform.position += direction * shootSpeed * Time.fixedDeltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, targetEnemy.transform.position, shootSpeed * Time.deltaTime);
+        }
+        else
+        {
+            transform.rotation = Quaternion.LookRotation(transform.forward);
+            transform.position += transform.forward * shootSpeed * Time.deltaTime;
         }
     }
 

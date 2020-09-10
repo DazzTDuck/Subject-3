@@ -10,11 +10,10 @@ public class ButtonHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public float pressScaleOffset = 5f;
 
     Vector3 originalPos;
-
     private void Awake()
     {
         originalPos = transform.position;
-        animations = GameObject.FindGameObjectWithTag("Manager").GetComponent<UIAnimations>();
+        animations = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIAnimations>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)

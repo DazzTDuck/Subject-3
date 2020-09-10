@@ -112,8 +112,10 @@ public class WaveManager : MonoBehaviour
         {
             var currentEnemy = currentWave.enemies[currentEnemyIndex];
             //spawn enemy
-            var enemy = Instantiate(currentEnemy, spawnPoint.position, currentEnemy.transform.rotation);
-            enemiesAlive.Add(enemy.GetComponent<BaseEnemy>());
+            var enemyObj = Instantiate(currentEnemy, spawnPoint.position, currentEnemy.transform.rotation);
+            var enemy = enemyObj.GetComponent<BaseEnemy>();
+            AddEnemyMultipliers(currentWave, enemy);
+            enemiesAlive.Add(enemy);
 
             if (currentEnemyIndex == currentWave.enemies.Length - 1)
             {
@@ -126,6 +128,12 @@ public class WaveManager : MonoBehaviour
             canSpawn = false;
         }
     }
+
+    void AddEnemyMultipliers(Wave currentWave, BaseEnemy enemy)
+    {
+        enemy.health.ChangeHealth(enemy.health.currentHealth * currentWave.enemyHealhMultiplier);
+        enemy.ChangeMovespeed(enemy.moveSpeed * currentWave.enemySpeedMultiplier);
+    } 
 
     public void RemoveEnemyFromList(BaseEnemy enemy)
     {
@@ -146,6 +154,7 @@ public class WaveManager : MonoBehaviour
         if (currentWaveIndex < allWavesInLevel.Length - 1 && !inPreperation)
         {
             inPreperation = true;
+            prepTimer += 2;
             StartCoroutine(LoadWaveSetup());
         }
         else if (currentWaveIndex > allWavesInLevel.Length - 1)

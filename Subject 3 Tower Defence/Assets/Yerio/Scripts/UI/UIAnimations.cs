@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIAnimations : MonoBehaviour
 {
@@ -32,11 +33,11 @@ public class UIAnimations : MonoBehaviour
     {
         _popupText.text = _text;
 
-        LeanTween.scale(_popupText.gameObject, new Vector3(1.2f, 1.2f, 1.2f), popupLeanSpeed).setEaseInOutBack();
+        LeanTween.scale(_popupText.gameObject, new Vector3(1.2f, 1.2f, 1.2f), popupLeanSpeed).setEaseInOutExpo();
 
         yield return new WaitForSeconds(popupDelayTime);
 
-        LeanTween.scale(_popupText.gameObject, new Vector3(0.001f, 0.001f, 0.001f), popupLeanSpeed).setEaseInOutBack();
+        LeanTween.scale(_popupText.gameObject, new Vector3(0.001f, 0.001f, 0.001f), popupLeanSpeed).setEaseInOutExpo();
 
         StopCoroutine("PopupText");
     }
@@ -96,5 +97,25 @@ public class UIAnimations : MonoBehaviour
         LeanTween.scale(button.gameObject, originalScale, pressTweenSpeed).setEaseInOutBack();
 
         StopCoroutine("ButtonPressAnimation");
+    }
+
+    [Header("Scene Load animation")]
+    [SerializeField] float sceneLoadTime = 3f;
+    [SerializeField] float timeToFade = 1f;
+
+    public IEnumerator SceneTransistion(int sceneIndex, CanvasGroup canvas, bool pressdelay)
+    {
+        if(pressdelay)
+        yield return new WaitForSeconds(pressWaitTime);
+
+        LeanTween.alphaCanvas(canvas, 1, timeToFade);
+
+        yield return new WaitForSeconds(sceneLoadTime);
+
+        SceneManager.LoadScene(sceneIndex);
+
+        LeanTween.alphaCanvas(canvas, 0, timeToFade);
+
+        StopCoroutine("SceneTransistion");
     }
 }

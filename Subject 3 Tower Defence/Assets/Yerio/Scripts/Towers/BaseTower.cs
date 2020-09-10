@@ -21,7 +21,7 @@ public class BaseTower : MonoBehaviour
     float shootTimer;
 
     [Header("---Enemy Detection---")]
-    public float minDetectionDistance = 6f;
+    [Range(0, 15)] public float minDetectionDistance = 6f;
     [Tooltip("makes the distance smaller so in this case the tower won't switch to the other enemy as fast when detected")]
     [SerializeField] float extraDetectionDistance = 4f;
     [SerializeField] float headRotationSpeed = 5f;
@@ -83,7 +83,7 @@ public class BaseTower : MonoBehaviour
 
         foreach (var enemy in enemies)
         {
-            distance = Vector3.Distance(enemy.transform.position, transform.position);
+            distance = Vector3.Distance(EnemyPos(enemy), transform.position);
 
             if (distance < minDetectionDistance)
                 if (distance < minDistance - extraDetectionDistance) //minus the minDistance makes it smaller so in this case the tower won't switch to the other enemy as fast
@@ -98,9 +98,14 @@ public class BaseTower : MonoBehaviour
 
         if (onTarget)
         {
-            Debug.DrawLine(shootingPoint.position, targetEnemy.transform.position, Color.red);
+            Debug.DrawLine(shootingPoint.position, EnemyPos(targetEnemy), Color.red);
            //Debug.Log(distance);
         }
+    }
+
+    Vector3 EnemyPos(BaseEnemy enemy)
+    {
+        return enemy.transform.position;
     }
 
     void RotateHeadToEnemy()
@@ -124,7 +129,7 @@ public class BaseTower : MonoBehaviour
     Vector3 CalculateDirection()
     {
         if(targetEnemyInRange)
-        return targetEnemyInRange.transform.position - towerHead.position;
+        return EnemyPos(targetEnemyInRange) - towerHead.position;
 
         return transform.forward - towerHead.position;
     }

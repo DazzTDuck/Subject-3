@@ -14,6 +14,7 @@ public class TowerManager : MonoBehaviour
     
     public BaseTower TestTower;
     public GameObject VisualDetectionSphere;
+    public GameObject visualRadiusCircle;
 
     [HideInInspector]
     public WaveManager waveManager;
@@ -23,6 +24,7 @@ public class TowerManager : MonoBehaviour
 
     BaseTower selectedTower;
     GameObject instantiatedDetectionSphere;
+    GameObject instantiatedRadiusCircle;
     ChangeSphereColor instantiatedSphereColor;
 
     List<BaseTower> allTowersIngame = new List<BaseTower>();
@@ -47,6 +49,7 @@ public class TowerManager : MonoBehaviour
             CanPlaceTowerDetection();
 
             UpdateDetectionSphere();
+            UpdateRadiusCircle();
         }          
     }
 
@@ -81,7 +84,9 @@ public class TowerManager : MonoBehaviour
     {
         selectedTower = tower;
         instantiatedDetectionSphere = Instantiate(VisualDetectionSphere, selectedTower.transform.position, Quaternion.identity);
+        instantiatedRadiusCircle = Instantiate(visualRadiusCircle, selectedTower.transform.position + Vector3.up, visualRadiusCircle.transform.rotation);
         SetCorrectScaleForDetectionSphere(instantiatedDetectionSphere.transform);
+        SetCorrectScaleForRadiusCirle(instantiatedRadiusCircle.transform);
         instantiatedSphereColor = instantiatedDetectionSphere.GetComponent<ChangeSphereColor>();
     }
 
@@ -95,15 +100,24 @@ public class TowerManager : MonoBehaviour
     public void DeselectTower()
     {
         selectedTower = null;
-        if (instantiatedDetectionSphere != null)
+        if (instantiatedDetectionSphere)
             Destroy(instantiatedDetectionSphere);
+        if (instantiatedRadiusCircle)
+            Destroy(instantiatedRadiusCircle);
     }
-    public void UpdateDetectionSphere()
+    void UpdateDetectionSphere()
     {
-        if (instantiatedDetectionSphere != null)
+        if (instantiatedDetectionSphere)
         {
             instantiatedDetectionSphere.transform.position = selectedTower.transform.position;
             instantiatedSphereColor.ChangeColor(cantPlace ? cantPlaceTowerColor : canPlaceTowerColor);
+        }
+    }
+    void UpdateRadiusCircle()
+    {
+        if (instantiatedRadiusCircle)
+        {
+            instantiatedRadiusCircle.transform.position = selectedTower.transform.position + Vector3.up;
         }
     }
 
@@ -111,6 +125,13 @@ public class TowerManager : MonoBehaviour
     {
         var scale = safePlacementRadius / 0.5f; //0.5 is the default sphere radius for a (1,1,1) scale 
         sphere.localScale = new Vector3(scale, scale, scale);
+    }
+
+    void SetCorrectScaleForRadiusCirle(Transform cirlce)
+    {
+        var detectionDistance = selectedTower.minDetectionDistance;
+        var scale = detectionDistance / 12f; // 0.120 is the default radius for a 150 scale
+        cirlce.GetComponent<ChangeRadius>().SetScale(scale);
     }
 
     private void OnDrawGizmos()
