@@ -122,7 +122,10 @@ public class BaseTower : MonoBehaviour
 
     Vector3 CalculateDirection()
     {
+        if(targetEnemyInRange)
         return targetEnemyInRange.transform.position - towerHead.position;
+
+        return transform.forward - towerHead.position;
     }
     
     public void UpdateOriginalHeadRotation()
