@@ -18,4 +18,14 @@ public class CurrencyManager : MonoBehaviour
     {
         
     }
+
+    public void AddCurrency(float amount)
+    {
+        currentCurrency += amount;
+    }
+
+    public void RemoveCurrency(float amount)
+    {
+        currentCurrency -= amount;
+    }
 }
