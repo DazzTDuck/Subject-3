@@ -22,7 +22,7 @@ public class TowerBuilder : MonoBehaviour
     void Update()
     {
         // dit block is voor debug only en moet met Ui buttons
-        if (Input.GetButtonDown("Submit")) 
+        if (Input.GetKeyDown(KeyCode.Alpha1)) 
         {
            SpawnNewTower(0);
         }
@@ -36,16 +36,18 @@ public class TowerBuilder : MonoBehaviour
 
     private void SpawnNewTower(int index)
     {
-        if (!currentHeldTower)
+        if (!Camera.main.GetComponent<MainCam>().isGunFocus)
         {
-            currentHeldTower = Instantiate(towerPrefabs[index], towerPrefabs[index].transform.position, Quaternion.identity);
-            manager.SelectTower(currentHeldTower.GetComponent<BaseTower>());
+            if (!currentHeldTower)
+            {
+                currentHeldTower = Instantiate(towerPrefabs[index], towerPrefabs[index].transform.position, Quaternion.identity);
+                manager.SelectTower(currentHeldTower.GetComponent<BaseTower>());
+            }
+            else
+            {
+                CancelPlacement();
+            }
         }
-        else
-        {
-            CancelPlacement();
-        }
-
     }
 
     private void MoveTowerToMouse()
@@ -66,11 +68,19 @@ public class TowerBuilder : MonoBehaviour
         {
             if (!manager.cantPlace)
             {
-                manager.PlacedTower(currentHeldTower.GetComponent<BaseTower>());
-                manager.DeselectTower();
-                currentHeldTower = null;
+                if (currentHeldTower.GetComponent<BaseTower>().towerCost <= Camera.main.GetComponent<CurrencyManager>().currentCurrency)
+                {
+                    Camera.main.GetComponent<CurrencyManager>().RemoveCurrency(currentHeldTower.GetComponent<BaseTower>().towerCost);
 
-                //currency - tower cost
+                    manager.PlacedTower(currentHeldTower.GetComponent<BaseTower>());
+                    manager.DeselectTower();
+                    currentHeldTower = null;
+                }
+                else
+                {
+                    print("No money!");
+                    // add feedback for the player to see that they dont have enough money
+                }
             }
         }
     }

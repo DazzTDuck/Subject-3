@@ -4,81 +4,61 @@ using UnityEngine;
 
 public class MainCam : MonoBehaviour
 {
-    public float camRotX;
-    public float camRotY;
 
-    Camera mainCam;
+
     public Vector3 camOffset;
-    public GameObject camFocusObject;
+    public float defaultCamRotX;
+    public float defaultCamRotY;
 
-    public float minZoom = 20;
-    public float maxZoom = 60;
-    public float zoomSpeed = 20;
-    float zoomValue = 60;
+    //is also used to set the cam in the right posision so make sure the manager is on 0,0,0
+    public GameObject manager; 
 
+    public Vector3 topCamPos;
+    public float topCamRotX;
+    public float topCamRotY;
 
+    public bool isGunFocus;
     public GameObject focusGun;
     public Vector3 focusGunOffset;
-    public bool isGunFocus;
-    public float gunZoom = 35;
+    public float gunZoom = 35f;
+    public float camDefaultFov = 60f;
     
     
 
     [HideInInspector]
-    public bool isZoomed;
-    
-    
+    public bool isTopView;
+
 
     // Start is called before the first frame update
     void Awake()
     {
-        mainCam = Camera.main;
 
-        SetDefaultCamPos();
+        MoveCamToStartLocation();
     }
 
     // Update is called once per frame
     void Update()
     {
-        CamZoom();
+        CamChangeTopView();
         FocusOnGun();
     }
 
-
-    void SetDefaultCamPos()
-    {
-        transform.position = camFocusObject.transform.position + camOffset;
-        mainCam.transform.rotation = Quaternion.Euler(camRotX, camRotY, 0f);
-    }
     
-    void CamZoom()
+    void CamChangeTopView()
     {
-        if (isGunFocus)
+        if (Input.GetButtonDown("Debug1"))
         {
-            if (!isZoomed)
+            if (!isTopView)
             {
-                if (Input.GetButtonDown("Fire3"))
-                {
-                    Camera.main.fieldOfView = gunZoom;
-                }
+                MoveCamToTopLocation();
+                isTopView = true;
+                isGunFocus = false;
             }
             else
             {
-                if (Input.GetButtonDown("Fire3"))
-                {
-                    Camera.main.fieldOfView = maxZoom;
-                }
+                MoveCamToStartLocation();
+                isTopView = false;
             }
-        }
-        else
-        {
-            zoomValue -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
-
-            zoomValue = Mathf.Clamp(zoomValue, minZoom, maxZoom);
-
-            isZoomed = zoomValue < maxZoom;
-
-            Camera.main.fieldOfView = zoomValue;
         }
     }
 
@@ -89,18 +69,37 @@ public class MainCam : MonoBehaviour
 
             if (!isGunFocus)
             {
-                
-                transform.position = focusGun.transform.position + focusGunOffset;
-                transform.rotation = focusGun.transform.rotation;
+                MoveCamToTower();
                 isGunFocus = true;
             }
             else
             {
-                SetDefaultCamPos();
+                MoveCamToStartLocation();
                 isGunFocus = false;
+                isTopView = false;
             }
-            Camera.main.fieldOfView = maxZoom;
+            Camera.main.fieldOfView = camDefaultFov;
+            manager.GetComponent<TowerBuilder>().CancelPlacement();
         }
     }
+
+    void MoveCamToStartLocation()
+    {
+        transform.position = manager.transform.position + camOffset;
+        transform.rotation = Quaternion.Euler(defaultCamRotX, defaultCamRotY, 0f);   
+    }
+
+    void MoveCamToTopLocation()
+    {
+        transform.position = topCamPos;
+        transform.rotation = Quaternion.Euler(topCamRotX, topCamRotY, 0f);
+    }
+
+    void MoveCamToTower()
+    {
+        transform.position = focusGun.transform.position + focusGunOffset;
+        transform.rotation = focusGun.transform.rotation;
+    }
+
 
 }
