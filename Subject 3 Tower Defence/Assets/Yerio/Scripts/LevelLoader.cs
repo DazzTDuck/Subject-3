@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(Animator))]
 public class LevelLoader : MonoBehaviour
 {
+    public float transistionWaitTime = 1f;
+    public float buttonPressTime = 0.3f;
+
     public static LevelLoader instance;
 
-    UIAnimations animations;
-    CanvasGroup canvas;
+    Animator animator;
 
     public void DontDestroyOnload()
     {
@@ -24,13 +28,23 @@ public class LevelLoader : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnload();
-        animations = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIAnimations>();
-        canvas = GetComponent<CanvasGroup>();
+        //DontDestroyOnload();
+        animator = GetComponent<Animator>();
     }
 
-    public void LoadNewScene()
+    public void LoadNextScene()
     {
-        StartCoroutine(animations.SceneTransistion(1, canvas, true));
+        StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+
+    IEnumerator LoadScene(int sceneIndex)
+    {
+        yield return new WaitForSeconds(buttonPressTime);
+
+        animator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transistionWaitTime);
+
+        SceneManager.LoadScene(sceneIndex);
     }
 }

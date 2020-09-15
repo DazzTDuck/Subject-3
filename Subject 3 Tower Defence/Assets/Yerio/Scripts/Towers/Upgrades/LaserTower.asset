@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dba1beb9dc3be841a12bba20d2bc49f, type: 3}
+  m_Name: LaserTower
+  m_EditorClassIdentifier: 
+  towerUpgradesInactive: 0000010100
+  towerCostUpgradeLevels:
+  - 0
+  - 0
+  - 0
+  towerDamageUpgradeLevels:
+  - 0
+  - 0
+  - 0
+  shootDelayUpgradeLevels:
+  - 0
+  - 0
+  - 0
+  shootSpeedUpgradeLevels:
+  - 0
+  - 0
+  - 0
+  radiusDetectionUpgradeLevels:
+  - 0
+  - 0
+  - 0
+  costTowerCostLevels:
+  - 10
+  - 20
+  - 30
+  costTowerDamageLevels:
+  - 15
+  - 25
+  - 40
+  costShootDelayLevels:
+  - 0
+  - 0
+  - 0
+  costShootSpeedLevels:
+  - 0
+  - 0
+  - 0
+  costRadiusDetectionLevels:
+  - 5
+  - 10
+  - 15
+  costLevelIndex: 0
+  damageLevelIndex: 0
+  delayLevelIndex: 0
+  speedLevelIndex: 0
+  radiusLevelIndex: 0
