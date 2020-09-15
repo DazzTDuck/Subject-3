@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerManager: {fileID: 0}
-  activeAI: 1
+  activeAI: 0
   towerCost: 2
   towerHead: {fileID: 2953706445351922704}
   projectile: {fileID: 0}
