@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
 {
@@ -24,6 +25,19 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
     [SerializeField] UpgradeButton upgrade3;
     [SerializeField] UpgradeButton upgrade4;
     [SerializeField] UpgradeButton upgrade5;
+
+    [Header("---Button Cost Text---")]
+    [SerializeField] TMP_Text[] buttonsTowerCost;
+    /*
+    [SerializeField] TMP_Text buttonTowerCost0;
+    [SerializeField] TMP_Text buttonTowerCost1;
+    [SerializeField] TMP_Text buttonTowerCost2;
+    [SerializeField] TMP_Text buttonTowerCost3;
+    [SerializeField] TMP_Text buttonTowerCost4; 
+    */
+    int i;
+
+    [SerializeField] TowerBuilder towerBuilder;
     
     Animator animator;
     bool panelOpen;
@@ -32,6 +46,7 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        UpdateTowerCostText();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -119,5 +134,15 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
     public void ClearSelectedUpgrade()
     {
         selectedTowerUpgrade = null;
+    }
+
+    public void UpdateTowerCostText()
+    {
+        foreach (TMP_Text costText in buttonsTowerCost)
+        {
+            costText.text = towerBuilder.towerPrefabs[i].transform.GetComponent<BaseTower>().towerCost.ToString();
+            i++;
+        }
+        i = 0;
     }
 }
