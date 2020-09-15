@@ -14,10 +14,10 @@ public class BaseTower : MonoBehaviour
     public Projectile projectile;
     public GameObject hitParticle;
     public Transform shootingPoint;
-    [SerializeField] float shootDelay = 0.7f;
-    [SerializeField] float towerDamage = 15f;
-    [SerializeField] float shootSpeed = 7f;
-    bool canShoot = false;
+    [SerializeField] protected float shootDelay = 0.7f;
+    [SerializeField] protected float towerDamage = 15f;
+    [SerializeField] protected float shootSpeed = 7f;
+    protected bool canShoot = false;
     float shootTimer;
 
     [Header("---Enemy Detection---")]
@@ -27,9 +27,9 @@ public class BaseTower : MonoBehaviour
     [SerializeField] float headRotationSpeed = 5f;
 
     //private variables
-    BaseEnemy targetEnemyInRange;
+    [HideInInspector] public BaseEnemy targetEnemyInRange;
     Quaternion originalHeadRotation;
-    bool onTarget = false;
+    protected bool onTarget = false;
     Projectile instantiatedProjectile;
 
     private void Awake()
@@ -43,7 +43,7 @@ public class BaseTower : MonoBehaviour
     {
         if (activeAI)
         {
-            ShootProjectileToTarget();
+            ShootToTarget();
 
             TargetDetection();
 
@@ -53,12 +53,12 @@ public class BaseTower : MonoBehaviour
         }       
     }
 
-    protected virtual void ShootProjectileToTarget()
+    protected virtual void ShootToTarget()
     {
         if (onTarget && canShoot)
         {
             instantiatedProjectile = Instantiate(projectile, shootingPoint.position, Quaternion.identity);
-            instantiatedProjectile.ShootProjectile(targetEnemyInRange, shootSpeed, towerDamage, CalculateDirection());         
+            instantiatedProjectile.ShootProjectile(targetEnemyInRange, shootSpeed, towerDamage, CalculateDirection(targetEnemyInRange));         
         }
     }
 
@@ -98,7 +98,7 @@ public class BaseTower : MonoBehaviour
 
         if (onTarget)
         {
-            Debug.DrawLine(shootingPoint.position, EnemyPos(targetEnemy), Color.red);
+            Debug.DrawRay(shootingPoint.position, CalculateDirection(targetEnemyInRange), Color.red);
            //Debug.Log(distance);
         }
     }
@@ -114,7 +114,7 @@ public class BaseTower : MonoBehaviour
         Vector3 direction;
         if (onTarget)
         {
-            direction = CalculateDirection();
+            direction = CalculateDirection(targetEnemyInRange);
             rotateTo = Quaternion.LookRotation(direction);
         }
         else
@@ -126,10 +126,10 @@ public class BaseTower : MonoBehaviour
         //Debug.DrawRay(towerHead.position, direction, Color.green);
     }
 
-    Vector3 CalculateDirection()
+    protected Vector3 CalculateDirection(BaseEnemy target)
     {
-        if(targetEnemyInRange)
-        return EnemyPos(targetEnemyInRange) - towerHead.position;
+        if(target)
+        return target.transform.position - towerHead.position;
 
         return transform.forward - towerHead.position;
     }

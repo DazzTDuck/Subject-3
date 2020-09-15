@@ -67,7 +67,7 @@ public class BaseEnemy : MonoBehaviour
             if (checkpointIndex == cpHolder.checkpoints.Count - 1)
             {
                 //Debug.Log("End of path");
-                health.currentHealth = 0;
+                Destroy(gameObject);
                 //do damage based on how much health enemy has
                 waveManager.playerHealth.DoDamage(DamageToPlayerAtEnd * (health.currentHealth / health.maxHealth)); 
                 return;
