@@ -10,9 +10,6 @@ public class UpgradeButton : MonoBehaviour
     public TMP_Text levelText;
     public TMP_Text costText;
 
-    [HideInInspector]
-    public int upgradeIndex;
-
     private void Start()
     {
         ButtonIneractable(true);
@@ -29,20 +26,5 @@ public class UpgradeButton : MonoBehaviour
     {
         var button = GetComponent<Button>();
         button.interactable = state;
-    }
-
-    public int IncreaseUpgradeIndex()
-    {
-        return upgradeIndex++;
-    }
-
-    public int GetUpgradeIndex()
-    {
-        return upgradeIndex;
-    }
-
-    public void ResetUpgradeIndex()
-    {
-        upgradeIndex = 0;
-    }
+    } 
 }

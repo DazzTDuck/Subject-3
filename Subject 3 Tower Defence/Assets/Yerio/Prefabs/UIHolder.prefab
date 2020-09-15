@@ -1141,7 +1141,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.56652784, y: 0.54636955}
   m_AnchorMax: {x: 0.8635279, y: 0.7147772}
-  m_AnchoredPosition: {x: 0.0001449585, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0.00015258789, y: -0.000030517578}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6905168629528597830
@@ -1396,7 +1396,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6905168629574817678}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: SpawnNewTower
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &6905168629574817676
 Animator:
   serializedVersion: 3
@@ -1572,7 +1583,6 @@ MonoBehaviour:
   upgradeNameText: {fileID: 6905168629878906175}
   levelText: {fileID: 6905168631376184048}
   costText: {fileID: 6905168630996768164}
-  upgradeIndex: 0
 --- !u!1 &6905168629652621795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1832,7 +1842,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.56652784, y: 0.209}
   m_AnchorMax: {x: 0.8635279, y: 0.37777725}
-  m_AnchoredPosition: {x: 0.0000076293945, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6905168629751166507
@@ -2354,7 +2364,6 @@ MonoBehaviour:
   upgradeNameText: {fileID: 6905168629912053941}
   levelText: {fileID: 6905168630487273793}
   costText: {fileID: 6905168630651523355}
-  upgradeIndex: 0
 --- !u!1 &6905168629878906161
 GameObject:
   m_ObjectHideFlags: 0
@@ -3334,7 +3343,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6905168630087111715}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: SpawnNewTower
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &6905168630087111717
 Animator:
   serializedVersion: 3
@@ -3631,7 +3651,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6905168630113326835}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: SpawnNewTower
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &6905168630113326837
 Animator:
   serializedVersion: 3
@@ -4123,7 +4154,6 @@ MonoBehaviour:
   upgradeNameText: {fileID: 6905168629319914511}
   levelText: {fileID: 6905168629358118854}
   costText: {fileID: 6905168630775420968}
-  upgradeIndex: 0
 --- !u!1 &6905168630257582858
 GameObject:
   m_ObjectHideFlags: 0
@@ -5089,7 +5119,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.09452782, y: 0.48040763}
   m_AnchorMax: {x: 0.39152783, y: 0.64922285}
-  m_AnchoredPosition: {x: 0, y: -0.0000038146973}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6905168630357366134
@@ -5171,7 +5201,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6905168630357366135}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: SpawnNewTower
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &6905168630357366153
 Animator:
   serializedVersion: 3
@@ -6108,7 +6149,6 @@ MonoBehaviour:
   upgradeNameText: {fileID: 6905168629921508350}
   levelText: {fileID: 6905168631020847369}
   costText: {fileID: 6905168630081610870}
-  upgradeIndex: 0
 --- !u!1 &6905168630608750225
 GameObject:
   m_ObjectHideFlags: 0
@@ -7504,7 +7544,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6905168630936936756}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: SpawnNewTower
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &6905168630936936758
 Animator:
   serializedVersion: 3
@@ -8205,11 +8256,19 @@ MonoBehaviour:
   cryoUpgrades: {fileID: 11400000, guid: a040e92bc511b944ea0828c25de373b2, type: 2}
   scrapCollectorUpgrades: {fileID: 11400000, guid: a5b2b9475c14aa946a27e9867e00f3e1,
     type: 2}
-  upgrade1: {fileID: 6905168629878758461}
-  upgrade2: {fileID: 6905168631448350067}
-  upgrade3: {fileID: 6905168630541750031}
-  upgrade4: {fileID: 6905168630242444466}
-  upgrade5: {fileID: 6905168629643222778}
+  upgradeButtons:
+  - {fileID: 6905168629878758461}
+  - {fileID: 6905168631448350067}
+  - {fileID: 6905168630541750031}
+  - {fileID: 6905168630242444466}
+  - {fileID: 6905168629643222778}
+  buttonsTowerCost:
+  - {fileID: 6905168630804463667}
+  - {fileID: 6905168631227464433}
+  - {fileID: 6905168630267065794}
+  - {fileID: 6905168630257582856}
+  - {fileID: 6905168630732607263}
+  towerBuilder: {fileID: 0}
 --- !u!1 &6905168631219948770
 GameObject:
   m_ObjectHideFlags: 0
@@ -9263,4 +9322,3 @@ MonoBehaviour:
   upgradeNameText: {fileID: 6905168630495092737}
   levelText: {fileID: 6905168630608750239}
   costText: {fileID: 6905168629861818677}
-  upgradeIndex: 0

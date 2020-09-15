@@ -25,9 +25,24 @@ public class TowerUpgradesSO : ScriptableObject
     public float[] costShootSpeedLevels = new float[3];
     public float[] costRadiusDetectionLevels = new float[3];
 
+    [HideInInspector] public int costUpgradeIndex;
+    [HideInInspector] public int damageUpgradeIndex;
+    [HideInInspector] public int delayUpgradeIndex;
+    [HideInInspector] public int shootUpgradeIndex;
+    [HideInInspector] public int radiusUpgradeIndex;
+
     public static string towerCostUpgradeName = "Tower Cost";
     public static string towerDamageUpgradeName = "Tower Damage";
     public static string shootDelayUpgradeName = "Shoot Delay";
     public static string shootSpeedUpgradeName = "Shoot Speed";
     public static string radiusDetectionUpgradeName = "Tower Range";
+
+    public void ResetUpgradeIndexes()
+    {
+        costUpgradeIndex = 0;
+        damageUpgradeIndex = 0;
+        delayUpgradeIndex = 0;
+        shootUpgradeIndex = 0;
+        radiusUpgradeIndex = 0;
+    }
 }

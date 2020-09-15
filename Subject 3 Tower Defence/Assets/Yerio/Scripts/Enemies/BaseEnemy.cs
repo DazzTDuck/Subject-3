@@ -21,9 +21,9 @@ public class BaseEnemy : MonoBehaviour
     private float minDistanceToCP = 0.6f;
 
     [SerializeField, Tooltip("Minimum amount of scrap that can be dropped on death")]
-    private int minAmountScrapOnDrop = 2;
+    private int minAmountCurrencyOnDrop = 2;
     [SerializeField, Tooltip("Maximum amount of scrap that can be dropped on death")]
-    private int maxAmountScrapOnDrop = 5;
+    private int maxAmountCurrencyOnDrop = 5;
 
 
     [HideInInspector] public Health health;
@@ -96,14 +96,14 @@ public class BaseEnemy : MonoBehaviour
 
     protected virtual void DropOnDeath()
     {
-        var amountScrapDropped = ScrapDropped();
+        var amountScrapDropped = CurrencyDropped();
         currency.AddCurrency(amountScrapDropped);
         //Debug.Log($"Amount scrap dropped: {amountScrapToDrop}");
     }
 
-    public float ScrapDropped()
+    public float CurrencyDropped()
     {
-        return Random.Range(minAmountScrapOnDrop, maxAmountScrapOnDrop);
+        return Random.Range(minAmountCurrencyOnDrop, maxAmountCurrencyOnDrop);
     }
 
     protected virtual void DestroyObjectIfHealthZero()

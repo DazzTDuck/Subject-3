@@ -95,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerManager: {fileID: 0}
   activeAI: 0
-  towerCost: 2
+  towerCost: 5
   towerHead: {fileID: 6717590214042127070}
   projectile: {fileID: -1038706737665988478, guid: 7b1fa1f34294f62448156a66e57db0ad,
     type: 3}
@@ -108,6 +108,7 @@ MonoBehaviour:
   minDetectionDistance: 6.5
   extraDetectionDistance: 4
   headRotationSpeed: 5
+  targetEnemyInRange: {fileID: 0}
 --- !u!1 &4499117982895726214
 GameObject:
   m_ObjectHideFlags: 0
