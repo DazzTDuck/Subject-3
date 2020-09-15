@@ -21,13 +21,7 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
 
     [Header("---Upgrade Buttons---")]
     [SerializeField] UpgradeButton[] upgradeButtons;
-    /*
-    [SerializeField] UpgradeButton upgrade1;
-    [SerializeField] UpgradeButton upgrade2;
-    [SerializeField] UpgradeButton upgrade3;
-    [SerializeField] UpgradeButton upgrade4;
-    [SerializeField] UpgradeButton upgrade5;
-    */
+    [SerializeField] TMP_Text towerSelectedName;
 
     [Header("---Button Cost Text---")]
     [SerializeField] TMP_Text[] buttonsTowerCost;
@@ -83,18 +77,23 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
         {
             case 0:
                 selectedUpgrade = turretUpgrades;
+                towerSelectedName.text = "Gun Tower Upgrades";
                 break;
             case 1:
                 selectedUpgrade = laserUpgrades;
+                towerSelectedName.text = "Laser Tower Upgrades";
                 break;
             case 2:
                 selectedUpgrade = shockUpgrades;
+                towerSelectedName.text = "Shock Tower Upgrades";
                 break;
             case 3:
                 selectedUpgrade = cryoUpgrades;
+                towerSelectedName.text = "Cryo Tower Upgrades";
                 break;
             case 4:
                 selectedUpgrade = scrapCollectorUpgrades;
+                towerSelectedName.text = "Scrap Collector Upgrades";
                 break;
         }
 

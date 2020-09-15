@@ -50,7 +50,7 @@ public class UIAnimations : MonoBehaviour
     {
         //Debug.Log(_text.transform.localPosition);
 
-        LeanTween.moveY(_text, _text.transform.position.y - decendValule, decendTweenSpeed).setEaseInOutBack();
+        LeanTween.moveLocalY(_text, _text.transform.localPosition.y - decendValule, decendTweenSpeed).setEaseInOutBack();
 
         yield return new WaitForSeconds(decendTweenSpeed + 0.1f);
 
@@ -58,7 +58,7 @@ public class UIAnimations : MonoBehaviour
     }
     public IEnumerator DecendTextUp(GameObject _text, Vector3 originalPos)
     {
-        LeanTween.moveY(_text, _text.transform.position.y + decendValule, decendTweenSpeed).setEaseInOutBack();
+        LeanTween.moveLocalY(_text, _text.transform.localPosition.y + decendValule, decendTweenSpeed).setEaseInOutBack();
 
         yield return new WaitForSeconds(decendTweenSpeed + 0.1f);
 
