@@ -13,28 +13,28 @@ public class TowerBuilder : MonoBehaviour
 
     void Start()
     {
-        foreach (GameObject tower in towerPrefabs)
-        {
-            //add number key for tower place input
-        }
+
     }
 
     void Update()
     {
-        // dit block is voor debug only en moet met Ui buttons
-        if (Input.GetKeyDown(KeyCode.Alpha1)) 
+
+        if (Input.GetButtonDown("Fire2"))
         {
-           SpawnNewTower(0);
+            CancelPlacement();
         }
+
         if (currentHeldTower)
         {
-
             MoveTowerToMouse();
-            ConfirmPlace();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                ConfirmPlace();
+            }
         }
     }
 
-    private void SpawnNewTower(int index)
+    public void SpawnNewTower(int index)
     {
         if (!Camera.main.GetComponent<MainCam>().isGunFocus)
         {
@@ -46,6 +46,8 @@ public class TowerBuilder : MonoBehaviour
             else
             {
                 CancelPlacement();
+                currentHeldTower = Instantiate(towerPrefabs[index], towerPrefabs[index].transform.position, Quaternion.identity);
+                manager.SelectTower(currentHeldTower.GetComponent<BaseTower>());
             }
         }
     }
@@ -63,9 +65,6 @@ public class TowerBuilder : MonoBehaviour
 
     private void ConfirmPlace()
     {
-        
-        if (Input.GetButtonDown("Fire1"))
-        {
             if (!manager.cantPlace)
             {
                 if (currentHeldTower.GetComponent<BaseTower>().towerCost <= Camera.main.GetComponent<CurrencyManager>().currentCurrency)
@@ -78,11 +77,11 @@ public class TowerBuilder : MonoBehaviour
                 }
                 else
                 {
-                    print("No money!");
-                    // add feedback for the player to see that they dont have enough money
+                    //play a sound
+                    StartCoroutine(Camera.main.GetComponent<CurrencyManager>().TextFlash(Color.red, 2));
+                    StopCoroutine(Camera.main.GetComponent<CurrencyManager>().TextFlash(Color.red, 2));
                 }
             }
-        }
     }
 
     public void CancelPlacement()
