@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dba1beb9dc3be841a12bba20d2bc49f, type: 3}
   m_Name: TurretTower
   m_EditorClassIdentifier: 
-  towerUpgradesInactive: 0000000000
+  towerUpgradesInactive: 0100000000
   towerCostUpgradeLevels:
   - 0
   - 0
@@ -34,9 +34,9 @@ MonoBehaviour:
   - 0
   - 0
   costTowerCostLevels:
-  - 5
-  - 10
-  - 15
+  - 0
+  - 0
+  - 0
   costTowerDamageLevels:
   - 6
   - 12
@@ -53,8 +53,8 @@ MonoBehaviour:
   - 5
   - 10
   - 15
-  costLevelIndex: 0
-  damageLevelIndex: 0
-  delayLevelIndex: 0
-  speedLevelIndex: 0
-  radiusLevelIndex: 0
+  costUpgradeIndex: 0
+  damageUpgradeIndex: 0
+  delayUpgradeIndex: 0
+  shootUpgradeIndex: 0
+  radiusUpgradeIndex: 0

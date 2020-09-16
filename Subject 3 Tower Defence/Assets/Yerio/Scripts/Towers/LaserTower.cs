@@ -32,7 +32,7 @@ public class LaserTower : BaseTower
 
         if (onTarget)
         {
-            if (Physics.Raycast(shootingPoint.position, CalculateDirection(targetEnemyInRange), out hit))
+            if (Physics.Raycast(shootingPoint.position, CalculateDirection(targetEnemyInRange), out hit) && laserInstance)
             {
                 if (canShoot)
                     targetEnemyInRange.health.DoDamage(towerDamage);

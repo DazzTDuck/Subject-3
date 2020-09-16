@@ -103,8 +103,9 @@ MonoBehaviour:
     type: 3}
   shootingPoint: {fileID: 3551469947742726826}
   shootDelay: 0.7
-  towerDamage: 10
+  towerDamage: 15
   shootSpeed: 18
+  upwardsOffset: 0.8
   minDetectionDistance: 6.5
   extraDetectionDistance: 4
   headRotationSpeed: 5

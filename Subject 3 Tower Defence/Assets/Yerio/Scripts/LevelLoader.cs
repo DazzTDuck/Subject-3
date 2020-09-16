@@ -37,6 +37,11 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
+    public void LoadNewScene(int levelIndex)
+    {
+        StartCoroutine(LoadScene(levelIndex));
+    }
+
     IEnumerator LoadScene(int sceneIndex)
     {
         yield return new WaitForSeconds(buttonPressTime);

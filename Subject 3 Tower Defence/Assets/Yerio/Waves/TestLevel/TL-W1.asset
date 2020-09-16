@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: TL-W1
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 86285626349179475, guid: 8e8be05a85f181f49a44a9677ebae621, type: 3}
-  - {fileID: 86285626349179475, guid: 8e8be05a85f181f49a44a9677ebae621, type: 3}
-  - {fileID: 86285626349179475, guid: 8e8be05a85f181f49a44a9677ebae621, type: 3}
-  - {fileID: 86285626349179475, guid: 8e8be05a85f181f49a44a9677ebae621, type: 3}
-  - {fileID: 86285626349179475, guid: 8e8be05a85f181f49a44a9677ebae621, type: 3}
-  - {fileID: 86285626349179475, guid: 8e8be05a85f181f49a44a9677ebae621, type: 3}
-  - {fileID: 86285626349179475, guid: 8e8be05a85f181f49a44a9677ebae621, type: 3}
+  - {fileID: 5903336640593954592, guid: fa2e1d5f0f137bf4e845f6b8514bcd11, type: 3}
+  - {fileID: 5903336640593954592, guid: fa2e1d5f0f137bf4e845f6b8514bcd11, type: 3}
+  - {fileID: 5903336640593954592, guid: fa2e1d5f0f137bf4e845f6b8514bcd11, type: 3}
+  - {fileID: 5903336640593954592, guid: fa2e1d5f0f137bf4e845f6b8514bcd11, type: 3}
+  - {fileID: 5903336640593954592, guid: fa2e1d5f0f137bf4e845f6b8514bcd11, type: 3}
+  - {fileID: 5903336640593954592, guid: fa2e1d5f0f137bf4e845f6b8514bcd11, type: 3}
+  - {fileID: 5903336640593954592, guid: fa2e1d5f0f137bf4e845f6b8514bcd11, type: 3}
   timesBetweenSpawning:
   - 2
   - 2

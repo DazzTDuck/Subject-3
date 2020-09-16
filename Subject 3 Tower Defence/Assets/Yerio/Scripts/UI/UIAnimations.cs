@@ -41,8 +41,8 @@ public class UIAnimations : MonoBehaviour
         StopCoroutine("PopupText");
     }
 
-    [SerializeField, Header("---Decend Text---")]
-    float decendTweenSpeed = 2f;
+    [Header("---Decend Text---")]
+    public float decendTweenSpeed = 2f;
     [SerializeField]
     float decendValule = 50f;
 

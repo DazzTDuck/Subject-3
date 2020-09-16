@@ -6,16 +6,18 @@ public class Projectile : MonoBehaviour
 {
     public GameObject hitEffect;
     BaseEnemy targetEnemy = null;
+    float offset;
     Vector3 direction = Vector3.zero;
     float shootSpeed;
     float damage;
     float raycastLength = 1f;
-    public void ShootProjectile(BaseEnemy target, float shootSpeed, float projectileDamage, Vector3 direction)
+    public void ShootProjectile(BaseEnemy target, float shootSpeed, float projectileDamage, Vector3 direction, float upwardsOffet)
     {
         this.targetEnemy = target;
         damage = projectileDamage;
         this.direction = direction;
         this.shootSpeed = shootSpeed;
+        offset = upwardsOffet;
         Destroy(gameObject, 3);
     }
 
@@ -23,8 +25,11 @@ public class Projectile : MonoBehaviour
     {
         if (targetEnemy)
         {
+            var enemyPos = targetEnemy.transform.position;
+            enemyPos.y += offset;
+
             transform.rotation = Quaternion.LookRotation(direction);
-            transform.position = Vector3.MoveTowards(transform.position, targetEnemy.transform.position, shootSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, enemyPos, shootSpeed * Time.deltaTime);
         }
         else
         {

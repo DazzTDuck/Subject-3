@@ -40,6 +40,7 @@ public class WaveManager : MonoBehaviour
     int currentWaveIndex = 0;
     bool canLoad = false;
     bool canSpawn = false;
+    bool canSkipPreperation = false;
     float spawnTimer;
 
     private void Awake()
@@ -112,7 +113,7 @@ public class WaveManager : MonoBehaviour
         {
             var currentEnemy = currentWave.enemies[currentEnemyIndex];
             //spawn enemy
-            var enemyObj = Instantiate(currentEnemy, spawnPoint.position, currentEnemy.transform.rotation);
+            var enemyObj = Instantiate(currentEnemy, spawnPoint.position + currentEnemy.transform.position, currentEnemy.transform.rotation);
             var enemy = enemyObj.GetComponent<BaseEnemy>();
             AddEnemyMultipliers(currentWave, enemy);
             enemiesAlive.Add(enemy);
@@ -177,7 +178,13 @@ public class WaveManager : MonoBehaviour
     {
         StartWave();
 
+        yield return new WaitForSeconds(animations.decendTweenSpeed);
+
+        canSkipPreperation = true;
+
         yield return new WaitUntil(() => inPreperation == false);
+
+        canSkipPreperation = false;
 
         WaveSetup();
         StopCoroutine(LoadWave());
@@ -223,7 +230,7 @@ public class WaveManager : MonoBehaviour
     }
     void SkipPreperation()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) && canSkipPreperation)
             prepTimer = 0;
     }
 }

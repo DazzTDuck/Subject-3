@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    [Range(0, 400)]
+    [Range(50, 600)]
     public float maxHealth = 100;
     [HideInInspector]
     public float currentHealth;

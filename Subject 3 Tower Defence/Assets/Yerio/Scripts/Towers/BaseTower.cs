@@ -17,6 +17,7 @@ public class BaseTower : MonoBehaviour
     [SerializeField] protected float shootDelay = 0.7f;
     [SerializeField] protected float towerDamage = 15f;
     [SerializeField] protected float shootSpeed = 7f;
+    [SerializeField] float upwardsOffset;
     protected bool canShoot = false;
     float shootTimer;
 
@@ -58,7 +59,7 @@ public class BaseTower : MonoBehaviour
         if (onTarget && canShoot)
         {
             instantiatedProjectile = Instantiate(projectile, shootingPoint.position, Quaternion.identity);
-            instantiatedProjectile.ShootProjectile(targetEnemyInRange, shootSpeed, towerDamage, CalculateDirection(targetEnemyInRange));         
+            instantiatedProjectile.ShootProjectile(targetEnemyInRange, shootSpeed, towerDamage, CalculateDirection(targetEnemyInRange), upwardsOffset);         
         }
     }
 
@@ -105,7 +106,14 @@ public class BaseTower : MonoBehaviour
 
     Vector3 EnemyPos(BaseEnemy enemy)
     {
-        return enemy.transform.position;
+        if (enemy)
+        {
+            var enemyPos = enemy.transform.position;
+            enemyPos.y += upwardsOffset;
+            return enemyPos;
+        }
+
+        return Vector3.zero;
     }
 
     void RotateHeadToEnemy()
@@ -129,7 +137,7 @@ public class BaseTower : MonoBehaviour
     protected Vector3 CalculateDirection(BaseEnemy target)
     {
         if(target)
-        return target.transform.position - towerHead.position;
+        return EnemyPos(target) - towerHead.position;
 
         return transform.forward - towerHead.position;
     }
