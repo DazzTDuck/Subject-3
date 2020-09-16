@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     // wordt opgeslagen in PlayerPref Int "completedLevels"
      private int completedIndex;
 
+    [SerializeField] LevelLoader levelLoader;
 
     public void SelectLvl(int lvlIndex)
     {
@@ -16,7 +17,8 @@ public class LevelManager : MonoBehaviour
         if (completedIndex >= lvlIndex - 1)
         {
             print("load " + lvlIndex);
-            SceneManager.LoadScene(lvlIndex + SceneManager.GetActiveScene().buildIndex);
+            //SceneManager.LoadScene(lvlIndex + SceneManager.GetActiveScene().buildIndex);
+            levelLoader.LoadNewScene(lvlIndex + SceneManager.GetActiveScene().buildIndex);
         }
         else
         {
@@ -39,5 +41,10 @@ public class LevelManager : MonoBehaviour
         completedIndex = 0;
 
         print("RESET " + completedIndex + " <- should be 0");
+    }
+
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }
