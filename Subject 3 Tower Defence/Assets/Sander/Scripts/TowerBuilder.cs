@@ -10,10 +10,12 @@ public class TowerBuilder : MonoBehaviour
 
      public TowerManager manager;
 
+    AudioManager audioManager;
 
-    void Start()
+
+    void Awake()
     {
-
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     void Update()
@@ -65,23 +67,24 @@ public class TowerBuilder : MonoBehaviour
 
     private void ConfirmPlace()
     {
-            if (!manager.cantPlace)
+        if (!manager.cantPlace)
+        {
+            if (currentHeldTower.GetComponent<BaseTower>().towerCost <= Camera.main.GetComponent<CurrencyManager>().currentCurrency)
             {
-                if (currentHeldTower.GetComponent<BaseTower>().towerCost <= Camera.main.GetComponent<CurrencyManager>().currentCurrency)
-                {
-                    Camera.main.GetComponent<CurrencyManager>().RemoveCurrency(currentHeldTower.GetComponent<BaseTower>().towerCost);
+                Camera.main.GetComponent<CurrencyManager>().RemoveCurrency(currentHeldTower.GetComponent<BaseTower>().towerCost);
 
-                    manager.PlacedTower(currentHeldTower.GetComponent<BaseTower>());
-                    manager.DeselectTower();
-                    currentHeldTower = null;
-                }
-                else
-                {
-                    //play a sound
-                    StartCoroutine(Camera.main.GetComponent<CurrencyManager>().TextFlash(Color.red, 2));
-                    StopCoroutine(Camera.main.GetComponent<CurrencyManager>().TextFlash(Color.red, 2));
-                }
+                manager.PlacedTower(currentHeldTower.GetComponent<BaseTower>());
+                manager.DeselectTower();
+                currentHeldTower = null;
             }
+            else
+            {
+                //play a sound
+                audioManager.PlaySound("Error");
+                StartCoroutine(Camera.main.GetComponent<CurrencyManager>().TextFlash(Color.red, 2));
+                StopCoroutine(Camera.main.GetComponent<CurrencyManager>().TextFlash(Color.red, 2));
+            }
+        }
     }
 
     public void CancelPlacement()

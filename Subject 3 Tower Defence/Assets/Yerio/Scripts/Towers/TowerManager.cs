@@ -12,7 +12,7 @@ public class TowerManager : MonoBehaviour
     public Color canPlaceTowerColor;
     public Color cantPlaceTowerColor;
     
-    public BaseTower TestTower;
+    //public BaseTower TestTower;
     public GameObject VisualDetectionSphere;
     public GameObject visualRadiusCircle;
 
@@ -38,8 +38,8 @@ public class TowerManager : MonoBehaviour
 
         GetAllTowers();
 
-        if(TestTower != null)
-        SelectTower(TestTower);
+        //if(TestTower != null)
+        //SelectTower(TestTower);
     }
 
     void Update()
