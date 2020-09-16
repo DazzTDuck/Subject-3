@@ -895,8 +895,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3596129, y: 0.91313475}
   m_AnchorMax: {x: 0.6755121, y: 1}
-  m_AnchoredPosition: {x: 0, y: 152.5}
-  m_SizeDelta: {x: 0, y: 3}
+  m_AnchoredPosition: {x: 0, y: 154}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6905168629377705143
 CanvasRenderer:
@@ -1102,6 +1102,7 @@ GameObject:
   - component: {fileID: 6905168629430323258}
   - component: {fileID: 6905168629430323259}
   - component: {fileID: 6905168629430323256}
+  - component: {fileID: 1592742832}
   m_Layer: 5
   m_Name: ButtonBack
   m_TagString: Untagged
@@ -1261,6 +1262,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1592742832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168629430323261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6905168629528597851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,6 +1287,7 @@ GameObject:
   - component: {fileID: 6905168629528597831}
   - component: {fileID: 6905168629528597848}
   - component: {fileID: 6905168629528597849}
+  - component: {fileID: 1592742841}
   m_Layer: 5
   m_Name: TowerButton (1)
   m_TagString: Untagged
@@ -1433,6 +1447,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1592742841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168629528597851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6905168629574817665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1446,6 +1472,7 @@ GameObject:
   - component: {fileID: 6905168629574817678}
   - component: {fileID: 6905168629574817679}
   - component: {fileID: 6905168629574817676}
+  - component: {fileID: 1592742837}
   m_Layer: 5
   m_Name: TowerButton
   m_TagString: Untagged
@@ -1584,6 +1611,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1592742837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168629574817665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6905168629643222768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,6 +1637,7 @@ GameObject:
   - component: {fileID: 6905168629643222782}
   - component: {fileID: 6905168629643222779}
   - component: {fileID: 6905168629643222778}
+  - component: {fileID: 1592742827}
   m_Layer: 5
   m_Name: Upgrade5
   m_TagString: Untagged
@@ -1740,6 +1780,18 @@ MonoBehaviour:
   upgradeNameText: {fileID: 6905168629878906175}
   levelText: {fileID: 6905168631376184048}
   costText: {fileID: 6905168630996768164}
+--- !u!114 &1592742827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168629643222768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6905168629652621795
 GameObject:
   m_ObjectHideFlags: 0
@@ -1975,6 +2027,7 @@ GameObject:
   - component: {fileID: 6905168629751166508}
   - component: {fileID: 6905168629751166509}
   - component: {fileID: 6905168629751166510}
+  - component: {fileID: 1592742839}
   m_Layer: 5
   m_Name: TowerButton (3)
   m_TagString: Untagged
@@ -2134,6 +2187,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1592742839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168629751166496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6905168629830816894
 GameObject:
   m_ObjectHideFlags: 0
@@ -2379,6 +2444,7 @@ GameObject:
   - component: {fileID: 6905168629878758449}
   - component: {fileID: 6905168629878758462}
   - component: {fileID: 6905168629878758461}
+  - component: {fileID: 1592742831}
   m_Layer: 5
   m_Name: Upgrade1
   m_TagString: Untagged
@@ -2521,6 +2587,18 @@ MonoBehaviour:
   upgradeNameText: {fileID: 6905168629912053941}
   levelText: {fileID: 6905168630487273793}
   costText: {fileID: 6905168630651523355}
+--- !u!114 &1592742831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168629878758451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6905168629878906161
 GameObject:
   m_ObjectHideFlags: 0
@@ -3393,6 +3471,7 @@ GameObject:
   - component: {fileID: 6905168630087111715}
   - component: {fileID: 6905168630087111716}
   - component: {fileID: 6905168630087111717}
+  - component: {fileID: 1592742833}
   m_Layer: 5
   m_Name: TowerButton (4)
   m_TagString: Untagged
@@ -3531,6 +3610,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1592742833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168630087111719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6905168630094210265
 GameObject:
   m_ObjectHideFlags: 0
@@ -3701,6 +3792,7 @@ GameObject:
   - component: {fileID: 6905168630113326835}
   - component: {fileID: 6905168630113326836}
   - component: {fileID: 6905168630113326837}
+  - component: {fileID: 1592742836}
   m_Layer: 5
   m_Name: TowerButton (1)
   m_TagString: Untagged
@@ -3839,6 +3931,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1592742836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168630113326839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6905168630170177259
 GameObject:
   m_ObjectHideFlags: 0
@@ -4091,7 +4195,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 37.25
+  m_fontSize: 36.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4169,6 +4273,7 @@ GameObject:
   - component: {fileID: 6905168630242444470}
   - component: {fileID: 6905168630242444467}
   - component: {fileID: 6905168630242444466}
+  - component: {fileID: 1592742828}
   m_Layer: 5
   m_Name: Upgrade4
   m_TagString: Untagged
@@ -4311,6 +4416,18 @@ MonoBehaviour:
   upgradeNameText: {fileID: 6905168629319914511}
   levelText: {fileID: 6905168629358118854}
   costText: {fileID: 6905168630775420968}
+--- !u!114 &1592742828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168630242444488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6905168630257582858
 GameObject:
   m_ObjectHideFlags: 0
@@ -4638,6 +4755,7 @@ GameObject:
   - component: {fileID: 6905168630298082312}
   - component: {fileID: 6905168630298082313}
   - component: {fileID: 6905168630298082314}
+  - component: {fileID: 1592742840}
   m_Layer: 5
   m_Name: TowerButton (2)
   m_TagString: Untagged
@@ -4797,6 +4915,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1592742840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168630298082316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6905168630322717654
 GameObject:
   m_ObjectHideFlags: 0
@@ -5054,6 +5184,7 @@ GameObject:
   - component: {fileID: 6905168630354651366}
   - component: {fileID: 6905168630354651363}
   - component: {fileID: 6905168630354651362}
+  - component: {fileID: 1592742844}
   m_Layer: 5
   m_Name: BuyButton
   m_TagString: Untagged
@@ -5239,6 +5370,18 @@ MonoBehaviour:
   selectedColor: {r: 1, g: 1, b: 1, a: 1}
   deselectedColor: {r: 0.8117647, g: 0.8117647, b: 0.8117647, a: 1}
   startSelectedButton: 1
+--- !u!114 &1592742844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168630354651384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6905168630357366155
 GameObject:
   m_ObjectHideFlags: 0
@@ -5252,6 +5395,7 @@ GameObject:
   - component: {fileID: 6905168630357366135}
   - component: {fileID: 6905168630357366152}
   - component: {fileID: 6905168630357366153}
+  - component: {fileID: 1592742835}
   m_Layer: 5
   m_Name: TowerButton (2)
   m_TagString: Untagged
@@ -5390,6 +5534,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1592742835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168630357366155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6905168630422188947
 GameObject:
   m_ObjectHideFlags: 0
@@ -5561,6 +5717,7 @@ GameObject:
   - component: {fileID: 6905168630424208740}
   - component: {fileID: 6905168630424208737}
   - component: {fileID: 6905168630424208736}
+  - component: {fileID: 1592742843}
   m_Layer: 5
   m_Name: UpgradeButton
   m_TagString: Untagged
@@ -5746,6 +5903,18 @@ MonoBehaviour:
   selectedColor: {r: 1, g: 1, b: 1, a: 1}
   deselectedColor: {r: 0.8117647, g: 0.8117647, b: 0.8117647, a: 1}
   startSelectedButton: 0
+--- !u!114 &1592742843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168630424208742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6905168630487273795
 GameObject:
   m_ObjectHideFlags: 0
@@ -6165,6 +6334,7 @@ GameObject:
   - component: {fileID: 6905168630541750019}
   - component: {fileID: 6905168630541750016}
   - component: {fileID: 6905168630541750031}
+  - component: {fileID: 1592742829}
   m_Layer: 5
   m_Name: Upgrade3
   m_TagString: Untagged
@@ -6307,6 +6477,18 @@ MonoBehaviour:
   upgradeNameText: {fileID: 6905168629921508350}
   levelText: {fileID: 6905168631020847369}
   costText: {fileID: 6905168630081610870}
+--- !u!114 &1592742829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168630541750021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6905168630608750225
 GameObject:
   m_ObjectHideFlags: 0
@@ -7595,6 +7777,7 @@ GameObject:
   - component: {fileID: 6905168630936936756}
   - component: {fileID: 6905168630936936757}
   - component: {fileID: 6905168630936936758}
+  - component: {fileID: 1592742834}
   m_Layer: 5
   m_Name: TowerButton (3)
   m_TagString: Untagged
@@ -7733,6 +7916,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1592742834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168630936936776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6905168630963236942
 GameObject:
   m_ObjectHideFlags: 0
@@ -8134,6 +8329,7 @@ GameObject:
   - component: {fileID: 6905168631107179124}
   - component: {fileID: 6905168631107179125}
   - component: {fileID: 6905168631107179126}
+  - component: {fileID: 1592742842}
   m_Layer: 5
   m_Name: TowerButton
   m_TagString: Untagged
@@ -8293,6 +8489,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1592742842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168631107179144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6905168631213774604
 GameObject:
   m_ObjectHideFlags: 0
@@ -8420,6 +8628,7 @@ MonoBehaviour:
   - {fileID: 6905168630541750031}
   - {fileID: 6905168630242444466}
   - {fileID: 6905168629643222778}
+  towerSelectedName: {fileID: 8208192379679220136}
   buttonsTowerCost:
   - {fileID: 6905168630804463667}
   - {fileID: 6905168631227464433}
@@ -8671,6 +8880,7 @@ GameObject:
   - component: {fileID: 6905168631241205624}
   - component: {fileID: 6905168631241205625}
   - component: {fileID: 6905168631241205626}
+  - component: {fileID: 1592742838}
   m_Layer: 5
   m_Name: TowerButton (4)
   m_TagString: Untagged
@@ -8830,6 +9040,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1592742838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168631241205628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6905168631335364321
 GameObject:
   m_ObjectHideFlags: 0
@@ -8997,7 +9219,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 29.45
+  m_fontSize: 29.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9302,7 +9524,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -9338,6 +9560,7 @@ GameObject:
   - component: {fileID: 6905168631448350071}
   - component: {fileID: 6905168631448350068}
   - component: {fileID: 6905168631448350067}
+  - component: {fileID: 1592742830}
   m_Layer: 5
   m_Name: Upgrade2
   m_TagString: Untagged
@@ -9480,3 +9703,15 @@ MonoBehaviour:
   upgradeNameText: {fileID: 6905168630495092737}
   levelText: {fileID: 6905168630608750239}
   costText: {fileID: 6905168629861818677}
+--- !u!114 &1592742830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168631448350089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
