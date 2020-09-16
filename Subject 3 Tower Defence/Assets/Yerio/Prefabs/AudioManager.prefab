@@ -58,4 +58,11 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: Error
+    clip: {fileID: 8300000, guid: d15051b2a5c3c1341aeaa9afa2d1fc70, type: 3}
+    mixer: {fileID: 24300002, guid: c6e82527aa3eb6d4d92431c2f49a53cd, type: 2}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   awakeBGMusic: 0
