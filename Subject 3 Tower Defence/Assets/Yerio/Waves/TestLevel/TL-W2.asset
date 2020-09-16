@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: TL-W2
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 5903336640593954592, guid: fa2e1d5f0f137bf4e845f6b8514bcd11, type: 3}
-  - {fileID: 5903336640593954592, guid: fa2e1d5f0f137bf4e845f6b8514bcd11, type: 3}
-  - {fileID: 5903336640593954592, guid: fa2e1d5f0f137bf4e845f6b8514bcd11, type: 3}
-  - {fileID: 5903336640593954592, guid: fa2e1d5f0f137bf4e845f6b8514bcd11, type: 3}
-  - {fileID: 5903336640593954592, guid: fa2e1d5f0f137bf4e845f6b8514bcd11, type: 3}
-  - {fileID: 5903336640593954592, guid: fa2e1d5f0f137bf4e845f6b8514bcd11, type: 3}
+  - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
+  - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
+  - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
+  - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
+  - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
+  - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
   - {fileID: 2021876120458823800, guid: f19a48863ed441347a01119a23d0a708, type: 3}
-  - {fileID: 5903336640593954592, guid: fa2e1d5f0f137bf4e845f6b8514bcd11, type: 3}
-  - {fileID: 5903336640593954592, guid: fa2e1d5f0f137bf4e845f6b8514bcd11, type: 3}
-  - {fileID: 5903336640593954592, guid: fa2e1d5f0f137bf4e845f6b8514bcd11, type: 3}
+  - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
+  - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
+  - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
   timesBetweenSpawning:
   - 2
   - 3
