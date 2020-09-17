@@ -33,9 +33,14 @@ public class BaseTower : MonoBehaviour
     protected bool onTarget = false;
     Projectile instantiatedProjectile;
 
+    protected AudioManager audioManager;
+    protected AudioSource source;
+
     private void Awake()
     {
         towerManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<TowerManager>();
+        audioManager = FindObjectOfType<AudioManager>();
+        source = GetComponent<AudioSource>();
         UpdateOriginalHeadRotation();
         shootTimer = shootDelay;
     }
@@ -58,6 +63,7 @@ public class BaseTower : MonoBehaviour
     {
         if (onTarget && canShoot)
         {
+            source.Play();
             instantiatedProjectile = Instantiate(projectile, shootingPoint.position, Quaternion.identity);
             instantiatedProjectile.ShootProjectile(targetEnemyInRange, shootSpeed, towerDamage, CalculateDirection(targetEnemyInRange), upwardsOffset);         
         }

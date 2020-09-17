@@ -22,12 +22,13 @@ public class TowerManager : MonoBehaviour
     [HideInInspector]
     public bool cantPlace;
 
+    [HideInInspector]
+    public List<BaseTower> allTowersIngame = new List<BaseTower>();
+
     BaseTower selectedTower;
     GameObject instantiatedDetectionSphere;
     GameObject instantiatedRadiusCircle;
     ChangeSphereColor instantiatedSphereColor;
-
-    List<BaseTower> allTowersIngame = new List<BaseTower>();
 
     [Header("---Gizmos Debug---")]
     public bool drawPlacementRadius = false;

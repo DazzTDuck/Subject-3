@@ -10,7 +10,10 @@ public class Projectile : MonoBehaviour
     Vector3 direction = Vector3.zero;
     float shootSpeed;
     float damage;
-    float raycastLength = 1f;
+    float raycastLength = 1.5f;
+
+    [SerializeField] LayerMask enemyMask;
+
     public void ShootProjectile(BaseEnemy target, float shootSpeed, float projectileDamage, Vector3 direction, float upwardsOffet)
     {
         this.targetEnemy = target;
@@ -43,7 +46,7 @@ public class Projectile : MonoBehaviour
         Vector3 hitPos = Vector3.zero;
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, direction, out hit, raycastLength))
+        if (Physics.Raycast(transform.position, direction, out hit, raycastLength, enemyMask))
         {
             if (hit.transform.gameObject.GetComponent<BaseEnemy>())
             {
@@ -54,7 +57,7 @@ public class Projectile : MonoBehaviour
             hitPos = hit.point;
             var effect = Instantiate(hitEffect, hitPos, Quaternion.identity);
             Destroy(effect, 0.6f);
-            Destroy(gameObject, 0.02f);
+            Destroy(gameObject, 0.04f);
         }
     }
 

@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
 {
     [Range(50, 600)]
     public float maxHealth = 100;
-    [HideInInspector]
+    //[HideInInspector]
     public float currentHealth;
 
     public Image healthBar;

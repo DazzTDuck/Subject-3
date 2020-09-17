@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5443396260579666243}
   - component: {fileID: 5443396260579666240}
   - component: {fileID: 5443396260579666241}
+  - component: {fileID: 5130557609418879707}
   m_Layer: 5
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -132,13 +133,25 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 750b86033b3bc5942813cef148c850f5, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5130557609418879707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5443396260579666255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5443396260809649605
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +252,7 @@ GameObject:
   - component: {fileID: 5443396261524163263}
   - component: {fileID: 5443396261524163260}
   - component: {fileID: 5443396261524163261}
+  - component: {fileID: 5934778279669507914}
   m_Layer: 5
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -358,13 +372,25 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 750b86033b3bc5942813cef148c850f5, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5934778279669507914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5443396261524163259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5443396261759488175
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,6 +404,7 @@ GameObject:
   - component: {fileID: 5443396261759488163}
   - component: {fileID: 5443396261759488160}
   - component: {fileID: 5443396261759488161}
+  - component: {fileID: 652081388}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -508,13 +535,25 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 750b86033b3bc5942813cef148c850f5, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &652081388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5443396261759488175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5443396261989964551
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,7 +722,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 50.65
+  m_fontSize: 50.7
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -943,7 +982,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 48.4
+  m_fontSize: 48.45
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1121,7 +1160,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 48627b64e9e0c424695b603a86c47169, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -1233,7 +1272,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 51.8
+  m_fontSize: 51.85
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1

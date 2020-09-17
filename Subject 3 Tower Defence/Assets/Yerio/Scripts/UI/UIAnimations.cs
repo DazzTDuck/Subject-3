@@ -36,7 +36,7 @@ public class UIAnimations : MonoBehaviour
 
         yield return new WaitForSeconds(popupDelayTime);
 
-        LeanTween.scale(_popupText.gameObject, new Vector3(0.001f, 0.001f, 0.001f), popupLeanSpeed).setEaseInOutExpo();
+        LeanTween.scale(_popupText.gameObject, new Vector3(0f, 0f, 0f), popupLeanSpeed).setEaseInOutExpo();
 
         StopCoroutine("PopupText");
     }

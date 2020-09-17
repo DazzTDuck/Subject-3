@@ -68,6 +68,7 @@ public class BaseEnemy : MonoBehaviour
             {
                 //Debug.Log("End of path");
                 Destroy(gameObject);
+                waveManager.RemoveEnemyFromList(this);
                 //do damage based on how much health enemy has
                 waveManager.playerHealth.DoDamage(DamageToPlayerAtEnd * (health.currentHealth / health.maxHealth)); 
                 return;

@@ -14,6 +14,8 @@ public class Hovl_Laser : MonoBehaviour
     [HideInInspector]
     public LineRenderer Laser;
 
+    [SerializeField] LayerMask enemyMask;
+
     public float MainTextureLength = 1f;
     public float NoiseTextureLength = 1f;
     private Vector4 Length = new Vector4(1,1,1,1);
@@ -50,7 +52,7 @@ public class Hovl_Laser : MonoBehaviour
             Laser.SetPosition(0, transform.position);
             RaycastHit hit; //DELETE THIS IF YOU WANT USE LASERS IN 2D
             //ADD THIS IF YOU WANNT TO USE LASERS IN 2D: RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.forward, MaxLength);       
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxLength))//CHANGE THIS IF YOU WANT TO USE LASERRS IN 2D: if (hit.collider != null)
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxLength, enemyMask))//CHANGE THIS IF YOU WANT TO USE LASERRS IN 2D: if (hit.collider != null)
             {
                 //End laser position if collides with object
                 Laser.SetPosition(1, hit.point);

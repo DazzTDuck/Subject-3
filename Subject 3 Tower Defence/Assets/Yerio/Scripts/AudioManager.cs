@@ -63,4 +63,23 @@ public class AudioManager : MonoBehaviour
             return;
         }
     }
+
+    public void StopSound(string name)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning(name + "not found");
+            return;
+        }
+
+        if (s.source.isPlaying)
+            s.source.Stop();
+
+        if (s.clip == null)
+        {
+            Debug.LogWarning("No AudioClip Specified for" + name);
+            return;
+        }
+    }
 }

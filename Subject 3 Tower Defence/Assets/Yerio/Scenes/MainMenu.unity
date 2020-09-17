@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 9758137}
   - component: {fileID: 9758136}
   - component: {fileID: 9758139}
+  - component: {fileID: 9758140}
   m_Layer: 5
   m_Name: start
   m_TagString: Untagged
@@ -179,7 +180,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -204,17 +205,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9758139}
-        m_MethodName: ButtonClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1692737904}
         m_MethodName: LoadNextScene
         m_Mode: 1
@@ -263,7 +253,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9758134}
   m_CullTransparentMesh: 0
---- !u!114 &9758139
+--- !u!95 &9758139
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9758134}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ebf5283b1b40d8d4296d24e7cec8a596, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9758140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -272,11 +281,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 9758134}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76106cadb2972464983d62217ce50073, type: 3}
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationOffset: 30
-  pressScaleOffset: 0.85
 --- !u!1 &22894655
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,6 +297,7 @@ GameObject:
   - component: {fileID: 22894658}
   - component: {fileID: 22894657}
   - component: {fileID: 22894660}
+  - component: {fileID: 22894661}
   m_Layer: 5
   m_Name: settings
   m_TagString: Untagged
@@ -335,7 +343,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -359,18 +367,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 22894658}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 22894660}
-        m_MethodName: ButtonClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &22894658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,7 +405,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 22894655}
   m_CullTransparentMesh: 0
---- !u!114 &22894660
+--- !u!95 &22894660
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22894655}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ebf5283b1b40d8d4296d24e7cec8a596, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &22894661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -417,11 +433,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 22894655}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76106cadb2972464983d62217ce50073, type: 3}
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationOffset: 30
-  pressScaleOffset: 0.85
 --- !u!1 &47752408
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,6 +541,7 @@ GameObject:
   - component: {fileID: 78340809}
   - component: {fileID: 78340808}
   - component: {fileID: 78340811}
+  - component: {fileID: 78340812}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -572,7 +587,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -596,18 +611,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 78340809}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 78340811}
-        m_MethodName: ButtonClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &78340809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,7 +649,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 78340806}
   m_CullTransparentMesh: 0
---- !u!114 &78340811
+--- !u!95 &78340811
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78340806}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ebf5283b1b40d8d4296d24e7cec8a596, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &78340812
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -654,11 +677,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 78340806}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76106cadb2972464983d62217ce50073, type: 3}
+  m_Script: {fileID: 11500000, guid: de8710cfafbee924380c26d19ad0d91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationOffset: 30
-  pressScaleOffset: 0.85
 --- !u!1 &158226042
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,7 +765,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 142.35
+  m_fontSize: 142.45
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -901,7 +922,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 143.05
+  m_fontSize: 143.15
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1510,7 +1531,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 143.35
+  m_fontSize: 143.45
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1

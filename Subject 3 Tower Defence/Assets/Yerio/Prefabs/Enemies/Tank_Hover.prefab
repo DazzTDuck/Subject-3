@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7415582280132819525}
   - component: {fileID: 8929353387841615862}
   - component: {fileID: 1835399995155008170}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: HealthBarCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 2609345095623863612}
   - component: {fileID: 4459385036951293938}
   - component: {fileID: 7061832149675168541}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: healthBarBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,8 @@ GameObject:
   - component: {fileID: 1698198603852890028}
   - component: {fileID: 5891149830907567600}
   - component: {fileID: 9126115960550806898}
-  m_Layer: 0
+  - component: {fileID: 5984929292219447722}
+  m_Layer: 2
   m_Name: Tank_Hover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,6 +263,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.1801643, y: 1.5826254, z: 6.527122}
   m_Center: {x: -0.01213789, y: 0.8686862, z: -0.1906209}
+--- !u!65 &5984929292219447722
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021876120458823800}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.24, y: 1.3, z: 2.53}
+  m_Center: {x: 0, y: 2.22, z: -0.94}
 --- !u!1 &2160223998133180271
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,8 +287,7 @@ GameObject:
   - component: {fileID: 9151296083944086102}
   - component: {fileID: 3492545394962686065}
   - component: {fileID: 3295059334399490538}
-  - component: {fileID: 3739613575449392339}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,19 +355,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3739613575449392339
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2160223998133180271}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.031001043, y: 0.0403681, z: 0.017384242}
-  m_Center: {x: -0.0000000016710162, y: 0.013049992, z: 0.03448861}
 --- !u!1 &2629094097292021292
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 4514879108252157604}
   - component: {fileID: 8899580633716757451}
   - component: {fileID: 6059137685756269607}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: TankBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 1563110532186225583}
   - component: {fileID: 4165495800093023039}
   - component: {fileID: 6522997375957005233}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: healthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}

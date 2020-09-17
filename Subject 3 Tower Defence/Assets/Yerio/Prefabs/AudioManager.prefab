@@ -47,14 +47,14 @@ MonoBehaviour:
   - name: ButtonClick
     clip: {fileID: 8300000, guid: aff36d43b53bce848a13be6fd9c186f1, type: 3}
     mixer: {fileID: 24300002, guid: c6e82527aa3eb6d4d92431c2f49a53cd, type: 2}
-    volume: 0.2
+    volume: 0.1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: ButtonHover
     clip: {fileID: 8300000, guid: 936ba848091a2b34fb51c8c107ce521e, type: 3}
     mixer: {fileID: 24300002, guid: c6e82527aa3eb6d4d92431c2f49a53cd, type: 2}
-    volume: 0.2
+    volume: 0.1
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -64,5 +64,19 @@ MonoBehaviour:
     volume: 0.1
     pitch: 1
     loop: 0
+    source: {fileID: 0}
+  - name: Shoot
+    clip: {fileID: 8300000, guid: ef835c9d8d5c39f45bb71f2d278968b9, type: 3}
+    mixer: {fileID: 24300002, guid: c6e82527aa3eb6d4d92431c2f49a53cd, type: 2}
+    volume: 0.01
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: LaserShot
+    clip: {fileID: 8300000, guid: 6569c073c8d95aa45bff61724535ac00, type: 3}
+    mixer: {fileID: 24300002, guid: c6e82527aa3eb6d4d92431c2f49a53cd, type: 2}
+    volume: 0.03
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
   awakeBGMusic: 0

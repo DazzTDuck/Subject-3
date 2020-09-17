@@ -14,6 +14,8 @@ public class Hovl_Laser2 : MonoBehaviour
 
     public float MaxLength;
 
+    [SerializeField] LayerMask enemyMask;
+
     private bool UpdateSaver = false;
     private ParticleSystem laserPS;
     private ParticleSystem[] Flash;
@@ -42,7 +44,7 @@ public class Hovl_Laser2 : MonoBehaviour
             laserMat.SetVector("_StartPoint", transform.position);
             //Set end laser point
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxLength))
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, MaxLength, enemyMask))
             {
                 particleCount = Mathf.RoundToInt(hit.distance / (2 * laserScale));
                 if (particleCount < hit.distance / (2 * laserScale))
