@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ButtonSoundEvents : MonoBehaviour
 {
+    [SerializeField] bool clickSound;
+    [SerializeField] bool hoverSound;
+
     AudioManager manager;
 
     // Start is called before the first frame update
@@ -14,11 +17,13 @@ public class ButtonSoundEvents : MonoBehaviour
 
     public void PlayClickEvent()
     {
+        if(clickSound)
         manager.PlaySound("ButtonClick");
     }
 
     public void PlayHoverEvent()
     {
+        if(hoverSound)
         manager.PlaySound("ButtonHover");
     }
 }

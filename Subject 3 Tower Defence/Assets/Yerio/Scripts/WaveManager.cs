@@ -42,12 +42,17 @@ public class WaveManager : MonoBehaviour
     bool canSpawn = false;
     bool canSkipPreperation = false;
     float spawnTimer;
+    GameEndHandler endHandler;
+    bool endGame = false;
+    bool lastWave = false;
 
     private void Awake()
     {
         animations = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIAnimations>();
+        endHandler = FindObjectOfType<GameEndHandler>();
         prepTimer = prepTimeNewWave;
         prepTimerOriginalPos = prepTimerPanel.transform.position;
+        endGame = false;
 
         StartCoroutine(LoadWave());
     }
@@ -134,6 +139,7 @@ public class WaveManager : MonoBehaviour
     {
         enemy.health.ChangeHealth(enemy.health.currentHealth * currentWave.enemyHealhMultiplier);
         enemy.ChangeMovespeed(enemy.moveSpeed * currentWave.enemySpeedMultiplier);
+        enemy.ChangePlayerDamage(enemy.DamageToPlayerAtEnd * currentWave.enemyDamageMultiplier);
     } 
 
     public void RemoveEnemyFromList(BaseEnemy enemy)
@@ -144,24 +150,36 @@ public class WaveManager : MonoBehaviour
 
     void CheckIfAllEnemiesDead()
     {
-        if (allEnemiesSpawned && enemiesAlive.Count <= 0)
+        if (!inPreperation)
         {
-            NextWave();
-        }
+            if (lastWave && allEnemiesSpawned && enemiesAlive.Count <= 0 && playerHealth.currentHealth > 0 && !endGame)
+            {
+                endHandler.GameEndSetup(true);
+                endGame = true;
+            }
+            else if (allEnemiesSpawned && enemiesAlive.Count <= 0)
+            {
+                NextWave();
+            }
+        }         
     }
 
     void NextWave()
     {
-        if (currentWaveIndex < allWavesInLevel.Length - 1 && !inPreperation)
+        if (currentWaveIndex + 2 >= allWavesInLevel.Length && !inPreperation)
+        {
+            inPreperation = true;
+            prepTimer += 2;
+            lastWave = true;
+            Debug.Log("last wave");
+            StartCoroutine(LoadWaveSetup("Last Wave!"));
+        }
+        else if (currentWaveIndex < allWavesInLevel.Length - 1 && !inPreperation && !lastWave)
         {
             inPreperation = true;
             prepTimer += 2;
             StartCoroutine(LoadWaveSetup());
-        }
-        else if (currentWaveIndex > allWavesInLevel.Length - 1)
-        {
-            LoadNextLevel();
-        }
+        }        
     }
 
     void StartWave()
@@ -191,11 +209,11 @@ public class WaveManager : MonoBehaviour
         StopCoroutine(LoadWaveSetup());
     }
 
-    IEnumerator LoadWaveSetup()
+    IEnumerator LoadWaveSetup(string text = "New Wave!")
     {
-        StartCoroutine(animations.PopupText(popupText, "New Wave!"));
-
         currentWaveIndex++;
+
+        StartCoroutine(animations.PopupText(popupText, text));
 
         yield return new WaitForSeconds(animations.popupDelayTime);
 
@@ -204,8 +222,10 @@ public class WaveManager : MonoBehaviour
 
     void LoadNextLevel()
     {
-        Debug.Log("end current level, all waves done");
+        endGame = true;
+        endHandler.GameEndSetup(true);
     }
+  
 
     void UpdateUI()
     {

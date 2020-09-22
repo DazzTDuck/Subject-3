@@ -1590,7 +1590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e94aec1136dd6245b8b56ab80d74f37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.8
+  moveSpeed: 2
   rotateSpeed: 5
   damageToTower: 15
   fireRatePerSecond: 2

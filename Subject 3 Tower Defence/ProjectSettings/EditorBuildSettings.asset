@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Yerio/Scenes/LevelSelectMenu.unity
     guid: 86b13bb121ed4e040b797c1eb1a993c0
   - enabled: 1
+    path: Assets/Yerio/Scenes/Testing2.unity
+    guid: 491226c6a13c02043846bc98ae206e8e
+  - enabled: 1
     path: Assets/Sander/Scenes/Testlvl1.unity
     guid: 90f1c6c80e6a5d543b87e7c2f431059f
   - enabled: 1

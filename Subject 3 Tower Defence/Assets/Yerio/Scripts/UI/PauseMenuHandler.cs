@@ -12,11 +12,13 @@ public class PauseMenuHandler : MonoBehaviour
     bool pausemenuAnimationOpen = false;
 
     Button[] buttons;
+    GameEndHandler endHandler;
 
     private void Awake()
     {
         pauseMenuAnimator = GetComponent<Animator>();
         buttons = GetComponentsInChildren<Button>();
+        endHandler = FindObjectOfType<GameEndHandler>();
     }
 
     // Update is called once per frame
@@ -29,7 +31,7 @@ public class PauseMenuHandler : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            if (!pausemenuAnimationStart && !pausemenuAnimationOpen)
+            if (!pausemenuAnimationStart && !pausemenuAnimationOpen && !endHandler.levelEnded)
             {
                 pauseMenuAnimator.SetTrigger("Open");
                 PauseTime();

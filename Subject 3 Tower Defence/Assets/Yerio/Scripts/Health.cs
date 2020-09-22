@@ -19,16 +19,21 @@ public class Health : MonoBehaviour
     public bool enemyHealth;
 
     Camera cam;
+    GameEndHandler endHandler;
+    bool gameLost = false;
 
     private void Awake()
     {
         currentHealth = maxHealth;
         cam = Camera.main;
+        endHandler = FindObjectOfType<GameEndHandler>();
     }
 
     private void Update()
     {
         HealthBarUpdate();
+
+        PlayerHealthChecker();
     }
     void HealthBarUpdate()
     {
@@ -57,5 +62,10 @@ public class Health : MonoBehaviour
     {
         maxHealth = newHealth;
         currentHealth = newHealth;
+    }
+
+    public void PlayerHealthChecker()
+    {
+        if (!enemyHealth && !gameLost) { if (currentHealth <= 0) { endHandler.GameEndSetup(false); gameLost = true; } }                    
     }
 }

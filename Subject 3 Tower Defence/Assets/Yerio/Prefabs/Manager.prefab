@@ -1,0 +1,132 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8605008950558809846
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8605008950558809800}
+  - component: {fileID: 8605008950558809847}
+  - component: {fileID: 8605008950558809801}
+  - component: {fileID: 8605008950558809803}
+  - component: {fileID: 8605008950558809802}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Manager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8605008950558809800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605008950558809846}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8605008950558809847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605008950558809846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ad6cb3f5a7fb44ba86a91c9ce9d80b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {fileID: 0}
+  checkpoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &8605008950558809801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605008950558809846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c1860b05a212b48904683b26bfd6dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 0}
+  allWavesInLevel:
+  - {fileID: 11400000, guid: e98a12b5c3a62104ca30b1e99ff9536b, type: 2}
+  - {fileID: 11400000, guid: 675270e2fec2519419ade874ccb4050a, type: 2}
+  - {fileID: 11400000, guid: 001a2db9cdd41a44e95f85c7610fe927, type: 2}
+  prepTimeNewWave: 22
+  prepTimerPanel: {fileID: 0}
+  popupText: {fileID: 0}
+  wavesText: {fileID: 0}
+  playerHealth: {fileID: 0}
+  damageFirstEnemy: 0
+  stopWaves: 0
+  enemiesAlive: []
+  allEnemiesSpawned: 0
+--- !u!114 &8605008950558809803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605008950558809846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6d128f77e2e52741a774ecb46b42b46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  safePlacementRadius: 1.5
+  minTowerPlacementDistance: 2.05
+  pathLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  towerLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  canPlaceTowerColor: {r: 0.3186061, g: 0.745283, b: 0.094918124, a: 0.64705884}
+  cantPlaceTowerColor: {r: 0.8396226, g: 0.099012084, b: 0.099012084, a: 0.64705884}
+  VisualDetectionSphere: {fileID: 7925865887584239951, guid: 9cb62ff25e85b3f4b8a1998e6b8db2ea,
+    type: 3}
+  visualRadiusCircle: {fileID: 1434022366438712334, guid: 5423d6c327bc4904b99ead859110ecae,
+    type: 3}
+  waveManager: {fileID: 0}
+  cantPlace: 0
+  allTowersIngame: []
+  drawPlacementRadius: 0
+--- !u!114 &8605008950558809802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605008950558809846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841cd81c5fe0a0b4ebd9595be4ecf476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerPrefabs:
+  - {fileID: 3566486758029102547, guid: 3e87b2e891fce044a966bdeb618e4f89, type: 3}
+  - {fileID: 4952468819694136093, guid: c6d7279f68419da48a1d9dffe1493194, type: 3}
+  - {fileID: 4952468819694136093, guid: c6d7279f68419da48a1d9dffe1493194, type: 3}
+  - {fileID: 4952468819694136093, guid: c6d7279f68419da48a1d9dffe1493194, type: 3}
+  - {fileID: 4952468819694136093, guid: c6d7279f68419da48a1d9dffe1493194, type: 3}
+  manager: {fileID: 8605008950558809803}

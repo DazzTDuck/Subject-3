@@ -29,6 +29,7 @@ public class TowerManager : MonoBehaviour
     GameObject instantiatedDetectionSphere;
     GameObject instantiatedRadiusCircle;
     ChangeSphereColor instantiatedSphereColor;
+    AudioManager audioManager;
 
     [Header("---Gizmos Debug---")]
     public bool drawPlacementRadius = false;
@@ -36,6 +37,7 @@ public class TowerManager : MonoBehaviour
     private void Awake()
     {
         waveManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<WaveManager>();
+        audioManager = FindObjectOfType<AudioManager>();
 
         GetAllTowers();
 
@@ -96,6 +98,7 @@ public class TowerManager : MonoBehaviour
         AddTowerToList(tower);
         tower.activeAI = true;
         tower.UpdateOriginalHeadRotation();
+        audioManager.PlaySound("BuildTower");
     }
 
     public void DeselectTower()

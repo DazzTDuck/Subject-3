@@ -14,8 +14,8 @@ public class BaseEnemy : MonoBehaviour
     public float damageToTower = 10f;
     [Tooltip("How fast the enemy shoots")]
     public float fireRatePerSecond = 1f;
-    [SerializeField, Tooltip("This is the damage done to the player when enemy reaches end of the pathway")]
-    private float DamageToPlayerAtEnd = 10f;
+    [Tooltip("This is the damage done to the player when enemy reaches end of the pathway")]
+    public float DamageToPlayerAtEnd = 10f;
 
     [SerializeField, Range(0, 1), Tooltip("Distance between the enemy and the current checkpoint needed to go to the next checkpoint")]
     private float minDistanceToCP = 0.6f;
@@ -120,6 +120,10 @@ public class BaseEnemy : MonoBehaviour
     public void ChangeMovespeed(float moveSpeed)
     {
         actualMoveSpeed = moveSpeed;
+    }
+    public void ChangePlayerDamage(float damage)
+    {
+        DamageToPlayerAtEnd = damage;
     }
 }
 

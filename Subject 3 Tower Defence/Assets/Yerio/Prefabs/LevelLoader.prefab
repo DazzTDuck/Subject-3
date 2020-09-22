@@ -60,7 +60,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!114 &8433604549212415453
 MonoBehaviour:
@@ -113,6 +113,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86be3d93d2b1e8a4da23f2121e16b7fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transistionWaitTime: 1
+  buttonPressTime: 0.3
 --- !u!95 &8433604550875251889
 Animator:
   serializedVersion: 3
@@ -125,7 +127,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: e242a3be67bee0644a8e1e5c28bfd23b, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 

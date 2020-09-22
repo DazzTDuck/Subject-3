@@ -177,7 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerManager: {fileID: 0}
   activeAI: 0
-  towerCost: 5
+  towerCost: 15
   towerHead: {fileID: 2953706445351922704}
   projectile: {fileID: 0}
   hitParticle: {fileID: 0}
@@ -208,7 +208,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 6569c073c8d95aa45bff61724535ac00, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.05
+  m_Volume: 0.005
   m_Pitch: 1
   Loop: 1
   Mute: 0
