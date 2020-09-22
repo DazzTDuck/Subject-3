@@ -10,6 +10,8 @@ public class Health : MonoBehaviour
     //[HideInInspector]
     public float currentHealth;
 
+    float healthLerpSpeed = 50f;
+
     public Image healthBar;
     [Tooltip("Only needed for the enemies, to rotate it to look at the camera")]
     public Canvas healthBarCanvas;
@@ -21,6 +23,8 @@ public class Health : MonoBehaviour
     Camera cam;
     GameEndHandler endHandler;
     bool gameLost = false;
+    float newHealth;
+    bool lerpHealth = false;
 
     private void Awake()
     {
@@ -34,6 +38,9 @@ public class Health : MonoBehaviour
         HealthBarUpdate();
 
         PlayerHealthChecker();
+
+        LerpHealth();
+
     }
     void HealthBarUpdate()
     {
@@ -45,17 +52,23 @@ public class Health : MonoBehaviour
 
     public void DoDamage(float damage)
     {
-        var newHealth = currentHealth - damage;
+        newHealth = currentHealth - damage;
 
         if (newHealth <= 0)
-        {
             currentHealth = 0;
-        }
         else
-        {
-            currentHealth = newHealth;
-        }
+            lerpHealth = true;
+    }
 
+    void LerpHealth()
+    {
+        if (lerpHealth && currentHealth != newHealth)
+        {
+            currentHealth = Mathf.Lerp(currentHealth, newHealth, healthLerpSpeed * Time.deltaTime);
+
+            if (currentHealth == newHealth)
+                lerpHealth = false;
+        }
     }
 
     public void ChangeHealth(float newHealth)

@@ -30,5 +30,5 @@ MonoBehaviour:
   - 1
   enemyHealhMultiplier: 1
   enemySpeedMultiplier: 1
-  enemyDamageMultiplier: 100
+  enemyDamageMultiplier: 1
   enemyFireRateMultipier: 0
