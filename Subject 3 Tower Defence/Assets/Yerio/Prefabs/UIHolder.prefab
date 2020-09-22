@@ -953,6 +953,7 @@ GameObject:
   - component: {fileID: 6905168629377705161}
   - component: {fileID: 6905168629377705143}
   - component: {fileID: 6905168629377705160}
+  - component: {fileID: 1693354471}
   m_Layer: 5
   m_Name: PreperationTimer
   m_TagString: Untagged
@@ -978,7 +979,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3596129, y: 0.91313475}
   m_AnchorMax: {x: 0.6755121, y: 1}
-  m_AnchoredPosition: {x: 0, y: 483}
+  m_AnchoredPosition: {x: 0, y: 127}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6905168629377705143
@@ -1018,6 +1019,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &1693354471
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6905168629377705162}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 772e8f39fabf5e446a5b0483064c4de7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6905168629419512552
 GameObject:
   m_ObjectHideFlags: 0

@@ -2120,6 +2120,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 130520354}
+    - target: {fileID: 6905168629955111250, guid: b4793d48e6cd1394886c4af51ca634c6,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6905168629955111250, guid: b4793d48e6cd1394886c4af51ca634c6,
+        type: 3}
+      propertyPath: m_FillOrigin
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6905168630087111716, guid: b4793d48e6cd1394886c4af51ca634c6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2205,6 +2215,11 @@ PrefabInstance:
       propertyPath: towerBuilder
       value: 
       objectReference: {fileID: 130520354}
+    - target: {fileID: 6905168631440880600, guid: b4793d48e6cd1394886c4af51ca634c6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
 --- !u!1 &1626561835

@@ -35,6 +35,7 @@ public class WaveManager : MonoBehaviour
     float prepTimer;
     bool inPreperation;
     UIAnimations animations;
+    Animator preptimerAnimator;
     Wave currentWave;
     int currentEnemyIndex = 0;
     int currentWaveIndex = 0;
@@ -49,6 +50,7 @@ public class WaveManager : MonoBehaviour
     private void Awake()
     {
         animations = GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIAnimations>();
+        preptimerAnimator = prepTimerPanel.GetComponent<Animator>();
         endHandler = FindObjectOfType<GameEndHandler>();
         prepTimer = prepTimeNewWave;
         prepTimerOriginalPos = prepTimerPanel.transform.position;
@@ -104,11 +106,12 @@ public class WaveManager : MonoBehaviour
             timerText.text = $"Preperation Time left      {prepTimer: 00:00}";
         }
 
-        if (prepTimer <= 0)
+        if (prepTimer <= 0 && inPreperation)
         {
+            preptimerAnimator.SetTrigger("Up");
             inPreperation = false;
             canLoad = true;
-            StartCoroutine(animations.DecendTextUp(prepTimerPanel, prepTimerOriginalPos));
+            //StartCoroutine(animations.DecendTextUp(prepTimerPanel, prepTimerOriginalPos));
         }
     }
 
@@ -154,8 +157,7 @@ public class WaveManager : MonoBehaviour
         {
             if (lastWave && allEnemiesSpawned && enemiesAlive.Count <= 0 && playerHealth.currentHealth > 0 && !endGame)
             {
-                endHandler.GameEndSetup(true);
-                endGame = true;
+                LoadNextLevel();
             }
             else if (allEnemiesSpawned && enemiesAlive.Count <= 0)
             {
@@ -187,7 +189,8 @@ public class WaveManager : MonoBehaviour
         inPreperation = true;
         if (inPreperation)
         {
-            StartCoroutine(animations.DecendTextDown(prepTimerPanel));
+            //StartCoroutine(animations.DecendTextDown(prepTimerPanel));
+            preptimerAnimator.SetTrigger("Down");
             canSpawn = false;
             canLoad = false;
         }
@@ -196,7 +199,7 @@ public class WaveManager : MonoBehaviour
     {
         StartWave();
 
-        yield return new WaitForSeconds(animations.decendTweenSpeed);
+        yield return new WaitForSeconds(1f);
 
         canSkipPreperation = true;
 
