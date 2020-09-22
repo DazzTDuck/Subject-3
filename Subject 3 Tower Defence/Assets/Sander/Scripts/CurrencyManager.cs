@@ -9,6 +9,8 @@ public class CurrencyManager : MonoBehaviour
     public float currentCurrency;
 
     public TMP_Text currencyText;
+    public Color textDefaultColor = Color.black;
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +40,7 @@ public class CurrencyManager : MonoBehaviour
         {
             currencyText.color = newColor;
             yield return new WaitForSeconds(0.3f);
-            currencyText.color = Color.white;
+            currencyText.color = textDefaultColor;
             yield return new WaitForSeconds(0.3f);
 
         }
