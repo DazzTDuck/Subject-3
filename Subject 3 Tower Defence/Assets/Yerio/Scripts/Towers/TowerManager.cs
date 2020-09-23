@@ -99,6 +99,8 @@ public class TowerManager : MonoBehaviour
         tower.activeAI = true;
         tower.UpdateOriginalHeadRotation();
         audioManager.PlaySound("BuildTower");
+
+        tower.UpdateTowerValues();
     }
 
     public void DeselectTower()
@@ -133,7 +135,7 @@ public class TowerManager : MonoBehaviour
 
     void SetCorrectScaleForRadiusCirle(Transform cirlce)
     {
-        var detectionDistance = selectedTower.minDetectionDistance;
+        var detectionDistance = selectedTower.detectionDistance;
         var scale = detectionDistance / 12f; // 0.120 is the default radius for a 150 scale
         cirlce.GetComponent<ChangeRadius>().SetScale(scale);
     }
@@ -173,6 +175,14 @@ public class TowerManager : MonoBehaviour
         var index = allTowersIngame.IndexOf(tower);
         allTowersIngame.Remove(allTowersIngame[index]);
     }
-
     #endregion
+
+    public void UpdateAllTowers()
+    {
+        foreach (var tower in allTowersIngame)
+        {
+            tower.UpdateTowerValues();
+        }
+    }
+    
 }

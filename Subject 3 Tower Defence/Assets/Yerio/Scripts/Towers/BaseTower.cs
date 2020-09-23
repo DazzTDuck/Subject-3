@@ -5,9 +5,12 @@ using UnityEngine;
 public class BaseTower : MonoBehaviour
 {
     public TowerManager towerManager;
+    [Tooltip("Make sure this value is set to the correct tower upgrade IF the script is on a tower!")]
+    public TowerUpgradesSO towerUpgrade;
 
     public bool activeAI = false;
-    public float towerCost = 2f;
+    public float towerCost = 5f;
+    public float currentTowerCost = 5f;
 
     [Header("---Shooting---")]
     public Transform towerHead;
@@ -22,7 +25,7 @@ public class BaseTower : MonoBehaviour
     float shootTimer;
 
     [Header("---Enemy Detection---")]
-    [Range(0, 15)] public float minDetectionDistance = 6f;
+    [Range(0, 15)] public float detectionDistance = 6f;
     [Tooltip("makes the distance smaller so in this case the tower won't switch to the other enemy as fast when detected")]
     [SerializeField] float extraDetectionDistance = 4f;
     [SerializeField] float headRotationSpeed = 5f;
@@ -33,16 +36,39 @@ public class BaseTower : MonoBehaviour
     protected bool onTarget = false;
     Projectile instantiatedProjectile;
 
+    [HideInInspector] protected float currentTowerDamage;
+    [HideInInspector] protected float currentShootDelay;
+    [HideInInspector] protected float currentShootSpeed;
+    [HideInInspector] protected float currentDetectionDistance;
+
     protected AudioManager audioManager;
     protected AudioSource source;
+
+    BuyingPanelHandler buyingHandler;
 
     private void Awake()
     {
         towerManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<TowerManager>();
         audioManager = FindObjectOfType<AudioManager>();
+        buyingHandler = FindObjectOfType<BuyingPanelHandler>();
         source = GetComponent<AudioSource>();
         UpdateOriginalHeadRotation();
         shootTimer = shootDelay;
+    }
+    private void Start()
+    {
+        ApplyTowerValues();
+        UpdateTowerValues();
+        buyingHandler.UpdateTowerCostText();
+    }
+
+    void ApplyTowerValues()
+    {
+        currentTowerCost = towerCost;
+        currentShootDelay = shootDelay;
+        currentTowerDamage = towerDamage;
+        currentShootSpeed = shootSpeed;
+        currentDetectionDistance = detectionDistance;
     }
 
     private void Update()
@@ -65,7 +91,7 @@ public class BaseTower : MonoBehaviour
         {
             source.Play();
             instantiatedProjectile = Instantiate(projectile, shootingPoint.position, Quaternion.identity);
-            instantiatedProjectile.ShootProjectile(targetEnemyInRange, shootSpeed, towerDamage, CalculateDirection(targetEnemyInRange), upwardsOffset);         
+            instantiatedProjectile.ShootProjectile(targetEnemyInRange, currentShootSpeed, currentTowerDamage, CalculateDirection(targetEnemyInRange), upwardsOffset);         
         }
     }
 
@@ -92,7 +118,7 @@ public class BaseTower : MonoBehaviour
         {
             distance = Vector3.Distance(EnemyPos(enemy), transform.position);
 
-            if (distance < minDetectionDistance)
+            if (distance < currentDetectionDistance)
                 if (distance < minDistance - extraDetectionDistance) //minus the minDistance makes it smaller so in this case the tower won't switch to the other enemy as fast
                 {
                     minDistance = distance;
@@ -151,6 +177,15 @@ public class BaseTower : MonoBehaviour
     public void UpdateOriginalHeadRotation()
     {
         originalHeadRotation = towerHead.rotation;
+    }
+
+    public virtual void UpdateTowerValues()
+    {
+        currentTowerCost = towerCost - towerUpgrade.towerCostUpgradeLevels[towerUpgrade.costUpgradeIndex];
+        currentTowerDamage = towerDamage + towerUpgrade.towerDamageUpgradeLevels[towerUpgrade.damageUpgradeIndex];
+        currentShootDelay = shootDelay - towerUpgrade.shootDelayUpgradeLevels[towerUpgrade.shootUpgradeIndex];
+        currentShootSpeed = shootSpeed + towerUpgrade.shootDelayUpgradeLevels[towerUpgrade.shootUpgradeIndex];
+        currentDetectionDistance = detectionDistance + towerUpgrade.radiusDetectionUpgradeLevels[towerUpgrade.radiusUpgradeIndex];
     }
 
 }

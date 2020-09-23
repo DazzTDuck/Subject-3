@@ -176,6 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerManager: {fileID: 0}
+  towerUpgrade: {fileID: 11400000, guid: 9bfccc9e61413264fa69fdb2e9c86df9, type: 2}
   activeAI: 0
   towerCost: 15
   towerHead: {fileID: 2953706445351922704}
@@ -186,10 +187,11 @@ MonoBehaviour:
   towerDamage: 6
   shootSpeed: 0
   upwardsOffset: 0.5
-  minDetectionDistance: 7
+  detectionDistance: 6
   extraDetectionDistance: 4
   headRotationSpeed: 15
   targetEnemyInRange: {fileID: 0}
+  currentTowerCost: 15
   laserEffect: {fileID: 1818483698145146, guid: 5ef207190f0475843a714c18f0be30a4,
     type: 3}
   enemyMask:

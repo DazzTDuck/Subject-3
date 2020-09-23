@@ -34,7 +34,7 @@ public class LaserTower : BaseTower
 
     }
 
-    bool ifSoundIsPlaying()
+    bool IfSoundIsPlaying()
     {
         foreach (var tower in laserTowers)
         {
@@ -54,7 +54,7 @@ public class LaserTower : BaseTower
             laserInstance.transform.parent = towerHead.transform;
             LaserScript = laserInstance.GetComponent<Hovl_Laser>();
             LaserScript2 = laserInstance.GetComponent<Hovl_Laser2>();
-            if (!ifSoundIsPlaying())
+            if (!IfSoundIsPlaying())
                 source.Play();
         }
 

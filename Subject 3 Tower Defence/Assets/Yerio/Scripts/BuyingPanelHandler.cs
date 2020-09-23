@@ -25,25 +25,32 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
 
     [Header("---Button Cost Text---")]
     [SerializeField] TMP_Text[] buttonsTowerCost;
-    /*
-    [SerializeField] TMP_Text buttonTowerCost0;
-    [SerializeField] TMP_Text buttonTowerCost1;
-    [SerializeField] TMP_Text buttonTowerCost2;
-    [SerializeField] TMP_Text buttonTowerCost3;
-    [SerializeField] TMP_Text buttonTowerCost4; 
-    */
-    int i;
 
     [SerializeField] TowerBuilder towerBuilder;
     
     Animator animator;
     bool panelOpen;
     TowerUpgradesSO selectedUpgrade;
+    CurrencyManager currencyManager;
+    TowerManager towerManager;
+    int towerCostIndex;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        currencyManager = FindObjectOfType<CurrencyManager>();
+        towerManager = FindObjectOfType<TowerManager>();
+        ResetAllUpgrades();
         UpdateTowerCostText();
+    }
+
+    public void ResetAllUpgrades()
+    {
+        turretUpgrades.ResetUpgradeIndexes();
+        laserUpgrades.ResetUpgradeIndexes();
+        shockUpgrades.ResetUpgradeIndexes();
+        cryoUpgrades.ResetUpgradeIndexes();
+        scrapCollectorUpgrades.ResetUpgradeIndexes();
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -67,7 +74,7 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
 
     public void GetUpgradeInfo(int towerIndex)
     {
-        //0 = gun tower
+        //0 = turret tower
         //1 = laser tower
         //2 = shock tower
         //3 = cryo tower
@@ -97,6 +104,14 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
                 break;
         }
 
+        UpdateUpgradeButtons();
+    }
+
+    void UpdateUpgradeButtons()
+    {
+
+        Debug.Log(selectedUpgrade);
+
         for (int i = 0; i < selectedUpgrade.towerUpgradesInactive.Length; i++)
         {
             bool[] boolArray = selectedUpgrade.towerUpgradesInactive;
@@ -104,11 +119,107 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
             upgradeButtons[i].ButtonIneractable(state);
         }
 
-        upgradeButtons[0].ChangeUpgradeText(TowerUpgradesSO.towerCostUpgradeName, selectedUpgrade.costUpgradeIndex, selectedUpgrade.towerCostUpgradeLevels.Length, selectedUpgrade.costTowerCostLevels[selectedUpgrade.costUpgradeIndex]);
-        upgradeButtons[1].ChangeUpgradeText(TowerUpgradesSO.towerDamageUpgradeName, selectedUpgrade.damageUpgradeIndex, selectedUpgrade.towerDamageUpgradeLevels.Length, selectedUpgrade.costTowerDamageLevels[selectedUpgrade.damageUpgradeIndex]);
-        upgradeButtons[2].ChangeUpgradeText(TowerUpgradesSO.shootDelayUpgradeName, selectedUpgrade.delayUpgradeIndex, selectedUpgrade.shootDelayUpgradeLevels.Length, selectedUpgrade.costShootDelayLevels[selectedUpgrade.delayUpgradeIndex]);
-        upgradeButtons[3].ChangeUpgradeText(TowerUpgradesSO.shootSpeedUpgradeName, selectedUpgrade.shootUpgradeIndex, selectedUpgrade.shootSpeedUpgradeLevels.Length, selectedUpgrade.costShootSpeedLevels[selectedUpgrade.shootUpgradeIndex]);
-        upgradeButtons[4].ChangeUpgradeText(TowerUpgradesSO.radiusDetectionUpgradeName, selectedUpgrade.radiusUpgradeIndex, selectedUpgrade.radiusDetectionUpgradeLevels.Length, selectedUpgrade.costRadiusDetectionLevels[selectedUpgrade.radiusUpgradeIndex]);       
+        if (selectedUpgrade)
+        {
+            if (selectedUpgrade.costUpgradeIndex == selectedUpgrade.towerCostUpgradeLevels.Length - 1)
+            {
+                upgradeButtons[0].ButtonIneractable(false);
+            }
+            if (selectedUpgrade.damageUpgradeIndex == selectedUpgrade.towerDamageUpgradeLevels.Length - 1)
+            {
+                upgradeButtons[1].ButtonIneractable(false);
+            }
+            if (selectedUpgrade.delayUpgradeIndex == selectedUpgrade.shootDelayUpgradeLevels.Length - 1)
+            {
+                upgradeButtons[2].ButtonIneractable(false);
+            }
+            if (selectedUpgrade.shootUpgradeIndex == selectedUpgrade.shootSpeedUpgradeLevels.Length - 1)
+            {
+                upgradeButtons[3].ButtonIneractable(false);
+            }
+            if (selectedUpgrade.radiusUpgradeIndex == selectedUpgrade.radiusDetectionUpgradeLevels.Length - 1)
+            {
+                upgradeButtons[4].ButtonIneractable(false);
+            }
+        }
+
+        float costTowerCost = selectedUpgrade.costTowerCostLevels[selectedUpgrade.costUpgradeIndex];
+        float costTowerDamage = selectedUpgrade.costDamageLevels[selectedUpgrade.damageUpgradeIndex];
+        float costTowerShootDelay = selectedUpgrade.costShootDelayLevels[selectedUpgrade.delayUpgradeIndex];
+        float costTowerShootSpeed = selectedUpgrade.costShootSpeedLevels[selectedUpgrade.shootUpgradeIndex];
+        float costTowerDetection = selectedUpgrade.costRadiusDetectionLevels[selectedUpgrade.radiusUpgradeIndex];
+
+        upgradeButtons[0].ChangeUpgradeText(TowerUpgradesSO.towerCostUpgradeName, selectedUpgrade.costUpgradeIndex, selectedUpgrade.towerCostUpgradeLevels.Length - 1, costTowerCost);
+        upgradeButtons[1].ChangeUpgradeText(TowerUpgradesSO.towerDamageUpgradeName, selectedUpgrade.damageUpgradeIndex, selectedUpgrade.towerDamageUpgradeLevels.Length - 1, costTowerDamage);
+        upgradeButtons[2].ChangeUpgradeText(TowerUpgradesSO.shootDelayUpgradeName, selectedUpgrade.delayUpgradeIndex, selectedUpgrade.shootDelayUpgradeLevels.Length - 1, costTowerShootDelay);
+        upgradeButtons[3].ChangeUpgradeText(TowerUpgradesSO.shootSpeedUpgradeName, selectedUpgrade.shootUpgradeIndex, selectedUpgrade.shootSpeedUpgradeLevels.Length - 1, costTowerShootSpeed);
+        upgradeButtons[4].ChangeUpgradeText(TowerUpgradesSO.radiusDetectionUpgradeName, selectedUpgrade.radiusUpgradeIndex, selectedUpgrade.radiusDetectionUpgradeLevels.Length - 1, costTowerDetection);
+    }
+
+    public void UpgradeTower(int buttonIndex)
+    {
+        switch (buttonIndex)
+        {
+            case 0: //Tower Cost Button
+                if (selectedUpgrade.costTowerCostLevels[selectedUpgrade.costUpgradeIndex] <= currencyManager.currentCurrency)
+                {
+                    currencyManager.currentCurrency -= selectedUpgrade.costTowerCostLevels[selectedUpgrade.costUpgradeIndex];
+                    selectedUpgrade.UpgradeCost();
+                }
+                else {
+                    NotEnoughMoney();
+                }
+                    break;
+            case 1: //Tower Damage Button
+                if (selectedUpgrade.costDamageLevels[selectedUpgrade.damageUpgradeIndex] <= currencyManager.currentCurrency)
+                {
+                    currencyManager.currentCurrency -= selectedUpgrade.costDamageLevels[selectedUpgrade.damageUpgradeIndex];
+                    selectedUpgrade.UpgradeDamage();
+                }
+                else {
+                    NotEnoughMoney();
+                }
+
+                break;
+            case 2: //Tower Shoot Delay Button
+                if (selectedUpgrade.costShootDelayLevels[selectedUpgrade.delayUpgradeIndex] <= currencyManager.currentCurrency)
+                {
+                    currencyManager.currentCurrency -= selectedUpgrade.costShootDelayLevels[selectedUpgrade.delayUpgradeIndex];
+                    selectedUpgrade.UpgradeShootDelay();
+                }
+                else {
+                    NotEnoughMoney();
+                }
+                break;
+            case 3: //Tower Shoot Speed Button
+                if (selectedUpgrade.costShootSpeedLevels[selectedUpgrade.shootUpgradeIndex] <= currencyManager.currentCurrency)
+                {
+                    currencyManager.currentCurrency -= selectedUpgrade.costShootSpeedLevels[selectedUpgrade.shootUpgradeIndex];
+                    selectedUpgrade.UpgradeShootSpeed();
+                }
+                else {
+                    NotEnoughMoney();
+                }
+                break;
+            case 4: //Tower Radius Detection Button
+                if (selectedUpgrade.costRadiusDetectionLevels[selectedUpgrade.radiusUpgradeIndex] <= currencyManager.currentCurrency)
+                {
+                    currencyManager.currentCurrency -= selectedUpgrade.costRadiusDetectionLevels[selectedUpgrade.radiusUpgradeIndex];
+                    selectedUpgrade.UpgradeRadiusDetection();
+                }
+                else {
+                    NotEnoughMoney();
+                }
+                break;
+        }
+        UpdateTowerCostText();
+        UpdateUpgradeButtons();
+        towerManager.UpdateAllTowers();
+    }
+
+    public void NotEnoughMoney()
+    {
+        StartCoroutine(currencyManager.TextFlash(Color.red, 2));
     }
 
     public void ClearSelectedUpgrade()
@@ -120,9 +231,10 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
     {
         foreach (TMP_Text costText in buttonsTowerCost)
         {
-            costText.text = towerBuilder.towerPrefabs[i].transform.GetComponent<BaseTower>().towerCost.ToString();
-            i++;
+            costText.text = towerBuilder.towerPrefabs[towerCostIndex].GetComponent<BaseTower>().currentTowerCost.ToString();
+            //Debug.Log(towerBuilder.towerPrefabs[towerCostIndex].GetComponent<BaseTower>().currentTowerCost);
+            towerCostIndex++;
         }
-        i = 0;
+        towerCostIndex = 0;
     }
 }

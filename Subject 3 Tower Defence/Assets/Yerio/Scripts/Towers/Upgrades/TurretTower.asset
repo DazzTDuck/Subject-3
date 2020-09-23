@@ -19,42 +19,51 @@ MonoBehaviour:
   - 0
   towerDamageUpgradeLevels:
   - 0
-  - 0
-  - 0
+  - 3
+  - 6
+  - 10
   shootDelayUpgradeLevels:
   - 0
-  - 0
-  - 0
+  - 0.1
+  - 0.2
+  - 0.3
   shootSpeedUpgradeLevels:
   - 0
-  - 0
-  - 0
+  - 2
+  - 4
+  - 6
   radiusDetectionUpgradeLevels:
   - 0
-  - 0
-  - 0
+  - 2
+  - 3
+  - 4
   costTowerCostLevels:
   - 0
   - 0
   - 0
-  costTowerDamageLevels:
-  - 6
-  - 12
-  - 24
+  - 0
+  costDamageLevels:
+  - 5
+  - 10
+  - 15
+  - 15
   costShootDelayLevels:
   - 5
   - 10
+  - 15
   - 15
   costShootSpeedLevels:
   - 5
   - 10
   - 15
+  - 15
   costRadiusDetectionLevels:
   - 5
   - 10
   - 15
+  - 15
   costUpgradeIndex: 0
-  damageUpgradeIndex: 0
+  damageUpgradeIndex: 3
   delayUpgradeIndex: 0
   shootUpgradeIndex: 0
   radiusUpgradeIndex: 0

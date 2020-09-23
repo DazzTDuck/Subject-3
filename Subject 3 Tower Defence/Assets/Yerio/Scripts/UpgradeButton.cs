@@ -10,7 +10,7 @@ public class UpgradeButton : MonoBehaviour
     public TMP_Text levelText;
     public TMP_Text costText;
 
-    private void Start()
+    private void Awake()
     {
         ButtonIneractable(true);
     }
@@ -25,6 +25,7 @@ public class UpgradeButton : MonoBehaviour
     public void ButtonIneractable(bool state)
     {
         var button = GetComponent<Button>();
+        Debug.Log($"{state} {gameObject.name}");
         button.interactable = state;
     } 
 }
