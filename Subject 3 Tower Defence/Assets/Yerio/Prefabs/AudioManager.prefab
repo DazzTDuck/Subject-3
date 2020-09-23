@@ -65,18 +65,11 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Shoot
-    clip: {fileID: 8300000, guid: ef835c9d8d5c39f45bb71f2d278968b9, type: 3}
+  - name: BuildTower
+    clip: {fileID: 8300000, guid: f822257e62e261d40acde332765d62e0, type: 3}
     mixer: {fileID: 24300002, guid: c6e82527aa3eb6d4d92431c2f49a53cd, type: 2}
-    volume: 0.01
-    pitch: 1
+    volume: 0.2
+    pitch: 0.9
     loop: 0
-    source: {fileID: 0}
-  - name: LaserShot
-    clip: {fileID: 8300000, guid: 6569c073c8d95aa45bff61724535ac00, type: 3}
-    mixer: {fileID: 24300002, guid: c6e82527aa3eb6d4d92431c2f49a53cd, type: 2}
-    volume: 0.03
-    pitch: 1
-    loop: 1
     source: {fileID: 0}
   awakeBGMusic: 0

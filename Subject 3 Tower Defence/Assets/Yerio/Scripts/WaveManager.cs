@@ -214,6 +214,7 @@ public class WaveManager : MonoBehaviour
 
     IEnumerator LoadWaveSetup(string text = "New Wave!")
     {
+
         currentWaveIndex++;
 
         StartCoroutine(animations.PopupText(popupText, text));

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PauseMenuHandler : MonoBehaviour
 {
+    public YouSurePopup popup;
+
     Animator pauseMenuAnimator;
 
     bool pausemenuAnimationStart = false;
@@ -38,7 +40,7 @@ public class PauseMenuHandler : MonoBehaviour
                 return;
             }
 
-            if (!pausemenuAnimationStart && pausemenuAnimationOpen)
+            if (!pausemenuAnimationStart && pausemenuAnimationOpen && !popup.isActive)
                 StartCloseMenu();
         }
     }

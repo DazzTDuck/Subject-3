@@ -10,6 +10,8 @@ public class YouSurePopup : MonoBehaviour
 
     Animator animator;
     LevelLoader loader;
+
+    [HideInInspector] public bool isActive = false;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -30,8 +32,15 @@ public class YouSurePopup : MonoBehaviour
     public void PopupToMainMenu()
     {
         animator.SetTrigger("Open");
+        SetActive(true);
         yesButton.onClick.AddListener(delegate () { Time.timeScale = 1f; });
         yesButton.onClick.AddListener(delegate () { loader.LoadNewScene(0); });
+        yesButton.onClick.AddListener(delegate () { SetActive(false); });
         yesButton.onClick.AddListener(delegate () { animator.SetTrigger("Close"); });
+    }
+
+    public void SetActive(bool state)
+    {
+        isActive = state;
     }
 }

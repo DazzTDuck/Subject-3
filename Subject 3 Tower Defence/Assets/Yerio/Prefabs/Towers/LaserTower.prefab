@@ -187,8 +187,8 @@ MonoBehaviour:
   towerDamage: 7
   shootSpeed: 0
   upwardsOffset: 0.2
-  detectionDistance: 6
-  extraDetectionDistance: 4
+  detectionDistance: 5
+  extraDetectionDistance: 3
   headRotationSpeed: 18
   targetEnemyInRange: {fileID: 0}
   laserEffect: {fileID: 1818483698145146, guid: 5ef207190f0475843a714c18f0be30a4,

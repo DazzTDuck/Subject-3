@@ -9,10 +9,12 @@ public class TowerManager : MonoBehaviour
     public Vector3 detectionSphereOffset;
     public float minTowerPlacementDistance;
     public LayerMask pathLayer;
+    public LayerMask wallLayer;
+    public LayerMask groundLayer;
     public LayerMask towerLayer;
     public Color canPlaceTowerColor;
     public Color cantPlaceTowerColor;
-    
+
     //public BaseTower TestTower;
     public GameObject VisualDetectionSphere;
     public GameObject visualRadiusCircle;
@@ -54,7 +56,7 @@ public class TowerManager : MonoBehaviour
 
             UpdateDetectionSphere();
             UpdateRadiusCircle();
-        }          
+        }
     }
 
     #region Tower Place Detection
@@ -76,10 +78,14 @@ public class TowerManager : MonoBehaviour
                         minDistance = distance;
                         lastDetectedTower = tower;
                     }
-            }      
+            }
         }
 
-        cantPlace = Physics.CheckSphere(selectedPos, safePlacementRadius, pathLayer) || lastDetectedTower;
+        if (Physics.CheckSphere(selectedPos, safePlacementRadius, groundLayer))
+            cantPlace = Physics.CheckSphere(selectedPos, safePlacementRadius, pathLayer) || Physics.CheckSphere(selectedPos, safePlacementRadius, wallLayer) || lastDetectedTower;
+        else
+            cantPlace = true;
+
         if(lastDetectedTower)
         Debug.DrawLine(selectedPos, lastDetectedTower.transform.position, Color.green);
     }

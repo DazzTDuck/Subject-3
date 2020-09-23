@@ -224,8 +224,6 @@ MonoBehaviour:
   towerManager: {fileID: 0}
   towerUpgrade: {fileID: 11400000, guid: 5a12e4b28bd54624b9b9f15a28509834, type: 2}
   activeAI: 0
-  towerCost: 5
-  currentTowerCost: 5
   detectionSphereOffset: {x: 0, y: -1.05, z: 0}
   towerHead: {fileID: 8078921937913319217}
   projectile: {fileID: -1038706737665988478, guid: 7b1fa1f34294f62448156a66e57db0ad,
@@ -237,8 +235,8 @@ MonoBehaviour:
   towerDamage: 15
   shootSpeed: 7
   upwardsOffset: 0.7
-  detectionDistance: 7
-  extraDetectionDistance: 4
+  detectionDistance: 5
+  extraDetectionDistance: 3
   headRotationSpeed: 5
   targetEnemyInRange: {fileID: 0}
 --- !u!1001 &8616689900379597018
