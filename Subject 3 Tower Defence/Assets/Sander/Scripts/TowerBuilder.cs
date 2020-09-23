@@ -10,13 +10,7 @@ public class TowerBuilder : MonoBehaviour
 
      public TowerManager manager;
 
-    AudioManager audioManager;
-
-
-    void Awake()
-    {
-        audioManager = FindObjectOfType<AudioManager>();
-    }
+    float extraYPos;
 
     void Update()
     {
@@ -42,13 +36,15 @@ public class TowerBuilder : MonoBehaviour
         {
             if (!currentHeldTower)
             {
-                currentHeldTower = Instantiate(towerPrefabs[index], towerPrefabs[index].transform.position, Quaternion.identity);
+                extraYPos = towerPrefabs[index].transform.position.y;
+                currentHeldTower = Instantiate(towerPrefabs[index], towerPrefabs[index].transform.position, towerPrefabs[index].transform.rotation);
                 manager.SelectTower(currentHeldTower.GetComponent<BaseTower>());
             }
             else
             {
                 CancelPlacement();
-                currentHeldTower = Instantiate(towerPrefabs[index], towerPrefabs[index].transform.position, Quaternion.identity);
+                extraYPos = towerPrefabs[index].transform.position.y;
+                currentHeldTower = Instantiate(towerPrefabs[index], towerPrefabs[index].transform.position, towerPrefabs[index].transform.rotation);
                 manager.SelectTower(currentHeldTower.GetComponent<BaseTower>());
             }
         }
@@ -61,7 +57,7 @@ public class TowerBuilder : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo))
         {
-            currentHeldTower.transform.position = hitInfo.point;
+            currentHeldTower.transform.position = new Vector3(hitInfo.point.x, hitInfo.point.y + extraYPos, hitInfo.point.z);
         }
     }
 
@@ -69,9 +65,9 @@ public class TowerBuilder : MonoBehaviour
     {
         if (!manager.cantPlace)
         {
-            if (currentHeldTower.GetComponent<BaseTower>().towerCost <= Camera.main.GetComponent<CurrencyManager>().currentCurrency)
+            if (currentHeldTower.GetComponent<BaseTower>().GetTowerCost() <= Camera.main.GetComponent<CurrencyManager>().currentCurrency)
             {
-                Camera.main.GetComponent<CurrencyManager>().RemoveCurrency(currentHeldTower.GetComponent<BaseTower>().towerCost);
+                Camera.main.GetComponent<CurrencyManager>().RemoveCurrency(currentHeldTower.GetComponent<BaseTower>().GetTowerCost());
 
                 manager.PlacedTower(currentHeldTower.GetComponent<BaseTower>());
                 manager.DeselectTower();
@@ -79,8 +75,6 @@ public class TowerBuilder : MonoBehaviour
             }
             else
             {
-                //play a sound
-                audioManager.PlaySound("Error");
                 StartCoroutine(Camera.main.GetComponent<CurrencyManager>().TextFlash(Color.red, 2));
                 StopCoroutine(Camera.main.GetComponent<CurrencyManager>().TextFlash(Color.red, 2));
             }

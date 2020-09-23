@@ -5,11 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="Tower Upgrade", menuName ="Create tower upgrade")]
 public class TowerUpgradesSO : ScriptableObject
 {
-
     [Tooltip("use this to disable upgrades from being used OR to disable them when they are fully bought")]
     public bool[] towerUpgradesInactive = new bool[5];
     [Space]
-    [Tooltip("This is the price taken off the original price when upgrade is bought")]
+    [Tooltip("This is the prices of the tower, on the levels")]
     public float[] towerCostUpgradeLevels = new float[4];
     [Tooltip("This is the damage added up by the original damage when upgrade is bought")]
     public float[] towerDamageUpgradeLevels = new float[4];
@@ -28,11 +27,11 @@ public class TowerUpgradesSO : ScriptableObject
 
     [Space]
 
-     public int costUpgradeIndex;
-     public int damageUpgradeIndex;
-     public int delayUpgradeIndex;
-     public int shootUpgradeIndex;
-     public int radiusUpgradeIndex;
+    public int costUpgradeIndex;
+    public int damageUpgradeIndex;
+    public int delayUpgradeIndex;
+    public int shootUpgradeIndex;
+    public int radiusUpgradeIndex;
 
     public static string towerCostUpgradeName = "Tower Cost";
     public static string towerDamageUpgradeName = "Tower Damage";

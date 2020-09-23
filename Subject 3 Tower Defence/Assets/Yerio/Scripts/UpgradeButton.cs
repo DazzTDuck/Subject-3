@@ -25,7 +25,7 @@ public class UpgradeButton : MonoBehaviour
     public void ButtonIneractable(bool state)
     {
         var button = GetComponent<Button>();
-        Debug.Log($"{state} {gameObject.name}");
+        //Debug.Log($"{state} {gameObject.name}");
         button.interactable = state;
     } 
 }

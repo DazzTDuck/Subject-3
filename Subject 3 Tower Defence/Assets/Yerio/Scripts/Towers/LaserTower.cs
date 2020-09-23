@@ -68,10 +68,10 @@ public class LaserTower : BaseTower
 
         if (onTarget)
         {
-            if (Physics.Raycast(shootingPoint.position, CalculateDirection(targetEnemyInRange), out hit, 100f, enemyMask) && laserInstance)
+            if (Physics.Raycast(shootingPoint.position, CalculateDirection(targetEnemyInRange), out hit, 50f, enemyMask) && laserInstance)
             {
                 if (canShoot)
-                    targetEnemyInRange.health.DoDamage(towerDamage);
+                    targetEnemyInRange.health.DoDamage(currentTowerDamage);
             }
 
             //Debug.DrawRay(shootingPoint.position, CalculateDirection(targetEnemyInRange), Color.blue);
