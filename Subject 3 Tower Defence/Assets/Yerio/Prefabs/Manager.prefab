@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   safePlacementRadius: 1.5
+  detectionSphereOffset: {x: 0, y: 0, z: 0}
   minTowerPlacementDistance: 2.05
   pathLayer:
     serializedVersion: 2
@@ -124,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerPrefabs:
-  - {fileID: 3566486758029102547, guid: 3e87b2e891fce044a966bdeb618e4f89, type: 3}
+  - {fileID: 8616689900904077335, guid: 662a3228ce21ba94d94ea838e8fe047c, type: 3}
   - {fileID: 4952468819694136093, guid: c6d7279f68419da48a1d9dffe1493194, type: 3}
   - {fileID: 4952468819694136093, guid: c6d7279f68419da48a1d9dffe1493194, type: 3}
   - {fileID: 4952468819694136093, guid: c6d7279f68419da48a1d9dffe1493194, type: 3}

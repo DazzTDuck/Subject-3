@@ -6,6 +6,7 @@ public class TowerManager : MonoBehaviour
 {
     [Header("---Tower Placement---")]
     public float safePlacementRadius;
+    public Vector3 detectionSphereOffset;
     public float minTowerPlacementDistance;
     public LayerMask pathLayer;
     public LayerMask towerLayer;
@@ -59,7 +60,7 @@ public class TowerManager : MonoBehaviour
     #region Tower Place Detection
     void CanPlaceTowerDetection()
     {
-        var selectedPos = selectedTower.transform.position;
+        var selectedPos = selectedTower.transform.position + selectedTower.detectionSphereOffset;
         var minDistance = Mathf.Infinity;
         BaseTower lastDetectedTower = null;
 
@@ -86,7 +87,7 @@ public class TowerManager : MonoBehaviour
     public void SelectTower(BaseTower tower)
     {
         selectedTower = tower;
-        instantiatedDetectionSphere = Instantiate(VisualDetectionSphere, selectedTower.transform.position, Quaternion.identity);
+        instantiatedDetectionSphere = Instantiate(VisualDetectionSphere, selectedTower.transform.position + selectedTower.detectionSphereOffset, Quaternion.identity);
         instantiatedRadiusCircle = Instantiate(visualRadiusCircle, selectedTower.transform.position + Vector3.up, visualRadiusCircle.transform.rotation);
         SetCorrectScaleForDetectionSphere(instantiatedDetectionSphere.transform);
         SetCorrectScaleForRadiusCirle(instantiatedRadiusCircle.transform);
@@ -115,7 +116,7 @@ public class TowerManager : MonoBehaviour
     {
         if (instantiatedDetectionSphere)
         {
-            instantiatedDetectionSphere.transform.position = selectedTower.transform.position;
+            instantiatedDetectionSphere.transform.position = selectedTower.transform.position + selectedTower.detectionSphereOffset;
             instantiatedSphereColor.ChangeColor(cantPlace ? cantPlaceTowerColor : canPlaceTowerColor);
         }
     }

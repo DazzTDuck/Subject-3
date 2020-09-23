@@ -16,9 +16,12 @@ MonoBehaviour:
   - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
   - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
   - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
+  - {fileID: 7064930473326820723, guid: 9e6325fe9fa24a54f85295ef0c318aeb, type: 3}
   - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
   - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
   - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
+  - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
+  - {fileID: 7064930473326820723, guid: 9e6325fe9fa24a54f85295ef0c318aeb, type: 3}
   - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
   timesBetweenSpawning:
   - 2
@@ -27,6 +30,9 @@ MonoBehaviour:
   - 1
   - 1
   - 1
+  - 1
+  - 1
+  - 2
   - 1
   enemyHealhMultiplier: 1
   enemySpeedMultiplier: 1

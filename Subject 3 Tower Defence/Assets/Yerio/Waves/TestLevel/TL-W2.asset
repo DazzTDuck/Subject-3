@@ -23,17 +23,27 @@ MonoBehaviour:
   - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
   - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
   - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
+  - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
+  - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
+  - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
+  - {fileID: 6379679561373632125, guid: 684cee443b9221a4881a1156101ff6fe, type: 3}
+  - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
   timesBetweenSpawning:
   - 2
-  - 3
   - 2
   - 2
+  - 1
   - 2
   - 1
   - 1
   - 1
   - 2
+  - 1
   - 2
+  - 0.5
+  - 0.5
+  - 0.5
+  - 0.5
   enemyHealhMultiplier: 1.3
   enemySpeedMultiplier: 1.1
   enemyDamageMultiplier: 1.1

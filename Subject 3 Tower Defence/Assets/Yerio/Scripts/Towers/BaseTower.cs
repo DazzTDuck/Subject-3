@@ -11,6 +11,7 @@ public class BaseTower : MonoBehaviour
     public bool activeAI = false;
     public float towerCost = 5f;
     public float currentTowerCost = 5f;
+    public Vector3 detectionSphereOffset;
 
     [Header("---Shooting---")]
     public Transform towerHead;
@@ -25,7 +26,7 @@ public class BaseTower : MonoBehaviour
     float shootTimer;
 
     [Header("---Enemy Detection---")]
-    [Range(0, 15)] public float detectionDistance = 6f;
+    [Range(0, 25)] public float detectionDistance = 6f;
     [Tooltip("makes the distance smaller so in this case the tower won't switch to the other enemy as fast when detected")]
     [SerializeField] float extraDetectionDistance = 4f;
     [SerializeField] float headRotationSpeed = 5f;
