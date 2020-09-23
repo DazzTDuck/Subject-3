@@ -65,9 +65,9 @@ public class TowerBuilder : MonoBehaviour
     {
         if (!manager.cantPlace)
         {
-            if (currentHeldTower.GetComponent<BaseTower>().towerCost <= Camera.main.GetComponent<CurrencyManager>().currentCurrency)
+            if (currentHeldTower.GetComponent<BaseTower>().GetTowerCost() <= Camera.main.GetComponent<CurrencyManager>().currentCurrency)
             {
-                Camera.main.GetComponent<CurrencyManager>().RemoveCurrency(currentHeldTower.GetComponent<BaseTower>().towerCost);
+                Camera.main.GetComponent<CurrencyManager>().RemoveCurrency(currentHeldTower.GetComponent<BaseTower>().GetTowerCost());
 
                 manager.PlacedTower(currentHeldTower.GetComponent<BaseTower>());
                 manager.DeselectTower();

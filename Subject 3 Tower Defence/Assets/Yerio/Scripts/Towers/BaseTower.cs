@@ -9,8 +9,6 @@ public class BaseTower : MonoBehaviour
     public TowerUpgradesSO towerUpgrade;
 
     public bool activeAI = false;
-    public float towerCost = 5f;
-    public float currentTowerCost = 5f;
     public Vector3 detectionSphereOffset;
 
     [Header("---Shooting---")]
@@ -65,7 +63,6 @@ public class BaseTower : MonoBehaviour
 
     void ApplyTowerValues()
     {
-        currentTowerCost = towerCost;
         currentShootDelay = shootDelay;
         currentTowerDamage = towerDamage;
         currentShootSpeed = shootSpeed;
@@ -182,11 +179,15 @@ public class BaseTower : MonoBehaviour
 
     public virtual void UpdateTowerValues()
     {
-        currentTowerCost = towerCost - towerUpgrade.towerCostUpgradeLevels[towerUpgrade.costUpgradeIndex];
         currentTowerDamage = towerDamage + towerUpgrade.towerDamageUpgradeLevels[towerUpgrade.damageUpgradeIndex];
         currentShootDelay = shootDelay - towerUpgrade.shootDelayUpgradeLevels[towerUpgrade.shootUpgradeIndex];
         currentShootSpeed = shootSpeed + towerUpgrade.shootDelayUpgradeLevels[towerUpgrade.shootUpgradeIndex];
         currentDetectionDistance = detectionDistance + towerUpgrade.radiusDetectionUpgradeLevels[towerUpgrade.radiusUpgradeIndex];
+    }
+
+    public float GetTowerCost()
+    {
+        return towerUpgrade.towerCostUpgradeLevels[towerUpgrade.costUpgradeIndex];
     }
 
 }

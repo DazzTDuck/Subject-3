@@ -178,19 +178,18 @@ MonoBehaviour:
   towerManager: {fileID: 0}
   towerUpgrade: {fileID: 11400000, guid: 9bfccc9e61413264fa69fdb2e9c86df9, type: 2}
   activeAI: 0
-  towerCost: 15
-  currentTowerCost: 15
+  detectionSphereOffset: {x: 0, y: 0, z: 0}
   towerHead: {fileID: 2953706445351922704}
   projectile: {fileID: 0}
   hitParticle: {fileID: 0}
   shootingPoint: {fileID: 4939705454168804452}
   shootDelay: 0.15
-  towerDamage: 5
+  towerDamage: 7
   shootSpeed: 0
-  upwardsOffset: 0.5
+  upwardsOffset: 0.2
   detectionDistance: 6
   extraDetectionDistance: 4
-  headRotationSpeed: 15
+  headRotationSpeed: 18
   targetEnemyInRange: {fileID: 0}
   laserEffect: {fileID: 1818483698145146, guid: 5ef207190f0475843a714c18f0be30a4,
     type: 3}

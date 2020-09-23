@@ -109,9 +109,6 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
 
     void UpdateUpgradeButtons()
     {
-
-        Debug.Log(selectedUpgrade);
-
         for (int i = 0; i < selectedUpgrade.towerUpgradesInactive.Length; i++)
         {
             bool[] boolArray = selectedUpgrade.towerUpgradesInactive;
@@ -212,9 +209,9 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
                 }
                 break;
         }
-        UpdateTowerCostText();
         UpdateUpgradeButtons();
         towerManager.UpdateAllTowers();
+        UpdateTowerCostText();
     }
 
     public void NotEnoughMoney()
@@ -231,8 +228,7 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
     {
         foreach (TMP_Text costText in buttonsTowerCost)
         {
-            costText.text = towerBuilder.towerPrefabs[towerCostIndex].GetComponent<BaseTower>().currentTowerCost.ToString();
-            //Debug.Log(towerBuilder.towerPrefabs[towerCostIndex].GetComponent<BaseTower>().currentTowerCost);
+            costText.text = towerBuilder.towerPrefabs[towerCostIndex].GetComponent<BaseTower>().GetTowerCost().ToString();
             towerCostIndex++;
         }
         towerCostIndex = 0;
