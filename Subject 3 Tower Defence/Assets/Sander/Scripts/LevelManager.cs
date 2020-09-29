@@ -27,7 +27,11 @@ public class LevelManager : MonoBehaviour
 
     void Awake()
     {
-        UpdateLvlSelectUi();
+        if (levelSelectButtons != null)
+        {
+            UpdateLvlSelectUi();
+
+        }
     }
 
     private void UpdateLvlSelectUi()
