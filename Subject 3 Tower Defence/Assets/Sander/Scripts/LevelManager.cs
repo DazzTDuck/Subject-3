@@ -21,6 +21,7 @@ public class LevelManager : MonoBehaviour
     public int lvlindex = 0;
 
     int indexB;
+    public string levelStateUnlockedString;
     public string levelStateCompletionString;
     public string levelStateLockedString;
 
@@ -30,24 +31,32 @@ public class LevelManager : MonoBehaviour
         if (levelSelectButtons != null)
         {
             UpdateLvlSelectUi();
-
+            print("not empty");
         }
+        print("Empty");
     }
 
     private void UpdateLvlSelectUi()
     {
         foreach (Button button in levelSelectButtons)
         {
-            if (indexB <= PlayerPrefs.GetInt("completedLevels"))
+            if (indexB < PlayerPrefs.GetInt("completedLevels"))
             {
                 button.interactable = true;
                 levelStateText[indexB].text = levelStateCompletionString;
+            }
+            else if (indexB == PlayerPrefs.GetInt("completedLevels"))
+            {
+                button.interactable = true;
+                levelStateText[indexB].text = levelStateUnlockedString;
             }
             else
             {
                 button.interactable = false;
                 levelStateText[indexB].text = levelStateLockedString;
             }
+
+
             indexB++;
         }
         indexB = 0;

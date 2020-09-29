@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 48e06e3cdbb099f41a5aa81b996bbf5f,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -6173,6 +6173,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841cd81c5fe0a0b4ebd9595be4ecf476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &500742221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500742219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5627babb5d8e5439fa028aa0dda237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelLoader: {fileID: 0}
+  levelSelectButtons: []
+  levelStateText: []
+  lvlindex: 1
+  levelStateCompletionString: 
+  levelStateLockedString: 
 --- !u!1001 &509173208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13602,6 +13620,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 709182290}
+    - target: {fileID: 7651820206045283635, guid: efa6e2e5e61a2004c9ee46ea7fe69518,
+        type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 500742221}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efa6e2e5e61a2004c9ee46ea7fe69518, type: 3}
 --- !u!1001 &1149220444
@@ -13851,6 +13874,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 500742220}
+    - target: {fileID: 6905168630094210264, guid: b4793d48e6cd1394886c4af51ca634c6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6905168630113326836, guid: b4793d48e6cd1394886c4af51ca634c6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -13931,6 +13959,11 @@ PrefabInstance:
       propertyPath: towerBuilder
       value: 
       objectReference: {fileID: 500742220}
+    - target: {fileID: 6905168631440880600, guid: b4793d48e6cd1394886c4af51ca634c6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
 --- !u!114 &1179854324 stripped
