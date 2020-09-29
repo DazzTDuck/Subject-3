@@ -15,9 +15,9 @@ MonoBehaviour:
   towerUpgradesInactive: 0000010100
   towerCostUpgradeLevels:
   - 15
-  - 13
-  - 10
+  - 11
   - 8
+  - 6
   towerDamageUpgradeLevels:
   - 0
   - 4
@@ -59,7 +59,7 @@ MonoBehaviour:
   - 10
   - 15
   - 15
-  costUpgradeIndex: 0
+  costUpgradeIndex: 2
   damageUpgradeIndex: 0
   delayUpgradeIndex: 0
   shootUpgradeIndex: 0

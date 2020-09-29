@@ -6,7 +6,6 @@ public class TowerManager : MonoBehaviour
 {
     [Header("---Tower Placement---")]
     public float safePlacementRadius;
-    public Vector3 detectionSphereOffset;
     public float minTowerPlacementDistance;
     public LayerMask pathLayer;
     public LayerMask wallLayer;

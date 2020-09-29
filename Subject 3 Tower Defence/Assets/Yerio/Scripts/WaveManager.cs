@@ -141,7 +141,7 @@ public class WaveManager : MonoBehaviour
     void AddEnemyMultipliers(Wave currentWave, BaseEnemy enemy)
     {
         enemy.health.ChangeHealth(enemy.health.currentHealth * currentWave.enemyHealhMultiplier);
-        enemy.ChangeMovespeed(enemy.moveSpeed * currentWave.enemySpeedMultiplier);
+        enemy.ChangeMoveSpeed(enemy.moveSpeed * currentWave.enemySpeedMultiplier);
         enemy.ChangePlayerDamage(enemy.DamageToPlayerAtEnd * currentWave.enemyDamageMultiplier);
     } 
 

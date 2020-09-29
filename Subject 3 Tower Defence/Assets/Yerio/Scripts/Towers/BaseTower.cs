@@ -21,7 +21,7 @@ public class BaseTower : MonoBehaviour
     [SerializeField] protected float shootSpeed = 7f;
     [SerializeField] float upwardsOffset;
     protected bool canShoot = false;
-    float shootTimer;
+    protected float shootTimer;
 
     [Header("---Enemy Detection---")]
     [Range(0, 25)] public float detectionDistance = 6f;
@@ -43,7 +43,7 @@ public class BaseTower : MonoBehaviour
     protected AudioManager audioManager;
     protected AudioSource source;
 
-    BuyingPanelHandler buyingHandler;
+    protected BuyingPanelHandler buyingHandler;
 
     private void Awake()
     {
@@ -52,11 +52,11 @@ public class BaseTower : MonoBehaviour
         buyingHandler = FindObjectOfType<BuyingPanelHandler>();
         source = GetComponent<AudioSource>();
         UpdateOriginalHeadRotation();
-        shootTimer = shootDelay;
+        ApplyTowerValues();
+        shootTimer = currentShootDelay;
     }
     private void Start()
     {
-        ApplyTowerValues();
         UpdateTowerValues();
         buyingHandler.UpdateTowerCostText();
     }
@@ -100,7 +100,7 @@ public class BaseTower : MonoBehaviour
         if(shootTimer <= 0 && !canShoot)
         {
             canShoot = true;
-            shootTimer = shootDelay;
+            shootTimer = currentShootDelay;
         }
         else canShoot = false;
     }
@@ -117,11 +117,13 @@ public class BaseTower : MonoBehaviour
             distance = Vector3.Distance(EnemyPos(enemy), transform.position);
 
             if (distance < currentDetectionDistance)
+            {
                 if (distance < minDistance - extraDetectionDistance) //minus the minDistance makes it smaller so in this case the tower won't switch to the other enemy as fast
                 {
                     minDistance = distance;
                     targetEnemy = enemy;
                 }
+            }
         }
 
         onTarget = targetEnemy;
@@ -150,7 +152,7 @@ public class BaseTower : MonoBehaviour
     {
         Quaternion rotateTo;
         Vector3 direction;
-        if (onTarget)
+        if (onTarget && canShoot)
         {
             direction = CalculateDirection(targetEnemyInRange);
             rotateTo = Quaternion.LookRotation(direction);
@@ -171,7 +173,7 @@ public class BaseTower : MonoBehaviour
 
         return transform.forward - towerHead.position;
     }
-    
+
     public void UpdateOriginalHeadRotation()
     {
         originalHeadRotation = towerHead.rotation;

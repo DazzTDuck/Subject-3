@@ -36,6 +36,14 @@ public class BaseEnemy : MonoBehaviour
     int checkpointIndex;
     Transform currentCheckpoint;
 
+    float slowTimer = 0;
+    bool slowEnemy = false;
+    float slowSpeed;
+
+    float slowDamage;
+    float slowDamageTimer;
+    float slowDamageDelay = 0.5f;
+
     private void Awake()
     {
         cpHolder = GameObject.FindGameObjectWithTag("Manager").GetComponent<CheckpointHolder>();
@@ -55,7 +63,9 @@ public class BaseEnemy : MonoBehaviour
         MoveToNextCheckpoint();
         AttackScrapCollector();
 
-        DestroyObjectIfHealthZero();   
+        DestroyObjectIfHealthZero();
+
+        SlowEnemy();
     }
 
     protected virtual void MoveToNextCheckpoint()
@@ -70,7 +80,7 @@ public class BaseEnemy : MonoBehaviour
                 Destroy(gameObject);
                 waveManager.RemoveEnemyFromList(this);
                 //do damage based on how much health enemy has
-                waveManager.playerHealth.DoDamage(DamageToPlayerAtEnd * (health.currentHealth / health.maxHealth)); 
+                waveManager.playerHealth.DoDamage(DamageToPlayerAtEnd * (health.currentHealth / health.maxHealth));
                 return;
             }
 
@@ -109,7 +119,7 @@ public class BaseEnemy : MonoBehaviour
 
     protected virtual void DestroyObjectIfHealthZero()
     {
-        if(health.currentHealth <= 0)
+        if (health.currentHealth <= 0)
         {
             waveManager.RemoveEnemyFromList(this);
             DropOnDeath();
@@ -117,10 +127,49 @@ public class BaseEnemy : MonoBehaviour
         }
     }
 
-    public void ChangeMovespeed(float moveSpeed)
+    void SlowEnemy()
     {
-        actualMoveSpeed = moveSpeed;
+        if (slowEnemy && slowTimer > 0)
+        {
+            if (actualMoveSpeed != slowSpeed)
+                actualMoveSpeed = Mathf.Lerp(actualMoveSpeed, slowSpeed, 5 * Time.deltaTime);
+
+            slowTimer -= Time.deltaTime;
+
+
+            slowDamageTimer -= Time.deltaTime;          
+            if(slowDamageTimer <= 0)
+            {
+                health.DoDamage(slowDamage);
+                slowDamageTimer = slowDamageDelay;
+            }
+
+        }
+
+        if (slowEnemy && slowTimer <= 0)
+        {
+            if (actualMoveSpeed != moveSpeed)
+                actualMoveSpeed = Mathf.Lerp(actualMoveSpeed, moveSpeed, 5 * Time.deltaTime);
+
+            if (actualMoveSpeed == moveSpeed)
+                slowEnemy = false;
+        }
+
     }
+
+    public void SlowEnemyActivate(float slowSpeed, float slowTime, float slowDamage)
+    { 
+        slowTimer = slowTime;
+        this.slowSpeed = slowSpeed;
+        slowEnemy = true;
+        this.slowDamage = slowDamage;
+    }
+
+    public void ChangeMoveSpeed(float speed)
+    {
+        actualMoveSpeed = speed;
+    }
+
     public void ChangePlayerDamage(float damage)
     {
         DamageToPlayerAtEnd = damage;
