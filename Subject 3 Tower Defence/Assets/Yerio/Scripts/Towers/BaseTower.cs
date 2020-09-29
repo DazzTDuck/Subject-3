@@ -27,11 +27,11 @@ public class BaseTower : MonoBehaviour
     [Range(0, 25)] public float detectionDistance = 6f;
     [Tooltip("makes the distance smaller so in this case the tower won't switch to the other enemy as fast when detected")]
     [SerializeField] float extraDetectionDistance = 4f;
-    [SerializeField] float headRotationSpeed = 5f;
+    [SerializeField] protected float headRotationSpeed = 5f;
 
     //private variables
     [HideInInspector] public BaseEnemy targetEnemyInRange;
-    Quaternion originalHeadRotation;
+    protected Quaternion originalHeadRotation;
     protected bool onTarget = false;
     Projectile instantiatedProjectile;
 
@@ -148,11 +148,11 @@ public class BaseTower : MonoBehaviour
         return Vector3.zero;
     }
 
-    void RotateHeadToEnemy()
+    protected virtual void RotateHeadToEnemy()
     {
         Quaternion rotateTo;
         Vector3 direction;
-        if (onTarget && canShoot)
+        if (onTarget)
         {
             direction = CalculateDirection(targetEnemyInRange);
             rotateTo = Quaternion.LookRotation(direction);

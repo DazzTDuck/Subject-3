@@ -75,16 +75,22 @@ public class CryoTower : BaseTower
                 //Debug.Log("Cryo Tower Activated");
             }
         }
+    }
+    protected override void RotateHeadToEnemy()
+    {
+        Quaternion rotateTo;
+        Vector3 direction;
+        if (onTarget && canShoot)
+        {
+            direction = CalculateDirection(targetEnemyInRange);
+            rotateTo = Quaternion.LookRotation(direction);
+        }
+        else
+        {
+            rotateTo = originalHeadRotation;
+        }
 
-
-        //---Example timer---
-        //shootTimer -= Time.deltaTime;
-
-        //if (shootTimer <= 0 && !canShoot)
-        //{
-        //    canShoot = true;
-        //    shootTimer = currentShootDelay;
-        //}
-        //else canShoot = false;
+        towerHead.rotation = Quaternion.Slerp(towerHead.rotation, rotateTo, headRotationSpeed * Time.deltaTime);
+        //Debug.DrawRay(towerHead.position, direction, Color.green);
     }
 }
