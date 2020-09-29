@@ -8,6 +8,8 @@ using TMPro;
 
 public class GameEndHandler : MonoBehaviour
 {
+    [SerializeField] LevelManager levelManager;
+
     [SerializeField] Sprite winImage;
     [SerializeField] Sprite loseImage;
 
@@ -47,6 +49,7 @@ public class GameEndHandler : MonoBehaviour
 
         if (winTrigger)
         {
+            levelManager.LvlCompleted();
             sprite = winImage;
             text = "Next Level";
             //set button OnClick to restart the level
