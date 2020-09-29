@@ -262,6 +262,7 @@ MonoBehaviour:
     type: 3}
   waveManager: {fileID: 0}
   cantPlace: 0
+  allTowersIngame: []
   drawPlacementRadius: 0
 --- !u!114 &187737057 stripped
 MonoBehaviour:
@@ -526,6 +527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCurrency: 22
   currencyText: {fileID: 1344111800}
+  textDefaultColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!114 &534295761
 MonoBehaviour:
   m_ObjectHideFlags: 0

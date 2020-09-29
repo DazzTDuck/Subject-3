@@ -2,49 +2,86 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
-    // wordt gebruikt om aan tegeven welk lvls de player al gecomplete heeft bijv. 2 voor als je lvl 2 (en dus 1) gedaan hebt en 13 voor als je lvl 13 (en dus alle er voor) gedaan hebt
-    // wordt opgeslagen in PlayerPref Int "completedLevels"
-     private int completedIndex;
+
+    //De levels die zijn gecomplete worden opgeslagen in de int "completedlevels" in de playerPrefs
+    //Deze int geeft de laatste (hoogste getal) index aan van een level dat behaald is en dus elk level er voor 
+
 
     [SerializeField] LevelLoader levelLoader;
 
+    [SerializeField] Button[] levelSelectButtons;
+    [SerializeField] TMP_Text[] levelStateText;
+
+    //geef in elk level hier aan wat de index van dat level is
+    public int lvlindex = 0;
+
+    int indexB;
+    public string levelStateCompletionString;
+    public string levelStateLockedString;
+
+
+    void Awake()
+    {
+        UpdateLvlSelectUi();
+    }
+
+    private void UpdateLvlSelectUi()
+    {
+        foreach (Button button in levelSelectButtons)
+        {
+            if (indexB <= PlayerPrefs.GetInt("completedLevels"))
+            {
+                button.interactable = true;
+                levelStateText[indexB].text = levelStateCompletionString;
+            }
+            else
+            {
+                button.interactable = false;
+                levelStateText[indexB].text = levelStateLockedString;
+            }
+            indexB++;
+        }
+        indexB = 0;
+    }
+
     public void SelectLvl(int lvlIndex)
     {
-        completedIndex = PlayerPrefs.GetInt("completedLevels", 0);
-        if (completedIndex >= lvlIndex - 1)
+        if (PlayerPrefs.GetInt("completedLevels", 0) >= lvlIndex - 1)
         {
-            print("load " + lvlIndex);
-            //SceneManager.LoadScene(lvlIndex + SceneManager.GetActiveScene().buildIndex);
             levelLoader.LoadNewScene(lvlIndex + SceneManager.GetActiveScene().buildIndex);
         }
         else
         {
-            print("no " + completedIndex);
+            print("not compleded last lvl");
         }
     }
 
-    public void LvlCompleted(int lvlindex)
+    public void LvlCompleted()
     {
         if (lvlindex > PlayerPrefs.GetInt("completedLevels"))
         {
             PlayerPrefs.SetInt("completedLevels", lvlindex);
-            print("completed ");
+            UpdateLvlSelectUi();
         }
     }
 
     public void ResetCompletion()
     {
         PlayerPrefs.SetInt("completedLevels", 0);
-        completedIndex = 0;
+        UpdateLvlSelectUi();
 
-        print("RESET " + completedIndex + " <- should be 0");
+        print("RESET " + PlayerPrefs.GetInt("completedLevels") + " <- should be 0");
     }
 
     public void ToMainMenu()
     {
         SceneManager.LoadScene(0);
     }
+
+   
 }
