@@ -7,11 +7,13 @@ public class CryoTower : BaseTower
     [Header("---Cryo Tower---")]
     [SerializeField] LayerMask enemyMask;
     [SerializeField] GameObject cryoBeam;
+    [SerializeField] GameObject cryoHitEffect;
     [SerializeField] float slowedEnemySpeed;
     [SerializeField] float slowedEnemyTime;
     [SerializeField] float cryoBeamActiveTime;
 
     GameObject instantiatedCryoBeam;
+    GameObject instantiatedHitEffect;
     float cryoBeamTimer;
     bool cryoDeactivated;
 
@@ -28,20 +30,24 @@ public class CryoTower : BaseTower
                     if (!instantiatedCryoBeam)
                     {
                         instantiatedCryoBeam = Instantiate(cryoBeam, shootingPoint.transform);
+                        instantiatedHitEffect = Instantiate(cryoHitEffect, targetEnemyInRange.transform);
                         cryoBeamTimer = cryoBeamActiveTime;
                     }
-                    targetEnemyInRange.SlowEnemyActivate(slowedEnemySpeed, slowedEnemyTime, towerDamage);
+                    targetEnemyInRange.SlowEnemyActivate(slowedEnemySpeed, slowedEnemyTime, towerDamage);                        
                 }
-                else {
+                else   {
                     if (instantiatedCryoBeam)
+                    {
                         Destroy(instantiatedCryoBeam, 0.1f);
+                    }                     
                 }
             }
-
         }
         else {
             if (instantiatedCryoBeam)
+            {
                 Destroy(instantiatedCryoBeam, 0.1f);
+            }      
         }
     }
     protected override void ShootTimer()

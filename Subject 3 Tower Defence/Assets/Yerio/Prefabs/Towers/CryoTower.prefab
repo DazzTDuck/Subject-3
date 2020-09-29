@@ -274,17 +274,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerManager: {fileID: 0}
   towerUpgrade: {fileID: 11400000, guid: a040e92bc511b944ea0828c25de373b2, type: 2}
-  activeAI: 0
+  activeAI: 1
   detectionSphereOffset: {x: 0, y: 0, z: 0}
   towerHead: {fileID: 2953706445351922704}
   projectile: {fileID: 0}
   hitParticle: {fileID: 0}
   shootingPoint: {fileID: 4939705454168804452}
-  shootDelay: 0
-  towerDamage: 15
+  shootDelay: 3
+  towerDamage: 2
   shootSpeed: 7
   upwardsOffset: 0
-  detectionDistance: 6
+  detectionDistance: 4
   extraDetectionDistance: 1
   headRotationSpeed: 8
   targetEnemyInRange: {fileID: 0}
@@ -292,8 +292,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   cryoBeam: {fileID: 131216, guid: ee6a114cec5abb24f89afa63f8f3d574, type: 3}
-  slowedEnemySpeed: 0.5
+  cryoHitEffect: {fileID: 5355413806837976469, guid: fecfd24783a2c5d4b8b90c96fb9a0a41,
+    type: 3}
+  slowedEnemySpeed: 0.8
   slowedEnemyTime: 3
+  cryoBeamActiveTime: 4
 --- !u!1 &5455006069673097288
 GameObject:
   m_ObjectHideFlags: 0

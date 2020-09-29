@@ -149,7 +149,15 @@ public class BaseEnemy : MonoBehaviour
         if (slowEnemy && slowTimer <= 0)
         {
             if (actualMoveSpeed != moveSpeed)
+            {
                 actualMoveSpeed = Mathf.Lerp(actualMoveSpeed, moveSpeed, 5 * Time.deltaTime);
+
+                if (GetComponentInChildren<ParticleSystem>())
+                {
+                    var particleSystem = GetComponentInChildren<ParticleSystem>();
+                    Destroy(particleSystem);
+                }
+            }
 
             if (actualMoveSpeed == moveSpeed)
                 slowEnemy = false;
