@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dba1beb9dc3be841a12bba20d2bc49f, type: 3}
   m_Name: CryoTower
   m_EditorClassIdentifier: 
-  towerUpgradesInactive: 0000010101
+  towerUpgradesInactive: 0000000101
   towerCostUpgradeLevels:
   - 13
   - 11
@@ -25,9 +25,9 @@ MonoBehaviour:
   - 4
   shootDelayUpgradeLevels:
   - 0
-  - 0
-  - 0
-  - 0
+  - 1
+  - 2
+  - 4
   shootSpeedUpgradeLevels:
   - 0
   - 0
@@ -49,10 +49,10 @@ MonoBehaviour:
   - 20
   - 20
   costShootDelayLevels:
-  - 0
-  - 0
-  - 0
-  - 0
+  - 5
+  - 10
+  - 15
+  - 15
   costShootSpeedLevels:
   - 0
   - 0

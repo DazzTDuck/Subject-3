@@ -280,12 +280,12 @@ MonoBehaviour:
   projectile: {fileID: 0}
   hitParticle: {fileID: 0}
   shootingPoint: {fileID: 4939705454168804452}
-  shootDelay: 3
+  shootDelay: 5
   towerDamage: 2
   shootSpeed: 7
   upwardsOffset: 0
   detectionDistance: 4
-  extraDetectionDistance: 1
+  extraDetectionDistance: 0
   headRotationSpeed: 8
   targetEnemyInRange: {fileID: 0}
   enemyMask:

@@ -61,7 +61,7 @@ public class CryoTower : BaseTower
             if (cryoBeamTimer <= 0)
             {
                 canShoot = false;
-                shootTimer = shootDelay;
+                shootTimer = currentShootDelay;
                 cryoDeactivated = true;
                 //Debug.Log("Cryo Tower Deactivated");
             }

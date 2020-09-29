@@ -103,7 +103,7 @@ public class WaveManager : MonoBehaviour
         {
             var timerText = prepTimerPanel.GetComponentInChildren<TMP_Text>();
             prepTimer -= Time.deltaTime;
-            timerText.text = $"Preperation Time left      {prepTimer: 00:00}";
+            timerText.text = $"Preperation Time left\n{prepTimer: 00:00}";
         }
 
         if (prepTimer <= 0 && inPreperation)
