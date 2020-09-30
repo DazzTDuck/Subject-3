@@ -165,7 +165,7 @@ public class BaseEnemy : MonoBehaviour
 
     }
 
-    public void SlowEnemyActivate(float slowSpeed, float slowTime, float slowDamage)
+    public void SlowEnemyActivate(float slowSpeed, float slowTime, float slowDamage = 0)
     { 
         slowTimer = slowTime;
         this.slowSpeed = slowSpeed;

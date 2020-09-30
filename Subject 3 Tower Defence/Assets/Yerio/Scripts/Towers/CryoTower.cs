@@ -17,6 +17,12 @@ public class CryoTower : BaseTower
     float cryoBeamTimer;
     bool cryoDeactivated;
 
+    protected override void Start()
+    {
+        base.Start();
+        cryoBeamTimer = cryoBeamActiveTime;
+    }
+
     protected override void ShootToTarget()
     {
         RaycastHit hit;
@@ -31,7 +37,6 @@ public class CryoTower : BaseTower
                     {
                         instantiatedCryoBeam = Instantiate(cryoBeam, shootingPoint.transform);
                         instantiatedHitEffect = Instantiate(cryoHitEffect, targetEnemyInRange.transform);
-                        cryoBeamTimer = cryoBeamActiveTime;
                     }
                     targetEnemyInRange.SlowEnemyActivate(slowedEnemySpeed, slowedEnemyTime, towerDamage);                        
                 }

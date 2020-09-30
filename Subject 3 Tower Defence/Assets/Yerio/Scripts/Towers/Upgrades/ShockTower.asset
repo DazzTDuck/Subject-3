@@ -14,38 +14,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerUpgradesInactive: 0000000100
   towerCostUpgradeLevels:
-  - 0
-  - 0
-  - 0
+  - 15
+  - 11
+  - 8
+  - 6
   towerDamageUpgradeLevels:
   - 0
-  - 0
-  - 0
+  - 10
+  - 20
+  - 30
   shootDelayUpgradeLevels:
   - 0
-  - 0
-  - 0
+  - 1
+  - 2
+  - 3
   shootSpeedUpgradeLevels:
+  - 0
   - 0
   - 0
   - 0
   radiusDetectionUpgradeLevels:
   - 0
-  - 0
-  - 0
+  - 1
+  - 2
+  - 3
   costTowerCostLevels:
   - 10
-  - 20
-  - 30
-  costTowerDamageLevels:
   - 15
-  - 30
-  - 45
-  costShootDelayLevels:
+  - 25
+  - 25
+  costDamageLevels:
   - 10
   - 15
   - 20
+  - 20
+  costShootDelayLevels:
+  - 5
+  - 10
+  - 15
+  - 15
   costShootSpeedLevels:
+  - 0
   - 0
   - 0
   - 0
@@ -53,8 +62,9 @@ MonoBehaviour:
   - 5
   - 10
   - 15
-  costLevelIndex: 0
-  damageLevelIndex: 0
-  delayLevelIndex: 0
-  speedLevelIndex: 0
-  radiusLevelIndex: 0
+  - 15
+  costUpgradeIndex: 0
+  damageUpgradeIndex: 0
+  delayUpgradeIndex: 0
+  shootUpgradeIndex: 0
+  radiusUpgradeIndex: 0

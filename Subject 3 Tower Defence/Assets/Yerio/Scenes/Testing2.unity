@@ -363,8 +363,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -2336,13 +2336,13 @@ PrefabInstance:
     - target: {fileID: 8605008950558809801, guid: 5de957a50839a804f83631a3c44df07b,
         type: 3}
       propertyPath: stopWaves
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8605008950558809802, guid: 5de957a50839a804f83631a3c44df07b,
         type: 3}
       propertyPath: towerPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 4952468819694136093, guid: c6d7279f68419da48a1d9dffe1493194,
+      objectReference: {fileID: 8616615316573428971, guid: 952349827843be544b14efc5bbd7a7ce,
         type: 3}
     - target: {fileID: 8605008950558809802, guid: 5de957a50839a804f83631a3c44df07b,
         type: 3}

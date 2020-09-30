@@ -55,7 +55,7 @@ public class BaseTower : MonoBehaviour
         ApplyTowerValues();
         shootTimer = currentShootDelay;
     }
-    private void Start()
+    protected virtual void Start()
     {
         UpdateTowerValues();
         buyingHandler.UpdateTowerCostText();
@@ -131,6 +131,7 @@ public class BaseTower : MonoBehaviour
 
         if (onTarget)
         {
+            if(shootingPoint)
             Debug.DrawRay(shootingPoint.position, CalculateDirection(targetEnemyInRange), Color.red);
            //Debug.Log(distance);
         }
