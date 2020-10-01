@@ -14,6 +14,7 @@ public class Hovl_Laser2 : MonoBehaviour
 
     public float MaxLength;
 
+    #pragma warning disable
     [SerializeField] LayerMask enemyMask;
 
     private bool UpdateSaver = false;

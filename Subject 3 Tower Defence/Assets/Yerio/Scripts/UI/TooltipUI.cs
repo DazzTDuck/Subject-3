@@ -5,6 +5,7 @@ using TMPro;
 
 public class TooltipUI : MonoBehaviour
 {
+#pragma warning disable
     public static TooltipUI Instance { get; private set; }
 
     [SerializeField] RectTransform canvasRectTransform;

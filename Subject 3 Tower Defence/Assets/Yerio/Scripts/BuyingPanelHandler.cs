@@ -7,6 +7,7 @@ using TMPro;
 
 public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
 {
+#pragma warning disable 0649
     [Header("---Panels---")]
     [SerializeField] GameObject buySelectPanel;
     [SerializeField] GameObject upgradeSelectPanel;

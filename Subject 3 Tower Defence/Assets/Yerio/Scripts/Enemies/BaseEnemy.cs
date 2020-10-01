@@ -25,7 +25,6 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField, Tooltip("Maximum amount of scrap that can be dropped on death")]
     private int maxAmountCurrencyOnDrop = 5;
 
-
     [HideInInspector] public Health health;
     [HideInInspector] public float actualMoveSpeed;
 
@@ -36,13 +35,14 @@ public class BaseEnemy : MonoBehaviour
     int checkpointIndex;
     Transform currentCheckpoint;
 
-    float slowTimer = 0;
+    float slowTimer;
     bool slowEnemy = false;
     float slowSpeed;
+    GameObject instatiatedSlowEffect;
 
     float slowDamage;
     float slowDamageTimer;
-    float slowDamageDelay = 0.5f;
+    readonly float slowDamageDelay = 0.5f;
 
     private void Awake()
     {
@@ -137,8 +137,8 @@ public class BaseEnemy : MonoBehaviour
             slowTimer -= Time.deltaTime;
 
 
-            slowDamageTimer -= Time.deltaTime;          
-            if(slowDamageTimer <= 0)
+            slowDamageTimer -= Time.deltaTime;
+            if (slowDamageTimer <= 0)
             {
                 health.DoDamage(slowDamage);
                 slowDamageTimer = slowDamageDelay;
@@ -152,25 +152,23 @@ public class BaseEnemy : MonoBehaviour
             {
                 actualMoveSpeed = Mathf.Lerp(actualMoveSpeed, moveSpeed, 5 * Time.deltaTime);
 
-                if (GetComponentInChildren<ParticleSystem>())
+                if (instatiatedSlowEffect)
                 {
-                    var particleSystem = GetComponentInChildren<ParticleSystem>();
-                    Destroy(particleSystem);
-                }
+                    Destroy(instatiatedSlowEffect, 0.4f);
+                }           
             }
-
             if (actualMoveSpeed == moveSpeed)
                 slowEnemy = false;
         }
-
     }
 
-    public void SlowEnemyActivate(float slowSpeed, float slowTime, float slowDamage = 0)
+    public void SlowEnemyActivate(float slowSpeed, float slowTime, GameObject instantiatedEffect, float slowDamage = 0)
     { 
-        slowTimer = slowTime;
+        this.slowTimer = slowTime;
         this.slowSpeed = slowSpeed;
         slowEnemy = true;
         this.slowDamage = slowDamage;
+        instatiatedSlowEffect = instantiatedEffect;
     }
 
     public void ChangeMoveSpeed(float speed)
@@ -181,6 +179,21 @@ public class BaseEnemy : MonoBehaviour
     public void ChangePlayerDamage(float damage)
     {
         DamageToPlayerAtEnd = damage;
+    }
+
+    public GameObject GetEnemyChild(string nameOfObject)
+    {
+        var childs = GetComponentsInChildren<Transform>();
+
+        foreach (var child in childs)
+        {
+            if (child.name == nameOfObject)
+            {
+                return child.gameObject;
+            }
+        }
+
+        return null;
     }
 }
 

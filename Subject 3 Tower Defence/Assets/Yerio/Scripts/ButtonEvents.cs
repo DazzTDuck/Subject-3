@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class ButtonEvents : MonoBehaviour, IPointerExitHandler
 {
+#pragma warning disable 0649
     [SerializeField] bool clickSound;
     [SerializeField] bool hoverSound;
 

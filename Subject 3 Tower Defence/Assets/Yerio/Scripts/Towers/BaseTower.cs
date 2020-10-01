@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaseTower : MonoBehaviour
 {
+#pragma warning disable 0649
     public TowerManager towerManager;
     [Tooltip("Make sure this value is set to the correct tower upgrade IF the script is on a tower!")]
     public TowerUpgradesSO towerUpgrade;
@@ -21,7 +22,7 @@ public class BaseTower : MonoBehaviour
     [SerializeField] protected float shootSpeed = 7f;
     [SerializeField] float upwardsOffset;
     protected bool canShoot = false;
-    protected float shootTimer;
+    protected Timer shootDelayTimer;
 
     [Header("---Enemy Detection---")]
     [Range(0, 25)] public float detectionDistance = 6f;
@@ -36,7 +37,7 @@ public class BaseTower : MonoBehaviour
     Projectile instantiatedProjectile;
 
     [HideInInspector] protected float currentTowerDamage;
-    [HideInInspector] protected float currentShootDelay;
+    [HideInInspector] public float currentShootDelay;
     [HideInInspector] protected float currentShootSpeed;
     [HideInInspector] protected float currentDetectionDistance;
 
@@ -53,12 +54,13 @@ public class BaseTower : MonoBehaviour
         source = GetComponent<AudioSource>();
         UpdateOriginalHeadRotation();
         ApplyTowerValues();
-        shootTimer = currentShootDelay;
     }
     protected virtual void Start()
     {
         UpdateTowerValues();
         buyingHandler.UpdateTowerCostText();
+
+        shootDelayTimer = gameObject.AddComponent<Timer>();
     }
 
     void ApplyTowerValues()
@@ -95,14 +97,10 @@ public class BaseTower : MonoBehaviour
 
     protected virtual void ShootTimer()
     {
-        shootTimer -= Time.deltaTime;
-
-        if(shootTimer <= 0 && !canShoot)
+        if (!shootDelayTimer.IsTimerActive())
         {
-            canShoot = true;
-            shootTimer = currentShootDelay;
+            shootDelayTimer.SetTimer(currentShootDelay, () => canShoot = true, () => canShoot = false);
         }
-        else canShoot = false;
     }
 
     protected virtual void TargetDetection()
@@ -183,7 +181,7 @@ public class BaseTower : MonoBehaviour
     public virtual void UpdateTowerValues()
     {
         currentTowerDamage = towerDamage + towerUpgrade.towerDamageUpgradeLevels[towerUpgrade.damageUpgradeIndex];
-        currentShootDelay = shootDelay - towerUpgrade.shootDelayUpgradeLevels[towerUpgrade.shootUpgradeIndex];
+        currentShootDelay = shootDelay - towerUpgrade.shootDelayUpgradeLevels[towerUpgrade.delayUpgradeIndex];
         currentShootSpeed = shootSpeed + towerUpgrade.shootDelayUpgradeLevels[towerUpgrade.shootUpgradeIndex];
         currentDetectionDistance = detectionDistance + towerUpgrade.radiusDetectionUpgradeLevels[towerUpgrade.radiusUpgradeIndex];
     }

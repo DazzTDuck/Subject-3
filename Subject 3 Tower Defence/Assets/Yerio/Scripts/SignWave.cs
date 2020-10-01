@@ -6,7 +6,8 @@ public class SignWave : MonoBehaviour
 {
     Vector2 floatY;
     float originalY;
-    public float strength = 0.3f;
+    public float strength = 0.08f;
+    public float timeStrength = 2;
 
     void Start()
     {
@@ -17,7 +18,7 @@ public class SignWave : MonoBehaviour
     void Update()
     {
         var floatY = transform.position;
-        floatY.y = originalY + (Mathf.Sin(Time.time) * strength);
+        floatY.y = originalY + (Mathf.Sin(Time.time * timeStrength) * strength);
         transform.position = floatY;
     }
 }

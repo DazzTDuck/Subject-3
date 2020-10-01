@@ -17,12 +17,12 @@ MonoBehaviour:
   - 15
   - 11
   - 8
-  - 6
+  - 5
   towerDamageUpgradeLevels:
   - 0
+  - 2
   - 4
-  - 5
-  - 6
+  - 7
   shootDelayUpgradeLevels:
   - 0
   - 0
@@ -59,7 +59,7 @@ MonoBehaviour:
   - 10
   - 15
   - 15
-  costUpgradeIndex: 2
+  costUpgradeIndex: 0
   damageUpgradeIndex: 0
   delayUpgradeIndex: 0
   shootUpgradeIndex: 0

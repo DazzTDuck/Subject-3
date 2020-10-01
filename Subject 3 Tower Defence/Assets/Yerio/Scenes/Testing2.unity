@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  currentHealth: 0
+  currentHealth: 100
   healthBar: {fileID: 566199466}
   healthBarCanvas: {fileID: 0}
   enemyHealth: 0
@@ -401,9 +401,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399bcad84434847409fa8d2bfe689c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCurrency: 100
+  currentCurrency: 0
   currencyText: {fileID: 1344111800}
-  textDefaultColor: {r: 0, g: 0, b: 0, a: 1}
+  textDefaultColor: {r: 0.44313726, g: 0.81960785, b: 0.83137256, a: 1}
 --- !u!114 &534295761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,7 +581,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 50.000004, y: -104.659004, z: 0}
 --- !u!1 &718996574 stripped
 GameObject:
@@ -652,7 +652,7 @@ PrefabInstance:
     - target: {fileID: 8433604549212415451, guid: 33f999394503f7645be24a8c188c00df,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8433604549212415451, guid: 33f999394503f7645be24a8c188c00df,
         type: 3}
@@ -795,7 +795,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1259044995
 GameObject:
@@ -833,7 +833,7 @@ Transform:
   - {fileID: 1755484731}
   - {fileID: 382923863}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: -0.264, z: 0}
 --- !u!1001 &1318009205
 PrefabInstance:
@@ -880,7 +880,7 @@ PrefabInstance:
     - target: {fileID: 7648895193772435260, guid: 91264328bec71814a884f5725c7c107b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7648895193772435260, guid: 91264328bec71814a884f5725c7c107b,
         type: 3}
@@ -947,11 +947,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popupLeanSpeed: 1.5
   popupDelayTime: 2.2
-  decendTweenSpeed: 2
-  decendValule: 154
-  moveTweenSpeed: 0.15
-  pressWaitTime: 0.1
-  pressTweenSpeed: 0.1
 --- !u!4 &1360985894
 Transform:
   m_ObjectHideFlags: 0
@@ -964,7 +959,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1440169539
 GameObject:
@@ -1083,114 +1078,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1592742831, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: showHoverTooltip
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742831, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: tooltipText
-      value: Upgrades the cost of the tower
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742833, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: showHoverTooltip
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742833, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: tooltipText
-      value: Buy Scrap Collector
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742834, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: showHoverTooltip
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742834, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: tooltipText
-      value: Buy Cryo Tower
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742835, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: showHoverTooltip
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742835, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: tooltipText
-      value: Buy Shock Tower
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742836, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: showHoverTooltip
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742836, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: tooltipText
-      value: Buy Laser Tower
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742837, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: showHoverTooltip
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742837, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: tooltipText
-      value: Buy Turret Tower
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742838, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: tooltipText
-      value: Upgrade Scrap Collector
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742838, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: showHoverTooltip
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742839, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: tooltipText
-      value: Upgrade Cryo Tower
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742839, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: showHoverTooltip
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742840, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: showHoverTooltip
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742840, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: tooltipText
-      value: Upgrade Shock Tower
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742841, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: showHoverTooltip
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742841, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: tooltipText
-      value: Upgrade Laser Tower
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742842, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: showHoverTooltip
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1592742842, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
-      propertyPath: tooltipText
-      value: Upgrade Turret Tower
-      objectReference: {fileID: 0}
-    - target: {fileID: 2950648158323768287, guid: b4793d48e6cd1394886c4af51ca634c6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4014366968188049119, guid: b4793d48e6cd1394886c4af51ca634c6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4283347687818274231, guid: b4793d48e6cd1394886c4af51ca634c6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6905168629419512552, guid: b4793d48e6cd1394886c4af51ca634c6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6905168629574817679, guid: b4793d48e6cd1394886c4af51ca634c6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1206,11 +1093,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 130520354}
-    - target: {fileID: 6905168630322717654, guid: b4793d48e6cd1394886c4af51ca634c6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6905168630357366152, guid: b4793d48e6cd1394886c4af51ca634c6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1276,11 +1158,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIHolder
       objectReference: {fileID: 0}
-    - target: {fileID: 6905168630927349021, guid: b4793d48e6cd1394886c4af51ca634c6,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6905168630936936757, guid: b4793d48e6cd1394886c4af51ca634c6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1296,15 +1173,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7566143926433840978, guid: b4793d48e6cd1394886c4af51ca634c6,
+    - target: {fileID: 7863371305630665003, guid: b4793d48e6cd1394886c4af51ca634c6,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_fontColor.r
+      value: 0.44313726
       objectReference: {fileID: 0}
-    - target: {fileID: 8896871604725331955, guid: b4793d48e6cd1394886c4af51ca634c6,
+    - target: {fileID: 7863371305630665003, guid: b4793d48e6cd1394886c4af51ca634c6,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_fontColor.g
+      value: 0.81960785
+      objectReference: {fileID: 0}
+    - target: {fileID: 7863371305630665003, guid: b4793d48e6cd1394886c4af51ca634c6,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0.83137256
+      objectReference: {fileID: 0}
+    - target: {fileID: 7863371305630665003, guid: b4793d48e6cd1394886c4af51ca634c6,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4292137329
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
@@ -1400,7 +1287,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1693354470 stripped
 GameObject:
@@ -1502,7 +1389,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2750253893175901429
 PrefabInstance:
@@ -1554,7 +1441,7 @@ PrefabInstance:
     - target: {fileID: 2750253894175119680, guid: 7ff72ad5f0041c34e9296434d2f7c8a6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2750253894175119680, guid: 7ff72ad5f0041c34e9296434d2f7c8a6,
         type: 3}
@@ -1678,7 +1565,7 @@ PrefabInstance:
     - target: {fileID: 719153209288343184, guid: e9a3a8800f88e9c479f9f8128db6bf77,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 719153209288343184, guid: e9a3a8800f88e9c479f9f8128db6bf77,
         type: 3}
@@ -2142,7 +2029,7 @@ PrefabInstance:
     - target: {fileID: 5789073105018593527, guid: efa6e2e5e61a2004c9ee46ea7fe69518,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5789073105018593527, guid: efa6e2e5e61a2004c9ee46ea7fe69518,
         type: 3}
@@ -2333,33 +2220,6 @@ PrefabInstance:
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 534295759}
-    - target: {fileID: 8605008950558809801, guid: 5de957a50839a804f83631a3c44df07b,
-        type: 3}
-      propertyPath: stopWaves
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8605008950558809802, guid: 5de957a50839a804f83631a3c44df07b,
-        type: 3}
-      propertyPath: towerPrefabs.Array.data[2]
-      value: 
-      objectReference: {fileID: 8616615316573428971, guid: 952349827843be544b14efc5bbd7a7ce,
-        type: 3}
-    - target: {fileID: 8605008950558809802, guid: 5de957a50839a804f83631a3c44df07b,
-        type: 3}
-      propertyPath: towerPrefabs.Array.data[3]
-      value: 
-      objectReference: {fileID: 4952468819694136093, guid: 6a14229239f21844c80dd546b1767c9e,
-        type: 3}
-    - target: {fileID: 8605008950558809803, guid: 5de957a50839a804f83631a3c44df07b,
-        type: 3}
-      propertyPath: wallLayer.m_Bits
-      value: 2048
-      objectReference: {fileID: 0}
-    - target: {fileID: 8605008950558809803, guid: 5de957a50839a804f83631a3c44df07b,
-        type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 1024
-      objectReference: {fileID: 0}
     - target: {fileID: 8605008950558809846, guid: 5de957a50839a804f83631a3c44df07b,
         type: 3}
       propertyPath: m_Name

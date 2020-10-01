@@ -9814,8 +9814,8 @@ MonoBehaviour:
   fireRatePerSecond: 1
   DamageToPlayerAtEnd: 10
   minDistanceToCP: 0.7
-  minAmountCurrencyOnDrop: 7
-  maxAmountCurrencyOnDrop: 10
+  minAmountCurrencyOnDrop: 8
+  maxAmountCurrencyOnDrop: 15
   health: {fileID: 0}
   actualMoveSpeed: 0
 --- !u!114 &-7845880567163949837
@@ -9873,7 +9873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86db883dc5bb28145a05e370bdf71cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strength: 0.3
+  strength: 0.15
+  timeStrength: 2
 --- !u!1 &6448205908046862698
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class LaserTower : BaseTower
 {
+#pragma warning disable 0649
     [Header("---Laser---")]
     [SerializeField] GameObject laserEffect;
 
     protected GameObject laserInstance;
     Hovl_Laser LaserScript;
     Hovl_Laser2 LaserScript2;
-
+#pragma warning disable 0649
     [SerializeField] LayerMask enemyMask;
 
     List<LaserTower> laserTowers = new List<LaserTower>();

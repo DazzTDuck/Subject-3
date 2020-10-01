@@ -111,7 +111,6 @@ public class WaveManager : MonoBehaviour
             preptimerAnimator.SetTrigger("Up");
             inPreperation = false;
             canLoad = true;
-            //StartCoroutine(animations.DecendTextUp(prepTimerPanel, prepTimerOriginalPos));
         }
     }
 

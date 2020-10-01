@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+#pragma warning disable
     public GameObject hitEffect;
     BaseEnemy targetEnemy = null;
     float offset;
@@ -16,7 +17,7 @@ public class Projectile : MonoBehaviour
 
     public void ShootProjectile(BaseEnemy target, float shootSpeed, float projectileDamage, Vector3 direction, float upwardsOffet)
     {
-        this.targetEnemy = target;
+        targetEnemy = target;
         damage = projectileDamage;
         this.direction = direction;
         this.shootSpeed = shootSpeed;

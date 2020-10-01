@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CryoTower : BaseTower
 {
+#pragma warning disable
     [Header("---Cryo Tower---")]
     [SerializeField] LayerMask enemyMask;
     [SerializeField] GameObject cryoBeam;
@@ -14,13 +15,15 @@ public class CryoTower : BaseTower
 
     GameObject instantiatedCryoBeam;
     GameObject instantiatedHitEffect;
-    float cryoBeamTimer;
+    //float cryoBeamTimer;
     bool cryoDeactivated;
+
+    Timer cryoBeamTimer;
 
     protected override void Start()
     {
         base.Start();
-        cryoBeamTimer = cryoBeamActiveTime;
+        cryoBeamTimer = gameObject.AddComponent<Timer>();
     }
 
     protected override void ShootToTarget()
@@ -36,55 +39,44 @@ public class CryoTower : BaseTower
                     if (!instantiatedCryoBeam)
                     {
                         instantiatedCryoBeam = Instantiate(cryoBeam, shootingPoint.transform);
+                    }
+
+                    if (!instantiatedHitEffect && targetEnemyInRange)
+                    {
                         instantiatedHitEffect = Instantiate(cryoHitEffect, targetEnemyInRange.transform);
                     }
-                    targetEnemyInRange.SlowEnemyActivate(slowedEnemySpeed, slowedEnemyTime, towerDamage);                        
+                    else if (targetEnemyInRange && !targetEnemyInRange.GetEnemyChild(instantiatedHitEffect.name))
+                        instantiatedHitEffect = Instantiate(cryoHitEffect, targetEnemyInRange.transform);
+
+                    targetEnemyInRange.SlowEnemyActivate(slowedEnemySpeed, slowedEnemyTime, instantiatedHitEffect, towerDamage);
                 }
-                else   {
+                else
+                {
                     if (instantiatedCryoBeam)
                     {
                         Destroy(instantiatedCryoBeam, 0.1f);
-                    }                     
+                    }
                 }
             }
         }
-        else {
+        else
+        {
             if (instantiatedCryoBeam)
             {
                 Destroy(instantiatedCryoBeam, 0.1f);
-            }      
+            }
         }
     }
     protected override void ShootTimer()
     {
-        //player can shoot for the amount of Active time and if it is reached deactivate the AI
-        //if the deactivated timer had run out activate the AI again and say the tower can shoot
-        if (!cryoDeactivated)
+        if (!cryoDeactivated && !cryoBeamTimer.IsTimerActive() && onTarget)
         {
-            cryoBeamTimer -= Time.deltaTime;
-
-            if (cryoBeamTimer <= 0)
-            {
-                canShoot = false;
-                shootTimer = currentShootDelay;
-                cryoDeactivated = true;
-                //Debug.Log("Cryo Tower Deactivated");
-            }
-            else canShoot = true;
-
+            cryoBeamTimer.SetTimer(cryoBeamActiveTime, () => { canShoot = false; cryoDeactivated = true; }, () => canShoot = true);
         }
 
-        if (cryoDeactivated)
+        if (cryoDeactivated && !shootDelayTimer.IsTimerActive())
         {
-            shootTimer -= Time.deltaTime;
-
-            if (shootTimer <= 0)
-            {
-                canShoot = true;
-                cryoBeamTimer = cryoBeamActiveTime;
-                cryoDeactivated = false;
-                //Debug.Log("Cryo Tower Activated");
-            }
+            shootDelayTimer.SetTimer(currentShootDelay, () => { canShoot = true; cryoDeactivated = false; });
         }
     }
     protected override void RotateHeadToEnemy()

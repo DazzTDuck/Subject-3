@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
     //De levels die zijn gecomplete worden opgeslagen in de int "completedlevels" in de playerPrefs
     //Deze int geeft de laatste (hoogste getal) index aan van een level dat behaald is en dus elk level er voor 
 
-
+#pragma warning disable
     [SerializeField] LevelLoader levelLoader;
 
     [SerializeField] Button[] levelSelectButtons;

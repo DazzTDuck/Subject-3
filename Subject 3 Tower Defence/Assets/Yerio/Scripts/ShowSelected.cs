@@ -7,6 +7,7 @@ using TMPro;
 
 public class ShowSelected : MonoBehaviour, IPointerClickHandler
 {
+#pragma warning disable 0649
     [SerializeField] Color selectedColor;
     [SerializeField] Color deselectedColor;
 

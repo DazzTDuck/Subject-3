@@ -13,7 +13,7 @@ public class Hovl_Laser : MonoBehaviour
     public float MaxLength;
     [HideInInspector]
     public LineRenderer Laser;
-
+#pragma warning disable 0649
     [SerializeField] LayerMask enemyMask;
 
     public float MainTextureLength = 1f;

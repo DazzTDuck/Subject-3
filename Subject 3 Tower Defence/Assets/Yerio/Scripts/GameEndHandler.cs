@@ -8,6 +8,7 @@ using TMPro;
 
 public class GameEndHandler : MonoBehaviour
 {
+#pragma warning disable
     [SerializeField] LevelManager levelManager;
 
     [SerializeField] Sprite winImage;
@@ -44,8 +45,7 @@ public class GameEndHandler : MonoBehaviour
 
         Time.timeScale = 0f;
 
-        button1.onClick.AddListener(delegate () { Time.timeScale = 1f; });
-        button1.onClick.AddListener(delegate () { animator.SetTrigger("Close"); });
+        button1.onClick.AddListener(() => { Time.timeScale = 1f; animator.SetTrigger("Close"); });
 
         if (winTrigger)
         {
@@ -53,20 +53,19 @@ public class GameEndHandler : MonoBehaviour
             sprite = winImage;
             text = "Next Level";
             //set button OnClick to restart the level
-            button1.onClick.AddListener(delegate () { levelLoader.LoadNextScene(); });
+            button1.onClick.AddListener(() => { levelLoader.LoadNextScene(); });
         }
         else
         {
             sprite = loseImage;
             text = "Restart Level";
             //set button OnClick to load the next level 
-            button1.onClick.AddListener(delegate () { levelLoader.LoadNewScene(SceneManager.GetActiveScene().buildIndex); });
+            button1.onClick.AddListener(() => { levelLoader.LoadNewScene(SceneManager.GetActiveScene().buildIndex); });
         }
 
         gameEndBG.sprite = sprite;
         buttonText.text = text;
         animator.SetTrigger("Open");
-
     }
 
 }
