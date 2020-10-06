@@ -10,7 +10,7 @@ public class MainCam : MonoBehaviour
     public float defaultCamRotY;
 
     //is also used to set the cam in the right posision so make sure the manager is on 0,0,0
-    public GameObject manager; 
+    public GameObject manager;
 
     public Vector3 topCamPos;
     public float topCamRotX;
@@ -21,14 +21,12 @@ public class MainCam : MonoBehaviour
     public Vector3 focusGunOffset;
     public float gunZoom = 35f;
     public float camDefaultFov = 60f;
-    
+
 
     [HideInInspector]
     public bool isTopView;
 
-    bool isLerping = false;
-    float lerpSpeed = 5;
-
+    readonly float lerpSpeed = 7;
     Vector3 currentCamPos;
     Quaternion currentCamRot;
 
@@ -51,7 +49,7 @@ public class MainCam : MonoBehaviour
 
     void CamChangeTopView()
     {
-        if (Input.GetButtonDown("Debug1") && isLerping)
+        if (Input.GetButtonDown("Debug1"))
         {
             if (!isTopView)
             {
@@ -71,7 +69,7 @@ public class MainCam : MonoBehaviour
 
     void FocusOnGun()
     {
-        if (Input.GetButtonDown("Jump") && !isLerping)
+        if (Input.GetButtonDown("Jump"))
         {
 
             if (!isGunFocus)
@@ -93,28 +91,22 @@ public class MainCam : MonoBehaviour
     }
     private void UpdateCameraLerp()
     {
-        if (isLerping)
-        {
-            LerpCamera(currentCamPos, currentCamRot);
-        }
+        LerpCamera(currentCamPos, currentCamRot);
     }
 
     void MoveCamera(Vector3 position, Quaternion rotation)
     {
-        isLerping = true;
         currentCamPos = position;
         currentCamRot = rotation;
     }
 
     void LerpCamera(Vector3 position, Quaternion rotation)
     {
-        if (transform.position == position && transform.rotation == rotation)
-        {
-            isLerping = false;
-        }
+        if (transform.position != position)
+            transform.position = Vector3.Lerp(transform.position, position, lerpSpeed * Time.deltaTime);
 
-        transform.position = Vector3.Lerp(transform.position, position, lerpSpeed * Time.deltaTime);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, lerpSpeed * Time.deltaTime);
+        if(transform.rotation != rotation)
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, lerpSpeed * Time.deltaTime);
     }
 
     Vector3 TowerPosistion()
