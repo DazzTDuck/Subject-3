@@ -5,14 +5,15 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
 
-public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
+public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-#pragma warning disable 0649
+    
     [Header("---Panels---")]
     [SerializeField] GameObject buySelectPanel;
     [SerializeField] GameObject upgradeSelectPanel;
     [SerializeField] GameObject upgradePanel;
-    
+    public bool isHoveringOverMenu = false;
+
     [Header("---Tower Upgrades---")]
     [SerializeField] TowerUpgradesSO turretUpgrades;
     [SerializeField] TowerUpgradesSO laserUpgrades;
@@ -28,7 +29,7 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
     [SerializeField] TMP_Text[] buttonsTowerCost;
 
     [SerializeField] TowerBuilder towerBuilder;
-    
+
     Animator animator;
     bool panelOpen;
     TowerUpgradesSO selectedUpgrade;
@@ -164,17 +165,19 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
                     currencyManager.currentCurrency -= selectedUpgrade.costTowerCostLevels[selectedUpgrade.costUpgradeIndex];
                     selectedUpgrade.UpgradeCost();
                 }
-                else {
+                else
+                {
                     NotEnoughMoney();
                 }
-                    break;
+                break;
             case 1: //Tower Damage Button
                 if (selectedUpgrade.costDamageLevels[selectedUpgrade.damageUpgradeIndex] <= currencyManager.currentCurrency)
                 {
                     currencyManager.currentCurrency -= selectedUpgrade.costDamageLevels[selectedUpgrade.damageUpgradeIndex];
                     selectedUpgrade.UpgradeDamage();
                 }
-                else {
+                else
+                {
                     NotEnoughMoney();
                 }
 
@@ -185,7 +188,8 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
                     currencyManager.currentCurrency -= selectedUpgrade.costShootDelayLevels[selectedUpgrade.delayUpgradeIndex];
                     selectedUpgrade.UpgradeShootDelay();
                 }
-                else {
+                else
+                {
                     NotEnoughMoney();
                 }
                 break;
@@ -195,7 +199,8 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
                     currencyManager.currentCurrency -= selectedUpgrade.costShootSpeedLevels[selectedUpgrade.shootUpgradeIndex];
                     selectedUpgrade.UpgradeShootSpeed();
                 }
-                else {
+                else
+                {
                     NotEnoughMoney();
                 }
                 break;
@@ -205,7 +210,8 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
                     currencyManager.currentCurrency -= selectedUpgrade.costRadiusDetectionLevels[selectedUpgrade.radiusUpgradeIndex];
                     selectedUpgrade.UpgradeRadiusDetection();
                 }
-                else {
+                else
+                {
                     NotEnoughMoney();
                 }
                 break;
@@ -234,4 +240,15 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler
         }
         towerCostIndex = 0;
     }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        isHoveringOverMenu = true;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        isHoveringOverMenu = false;
+    }
 }
+
