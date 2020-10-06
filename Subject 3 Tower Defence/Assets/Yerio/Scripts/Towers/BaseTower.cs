@@ -91,7 +91,7 @@ public class BaseTower : MonoBehaviour
         {
             source.Play();
             instantiatedProjectile = Instantiate(projectile, shootingPoint.position, Quaternion.identity);
-            instantiatedProjectile.ShootProjectile(targetEnemyInRange, currentShootSpeed, currentTowerDamage, CalculateDirection(targetEnemyInRange), upwardsOffset);         
+            instantiatedProjectile.ShootProjectile(currentShootSpeed, currentTowerDamage, CalculateDirection(targetEnemyInRange), upwardsOffset, targetEnemyInRange);         
         }
     }
 

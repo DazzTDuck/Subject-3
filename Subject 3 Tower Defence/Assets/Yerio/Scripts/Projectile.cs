@@ -15,7 +15,7 @@ public class Projectile : MonoBehaviour
 
     [SerializeField] LayerMask enemyMask;
 
-    public void ShootProjectile(BaseEnemy target, float shootSpeed, float projectileDamage, Vector3 direction, float upwardsOffet)
+    public void ShootProjectile( float shootSpeed, float projectileDamage, Vector3 direction, float upwardsOffet, BaseEnemy target = null)
     {
         targetEnemy = target;
         damage = projectileDamage;
