@@ -9,6 +9,8 @@ public class SignWave : MonoBehaviour
     public float strength = 0.08f;
     public float timeStrength = 2;
 
+    float time = 0;
+
     void Start()
     {
         originalY = transform.position.y;
@@ -17,8 +19,10 @@ public class SignWave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        time += Time.deltaTime;
+
         var floatY = transform.position;
-        floatY.y = originalY + (Mathf.Sin(Time.time * timeStrength) * strength);
+        floatY.y = originalY + (Mathf.Sin(time * timeStrength) * strength);
         transform.position = floatY;
     }
 }

@@ -1,11 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MainCam : MonoBehaviour
 {
-
-
     public Vector3 camOffset;
     public float defaultCamRotX;
     public float defaultCamRotY;
@@ -23,17 +22,22 @@ public class MainCam : MonoBehaviour
     public float gunZoom = 35f;
     public float camDefaultFov = 60f;
     
-    
 
     [HideInInspector]
     public bool isTopView;
+
+    bool isLerping = false;
+    float lerpSpeed = 5;
+
+    Vector3 currentCamPos;
+    Quaternion currentCamRot;
 
 
     // Start is called before the first frame update
     void Awake()
     {
-
-        MoveCamToStartLocation();
+        MoveCamera(StartPosistion(), StartRotation());
+        //MoveCamToStartLocation();
     }
 
     // Update is called once per frame
@@ -41,22 +45,25 @@ public class MainCam : MonoBehaviour
     {
         CamChangeTopView();
         FocusOnGun();
+
+        UpdateCameraLerp();
     }
 
-    
     void CamChangeTopView()
     {
-        if (Input.GetButtonDown("Debug1"))
+        if (Input.GetButtonDown("Debug1") && isLerping)
         {
             if (!isTopView)
             {
-                MoveCamToTopLocation();
+                //MoveCamToTopLocation();
+                MoveCamera(TopPosistion(), TopRotation());
                 isTopView = true;
                 isGunFocus = false;
             }
             else
             {
-                MoveCamToStartLocation();
+                MoveCamera(StartPosistion(), StartRotation());
+                //MoveCamToStartLocation();
                 isTopView = false;
             }
         }
@@ -64,17 +71,19 @@ public class MainCam : MonoBehaviour
 
     void FocusOnGun()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && !isLerping)
         {
 
             if (!isGunFocus)
             {
-                MoveCamToTower();
+                MoveCamera(TowerPosistion(), TowerRotation());
+                //MoveCamToTower();
                 isGunFocus = true;
             }
             else
             {
-                MoveCamToStartLocation();
+                MoveCamera(StartPosistion(), StartRotation());
+                //MoveCamToStartLocation();
                 isGunFocus = false;
                 isTopView = false;
             }
@@ -82,23 +91,55 @@ public class MainCam : MonoBehaviour
             manager.GetComponent<TowerBuilder>().CancelPlacement();
         }
     }
-
-    void MoveCamToStartLocation()
+    private void UpdateCameraLerp()
     {
-        transform.position = manager.transform.position + camOffset;
-        transform.rotation = Quaternion.Euler(defaultCamRotX, defaultCamRotY, 0f);   
+        if (isLerping)
+        {
+            LerpCamera(currentCamPos, currentCamRot);
+        }
     }
 
-    void MoveCamToTopLocation()
+    void MoveCamera(Vector3 position, Quaternion rotation)
     {
-        transform.position = topCamPos;
-        transform.rotation = Quaternion.Euler(topCamRotX, topCamRotY, 0f);
+        isLerping = true;
+        currentCamPos = position;
+        currentCamRot = rotation;
     }
 
-    void MoveCamToTower()
+    void LerpCamera(Vector3 position, Quaternion rotation)
     {
-        transform.position = focusGun.transform.position + focusGunOffset;
-        transform.rotation = focusGun.transform.rotation;
+        if (transform.position == position && transform.rotation == rotation)
+        {
+            isLerping = false;
+        }
+
+        transform.position = Vector3.Lerp(transform.position, position, lerpSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, lerpSpeed * Time.deltaTime);
+    }
+
+    Vector3 TowerPosistion()
+    {
+        return focusGun.transform.position + focusGunOffset;
+    }
+    Quaternion TowerRotation()
+    {
+        return focusGun.transform.rotation;
+    }
+    Vector3 StartPosistion()
+    {
+        return Vector3.zero + camOffset;
+    }
+    Quaternion StartRotation()
+    {
+        return Quaternion.Euler(defaultCamRotX, defaultCamRotY, 0f);
+    }
+    Vector3 TopPosistion()
+    {
+        return topCamPos;
+    }
+    Quaternion TopRotation()
+    {
+        return Quaternion.Euler(topCamRotX, topCamRotY, 0f);
     }
 
 
