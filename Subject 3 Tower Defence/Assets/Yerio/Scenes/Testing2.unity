@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: c3ea81ec247c3484f95fe5dac6cdbe30,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -334,13 +334,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534295754}
-  m_LocalRotation: {x: 0, y: 0.92387956, z: -0.38268343, w: 0}
-  m_LocalPosition: {x: -2.03, y: 10.43, z: 14.1}
+  m_LocalRotation: {x: 0.0062960824, y: 0.9140553, z: -0.4052921, w: 0.014199554}
+  m_LocalPosition: {x: -1.19, y: 10.43, z: 14.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 47.825, y: 178.22, z: 0}
 --- !u!114 &534295758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399bcad84434847409fa8d2bfe689c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCurrency: 100
+  currentCurrency: 50
   currencyText: {fileID: 1344111800}
   textDefaultColor: {r: 0.44313726, g: 0.81960785, b: 0.83137256, a: 1}
 --- !u!114 &534295761
@@ -416,9 +416,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b829b7fc13672c544b4ba8712241b0b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camOffset: {x: 0, y: 11, z: 15}
-  defaultCamRotX: 45
-  defaultCamRotY: 180
+  camOffset: {x: -1.19, y: 10.43, z: 14.1}
+  defaultCamRotX: 47.825
+  defaultCamRotY: 178.22
   manager: {fileID: 130520350}
   topCamPos: {x: 0, y: 20, z: 0}
   topCamRotX: 90
@@ -2177,6 +2177,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8605008950558809801, guid: 5de957a50839a804f83631a3c44df07b,
         type: 3}
+      propertyPath: enemiesSpawnChance.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605008950558809801, guid: 5de957a50839a804f83631a3c44df07b,
+        type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 609641173}
@@ -2200,6 +2205,41 @@ PrefabInstance:
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 534295759}
+    - target: {fileID: 8605008950558809801, guid: 5de957a50839a804f83631a3c44df07b,
+        type: 3}
+      propertyPath: enemiesPerWave
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605008950558809801, guid: 5de957a50839a804f83631a3c44df07b,
+        type: 3}
+      propertyPath: enemiesExtraPerWave
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605008950558809801, guid: 5de957a50839a804f83631a3c44df07b,
+        type: 3}
+      propertyPath: enemiesSpawnChance.Array.data[0]
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605008950558809801, guid: 5de957a50839a804f83631a3c44df07b,
+        type: 3}
+      propertyPath: enemiesSpawnChance.Array.data[1]
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605008950558809801, guid: 5de957a50839a804f83631a3c44df07b,
+        type: 3}
+      propertyPath: enemiesSpawnChance.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605008950558809801, guid: 5de957a50839a804f83631a3c44df07b,
+        type: 3}
+      propertyPath: amountTanksToSpawm
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605008950558809801, guid: 5de957a50839a804f83631a3c44df07b,
+        type: 3}
+      propertyPath: amountDronesToSpawm
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8605008950558809846, guid: 5de957a50839a804f83631a3c44df07b,
         type: 3}
       propertyPath: m_Name

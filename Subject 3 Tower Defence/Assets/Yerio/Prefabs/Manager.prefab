@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8605008950558809801}
   - component: {fileID: 8605008950558809803}
   - component: {fileID: 8605008950558809802}
+  - component: {fileID: 500742221}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Manager
@@ -68,10 +69,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
+  enemiesToSpawn:
+  - {fileID: 4371661066087790494, guid: 203e4efe0d9fce64384aced377745401, type: 3}
+  - {fileID: 7064930473326820723, guid: 9e6325fe9fa24a54f85295ef0c318aeb, type: 3}
+  - {fileID: 6379679561373632125, guid: 684cee443b9221a4881a1156101ff6fe, type: 3}
+  spawnPercentages: 05000000080000000a000000
+  amountOfWaves: 3
+  enemiesPerWave: 12
+  enemiesExtraPerWave: 3
+  timeToSpawnNewEmemy: 1
+  enemyExtraHealthMuliplierPerWave: 0.2
   allWavesInLevel:
-  - {fileID: 11400000, guid: e98a12b5c3a62104ca30b1e99ff9536b, type: 2}
-  - {fileID: 11400000, guid: 675270e2fec2519419ade874ccb4050a, type: 2}
-  - {fileID: 11400000, guid: 001a2db9cdd41a44e95f85c7610fe927, type: 2}
+  - {fileID: 11400000, guid: 6597c9e6b6d4e294ab462a49beacd4c6, type: 2}
+  - {fileID: 11400000, guid: 0366507e0226cae49a88bdcc699b8b71, type: 2}
+  - {fileID: 11400000, guid: 573166b4abfe78a4e9bcf3a8834ac9b2, type: 2}
+  - {fileID: 11400000, guid: 52fc614ff1a34df4084f33cac1a59253, type: 2}
+  - {fileID: 11400000, guid: a6c2def103f88c64499b56ef02812228, type: 2}
   prepTimeNewWave: 22
   prepTimerPanel: {fileID: 0}
   popupText: {fileID: 0}
@@ -94,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   safePlacementRadius: 1.3
-  minTowerPlacementDistance: 2.05
+  minTowerPlacementDistance: 2.2
   pathLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -136,3 +149,22 @@ MonoBehaviour:
   - {fileID: 5753643088281295, guid: 6a14229239f21844c80dd546b1767c9e, type: 3}
   - {fileID: 4952468819694136093, guid: c6d7279f68419da48a1d9dffe1493194, type: 3}
   manager: {fileID: 8605008950558809803}
+--- !u!114 &500742221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605008950558809846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d5627babb5d8e5439fa028aa0dda237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelLoader: {fileID: 0}
+  levelSelectButtons: []
+  levelStateText: []
+  lvlindex: 1
+  levelStateUnlockedString: 
+  levelStateCompletionString: 
+  levelStateLockedString: 

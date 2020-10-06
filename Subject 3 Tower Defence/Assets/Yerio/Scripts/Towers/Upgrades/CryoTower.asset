@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerUpgradesInactive: 0000000101
   towerCostUpgradeLevels:
-  - 13
-  - 11
+  - 12
   - 8
-  - 5
+  - 6
+  - 4
   towerDamageUpgradeLevels:
   - 0
   - 2
@@ -39,10 +39,10 @@ MonoBehaviour:
   - 0
   - 0
   costTowerCostLevels:
+  - 5
+  - 7
   - 10
-  - 15
-  - 25
-  - 25
+  - 10
   costDamageLevels:
   - 10
   - 15
