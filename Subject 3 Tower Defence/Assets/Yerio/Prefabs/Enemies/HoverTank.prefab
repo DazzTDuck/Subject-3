@@ -9830,7 +9830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25435d3d71dede4dba34a51e4f29c23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 400
+  maxHealth: 600
   currentHealth: 0
   healthBar: {fileID: 5436218357611052938}
   healthBarCanvas: {fileID: 535521465018514917}

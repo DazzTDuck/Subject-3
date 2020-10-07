@@ -401,7 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399bcad84434847409fa8d2bfe689c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCurrency: 50
+  currentCurrency: 25
   currencyText: {fileID: 1344111800}
   textDefaultColor: {r: 0.44313726, g: 0.81960785, b: 0.83137256, a: 1}
 --- !u!114 &534295761
@@ -2239,6 +2239,11 @@ PrefabInstance:
         type: 3}
       propertyPath: amountDronesToSpawm
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605008950558809801, guid: 5de957a50839a804f83631a3c44df07b,
+        type: 3}
+      propertyPath: enemyExtraHealthMuliplierPerWave
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8605008950558809846, guid: 5de957a50839a804f83631a3c44df07b,
         type: 3}

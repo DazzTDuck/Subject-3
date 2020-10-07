@@ -92,8 +92,8 @@ public class TowerManager : MonoBehaviour
     public void SelectTower(BaseTower tower)
     {
         selectedTower = tower;
-        instantiatedDetectionSphere = Instantiate(VisualDetectionSphere, selectedTower.transform.position + selectedTower.detectionSphereOffset, Quaternion.identity);
-        instantiatedRadiusCircle = Instantiate(visualRadiusCircle, selectedTower.transform.position + Vector3.up, visualRadiusCircle.transform.rotation);
+        instantiatedDetectionSphere = Instantiate(VisualDetectionSphere, selectedTower.transform.position, Quaternion.identity);
+        instantiatedRadiusCircle = Instantiate(visualRadiusCircle, selectedTower.transform.position, visualRadiusCircle.transform.rotation);
         SetCorrectScaleForDetectionSphere(instantiatedDetectionSphere.transform);
         SetCorrectScaleForRadiusCirle(instantiatedRadiusCircle.transform);
         instantiatedSphereColor = instantiatedDetectionSphere.GetComponent<ChangeSphereColor>();
@@ -131,7 +131,7 @@ public class TowerManager : MonoBehaviour
     {
         if (instantiatedRadiusCircle)
         {
-            instantiatedRadiusCircle.transform.position = selectedTower.transform.position + Vector3.up;
+            instantiatedRadiusCircle.transform.position = selectedTower.transform.position - new Vector3(0, 0.5f, 0);
         }
     }
 

@@ -8,34 +8,31 @@ public class WaveManager : MonoBehaviour
 {
     [Header("---Level Waves---")]
     public Transform spawnPoint;
-    [SerializeField] GameObject[] enemiesToSpawn;
-    [SerializeField] int amountSoldierToSpawm = 8;
-    int soldiersSpawned = 0;
-    [SerializeField] int amountDronesToSpawm = 5;
-    int dronesSpawned = 0;
-    [SerializeField] int amountTanksToSpawm = 3;
-    int tanksSpawned = 0;
+    [SerializeField] GameObject[] enemies;
+    [SerializeField] int amountEnemiesStart = 8;
+    [SerializeField] int addEnemiesPerWave = 3;
+    [SerializeField] int extraTanksPerWave = 1;
     [Space]
     [SerializeField] int amountOfWaves = 3;
-    [SerializeField] float timeToSpawnNewEmemy = 1.3f;
+    [SerializeField] float maxTimeToSpawnNewEmemy = 1.5f;
+    [SerializeField] float minTimeToSpawnNewEnemy = 0.8f;
     [SerializeField] float enemyExtraHealthMuliplierPerWave = 0.3f;
 
-    bool selectedEnemy = false;
     int enemiesAmountToSpawn;
+    int extraEnemiesToSpawn = 0;
     int enemiesSpawned = 0;
+    int amountTanksCanSpawn;
+    int amountTanksSpawned = 0;
+    int addTanksPerWave = 0;
     float healthMultiplier = 1f;
-    int enemySelectedIndex = 2;
-    int lastEnemySelectedIndex;
-
-    [Space]
-    //public Wave[] allWavesInLevel;
+    int enemySelectedIndex;
+    int lastEnemyIndex;
 
     [Header("---Bewteen Waves---")]
     [SerializeField, Tooltip("Preperation time for the new wave in seconds"),]
     float prepTimeNewWave = 15f;
     [SerializeField] GameObject prepTimerPanel = null;
     [SerializeField] TMP_Text popupText = null;
-    Vector3 prepTimerOriginalPos;
 
     [Header("---Others---")]
     public TMP_Text wavesText; //Wave: 0 / 0
@@ -48,7 +45,7 @@ public class WaveManager : MonoBehaviour
     //public but Hidden
     [HideInInspector]
     public List<BaseEnemy> enemiesAlive = new List<BaseEnemy>();
-    [HideInInspector]
+    //[HideInInspector]
     public bool allEnemiesSpawned;
 
     //private variables
@@ -56,8 +53,6 @@ public class WaveManager : MonoBehaviour
     bool inPreperation;
     UIAnimations animations;
     Animator preptimerAnimator;
-    //Wave currentWave;
-    int currentEnemyIndex = 0;
     int currentWave = 0;
     bool canLoad = false;
     bool canSpawn = false;
@@ -73,7 +68,6 @@ public class WaveManager : MonoBehaviour
         preptimerAnimator = prepTimerPanel.GetComponent<Animator>();
         endHandler = FindObjectOfType<GameEndHandler>();
         prepTimer = prepTimeNewWave;
-        prepTimerOriginalPos = prepTimerPanel.transform.position;
         endGame = false;
 
         StartCoroutine(LoadWave());
@@ -98,14 +92,16 @@ public class WaveManager : MonoBehaviour
         ResetEnemySpawning();
         allEnemiesSpawned = false;
         enemiesSpawned = 0;
-        enemiesAmountToSpawn = amountSoldierToSpawm + amountDronesToSpawm + amountTanksToSpawm;
+        amountTanksSpawned = 0;
+        enemiesAmountToSpawn = amountEnemiesStart + extraEnemiesToSpawn;
+        amountTanksCanSpawn += extraTanksPerWave;
         prepTimer = prepTimeNewWave;
-        currentEnemyIndex = 0;
     }
 
     void ResetEnemySpawning()
     {
-        spawnTimer = timeToSpawnNewEmemy;
+        var time = Random.Range(minTimeToSpawnNewEnemy, maxTimeToSpawnNewEmemy);
+        spawnTimer = time;
         canSpawn = true;
     }
 
@@ -140,74 +136,44 @@ public class WaveManager : MonoBehaviour
     {
         if (canSpawn && !allEnemiesSpawned)
         {
-            selectedEnemy = false;
-            enemySelectedIndex = Random.Range(0, enemiesToSpawn.Length);
+            lastEnemyIndex = enemySelectedIndex;
+            enemySelectedIndex = Random.Range(0, enemies.Length);
 
-            int enemyToSpawnIndex = 0;
+            if (lastEnemyIndex == 2 && enemySelectedIndex == 2)
+                return;
 
-            for (int i = 0; i < enemiesToSpawn.Length; i++)
+            //check if amount of tanks already has spawned
+            //if has all spawned return
+            if (amountTanksSpawned >= amountTanksCanSpawn && enemySelectedIndex == 2) 
+                return;       
+            else if (enemySelectedIndex == 2)
+                amountTanksSpawned++;
+
+            var currentEnemy = enemies[enemySelectedIndex];
+
+            SpawnEnemy(currentEnemy);           
+
+            if (enemiesSpawned == enemiesAmountToSpawn)
+                allEnemiesSpawned = true;
+            else
+                enemiesSpawned++;
+
+            if(allEnemiesSpawned && amountTanksSpawned < amountTanksCanSpawn)
             {
-                switch (enemySelectedIndex)
-                {
-                    case 0:
-                        //soldier
-                        if (soldiersSpawned < amountSoldierToSpawm)
-                        {
-                            if (!selectedEnemy)
-                            {
-                                soldiersSpawned++;
-                                enemyToSpawnIndex = 0;
-                                selectedEnemy = true;
-                            }                        
-                        }
-                        else return;
-                        break;
-                    case 1:
-                        //drone
-                        if (dronesSpawned < amountDronesToSpawm)
-                        {
-                            if (!selectedEnemy)
-                            {
-                                dronesSpawned++;
-                                enemyToSpawnIndex = 1;
-                                selectedEnemy = true;
-                            }          
-                        }
-                        else return;
-                        break;
-                    case 2:
-                        //tank
-                        if (tanksSpawned < amountTanksToSpawm)
-                        {
-                            if (!selectedEnemy)
-                            {
-                                tanksSpawned++;
-                                enemyToSpawnIndex = 2;
-                                selectedEnemy = true;
-                            }                        
-                        }
-                        else return;                    
-                        break;
-                }
+                SpawnEnemy(enemies[2]); //spawn a tank if the amount hasn't been spawned yet
             }
 
-            if (selectedEnemy)
-            {
-                var currentEnemy = enemiesToSpawn[enemyToSpawnIndex];
-                //spawn enemy
-                var enemyObj = Instantiate(currentEnemy, spawnPoint.position + currentEnemy.transform.position, currentEnemy.transform.rotation);
-                var enemy = enemyObj.GetComponent<BaseEnemy>();
-                AddEnemyMultipliers(enemy);
-                enemiesAlive.Add(enemy);
-
-                if (enemiesSpawned == enemiesAmountToSpawn)
-                    allEnemiesSpawned = true;
-                else
-                    enemiesSpawned++;
-
-                canSpawn = false;
-            }         
+            canSpawn = false;
         }
+    }
+
+    void SpawnEnemy(GameObject enemyToSpawn)
+    {
+        //spawn enemy
+        var enemyObj = Instantiate(enemyToSpawn, spawnPoint.position + enemyToSpawn.transform.position, enemyToSpawn.transform.rotation);
+        var enemy = enemyObj.GetComponent<BaseEnemy>();
+        AddEnemyMultipliers(enemy);
+        enemiesAlive.Add(enemy);
     }
 
     void AddEnemyMultipliers(BaseEnemy enemy)
@@ -240,18 +206,15 @@ public class WaveManager : MonoBehaviour
 
     void NextWave()
     {
-        if (currentWave - 1 == amountOfWaves && !inPreperation)
+        if (currentWave == amountOfWaves && !inPreperation)
         {
-            healthMultiplier += enemyExtraHealthMuliplierPerWave;
             inPreperation = true;
             prepTimer += 2;
             lastWave = true;
-            Debug.Log("last wave");
             StartCoroutine(LoadWaveSetup("Last Wave!"));
         }
         else if (currentWave < amountOfWaves && !inPreperation && !lastWave)
         {
-            healthMultiplier += enemyExtraHealthMuliplierPerWave;
             inPreperation = true;
             prepTimer += 2;
             StartCoroutine(LoadWaveSetup());
@@ -263,7 +226,6 @@ public class WaveManager : MonoBehaviour
         inPreperation = true;
         if (inPreperation)
         {
-            //StartCoroutine(animations.DecendTextDown(prepTimerPanel));
             preptimerAnimator.SetTrigger("Down");
             canSpawn = false;
             canLoad = false;
@@ -289,6 +251,8 @@ public class WaveManager : MonoBehaviour
     IEnumerator LoadWaveSetup(string text = "New Wave!")
     {
         currentWave++;
+        healthMultiplier += enemyExtraHealthMuliplierPerWave;
+        extraEnemiesToSpawn += addEnemiesPerWave;
 
         StartCoroutine(animations.PopupText(popupText, text));
 
@@ -306,7 +270,7 @@ public class WaveManager : MonoBehaviour
 
     void UpdateUI()
     {
-        wavesText.text = $"Wave: {currentWave + 1} / {amountOfWaves}";
+        wavesText.text = $"Wave: {currentWave} / {amountOfWaves}";
     }
 
     void DebugFunctions()
