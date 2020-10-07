@@ -11,7 +11,7 @@ public class LaserTower : BaseTower
     protected GameObject laserInstance;
     Hovl_Laser LaserScript;
     Hovl_Laser2 LaserScript2;
-#pragma warning disable 0649
+
     [SerializeField] LayerMask enemyMask;
 
     List<LaserTower> laserTowers = new List<LaserTower>();

@@ -8,7 +8,10 @@ public class ShockTower : BaseTower
     [Header("---Shock Tower---")]
     [SerializeField] GameObject chargeEffect;
     [SerializeField] GameObject damageEffect;
+    [SerializeField] AudioClip ShockCharge;
+    [SerializeField] AudioClip ShockBurst;
 
+    AudioSource source;
 
     //shoot speed is time to charge the tower
     float chargeTime => currentShootSpeed;
@@ -23,6 +26,7 @@ public class ShockTower : BaseTower
     {
         base.Start();
         chargeTimer = gameObject.AddComponent<Timer>();
+        source = GetComponent<AudioSource>();
     }
     protected override void ShootToTarget()
     {
@@ -81,9 +85,12 @@ public class ShockTower : BaseTower
         if (!chargeTimer.IsTimerActive() && !shockDeactivated && onTarget)
         {
             if (!instantiatedChargeEffect)
+            {
+                PlaySound(ShockCharge);
                 instantiatedChargeEffect = Instantiate(chargeEffect, towerHead.position, Quaternion.identity);
+            }           
 
-            chargeTimer.SetTimer(chargeTime, () => canShoot = true, () => canShoot = false);
+            chargeTimer.SetTimer(chargeTime, () => { canShoot = true; PlaySound(ShockBurst, false); }, () => canShoot = false);
         }
 
         //rotate tower head when charging
@@ -95,6 +102,14 @@ public class ShockTower : BaseTower
         {
             shootDelayTimer.SetTimer(currentShootDelay, () => shockDeactivated = false);
         }
+    }
+
+    void PlaySound(AudioClip clip, bool loop = true)
+    {
+        source.Stop();
+        source.clip = clip;
+        source.loop = loop;
+        source.Play();
     }
 
 

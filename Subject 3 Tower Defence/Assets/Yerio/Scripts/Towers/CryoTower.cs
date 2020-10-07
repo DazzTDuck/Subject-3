@@ -6,6 +6,8 @@ public class CryoTower : BaseTower
 {
 #pragma warning disable
     [Header("---Cryo Tower---")]
+    [SerializeField] AudioClip cryoBeamSound;
+    AudioSource source;
     [SerializeField] LayerMask enemyMask;
     [SerializeField] GameObject cryoBeam;
     [SerializeField] GameObject cryoHitEffect;
@@ -24,6 +26,7 @@ public class CryoTower : BaseTower
     {
         base.Start();
         cryoBeamTimer = gameObject.AddComponent<Timer>();
+        source = GetComponent<AudioSource>();
     }
 
     protected override void ShootToTarget()
@@ -38,6 +41,7 @@ public class CryoTower : BaseTower
                 {
                     if (!instantiatedCryoBeam)
                     {
+                        source.Play(); //play cryo beam sound
                         instantiatedCryoBeam = Instantiate(cryoBeam, shootingPoint.transform);
                     }
 
@@ -76,6 +80,7 @@ public class CryoTower : BaseTower
 
         if (cryoDeactivated && !shootDelayTimer.IsTimerActive())
         {
+            source.Stop(); //Stop cryo beam sound
             shootDelayTimer.SetTimer(currentShootDelay, () => { canShoot = true; cryoDeactivated = false; });
         }
     }

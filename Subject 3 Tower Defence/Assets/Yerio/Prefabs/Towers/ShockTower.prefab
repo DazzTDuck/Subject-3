@@ -45,10 +45,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: c6e82527aa3eb6d4d92431c2f49a53cd,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: ef835c9d8d5c39f45bb71f2d278968b9, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.05
-  m_Pitch: 1
+  m_Volume: 0.03
+  m_Pitch: 0.96
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -164,6 +164,8 @@ MonoBehaviour:
     type: 3}
   damageEffect: {fileID: 4894900554035541192, guid: 78a714ea8dc45a046a5127bf6804ee5a,
     type: 3}
+  ShockCharge: {fileID: 8300000, guid: eedc2503ce026e44c9b701ac1ee8621d, type: 3}
+  ShockBurst: {fileID: 8300000, guid: 817e12a534ba99a41aad8aaf4584b521, type: 3}
 --- !u!1001 &1982587976810927442
 PrefabInstance:
   m_ObjectHideFlags: 0
