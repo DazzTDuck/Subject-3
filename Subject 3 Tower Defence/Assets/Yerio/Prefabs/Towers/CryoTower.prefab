@@ -156,10 +156,11 @@ MonoBehaviour:
   shootSpeed: 7
   upwardsOffset: 0.3
   detectionDistance: 4
-  extraDetectionDistance: 0
+  extraDetectionDistance: 2
   headRotationSpeed: 8
   targetEnemyInRange: {fileID: 0}
   currentShootDelay: 0
+  cryoBeamSound: {fileID: 0}
   enemyMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -167,7 +168,7 @@ MonoBehaviour:
   cryoHitEffect: {fileID: 5355413806837976469, guid: fecfd24783a2c5d4b8b90c96fb9a0a41,
     type: 3}
   slowedEnemySpeed: 0.7
-  slowedEnemyTime: 3
+  slowedEnemyTime: 3.5
   cryoBeamActiveTime: 4
 --- !u!1 &7334265344674486386
 GameObject:

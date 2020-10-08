@@ -45,9 +45,9 @@ MonoBehaviour:
   - 0
   costDamageLevels:
   - 5
-  - 10
-  - 15
-  - 15
+  - 8
+  - 11
+  - 11
   costShootDelayLevels:
   - 5
   - 10
@@ -64,7 +64,7 @@ MonoBehaviour:
   - 15
   - 15
   costUpgradeIndex: 0
-  damageUpgradeIndex: 2
+  damageUpgradeIndex: 0
   delayUpgradeIndex: 0
   shootUpgradeIndex: 0
   radiusUpgradeIndex: 0

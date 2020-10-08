@@ -11,8 +11,6 @@ public class ShockTower : BaseTower
     [SerializeField] AudioClip ShockCharge;
     [SerializeField] AudioClip ShockBurst;
 
-    AudioSource source;
-
     //shoot speed is time to charge the tower
     float chargeTime => currentShootSpeed;
     List<BaseEnemy> enemiesInRange = new List<BaseEnemy>();
@@ -26,7 +24,6 @@ public class ShockTower : BaseTower
     {
         base.Start();
         chargeTimer = gameObject.AddComponent<Timer>();
-        source = GetComponent<AudioSource>();
     }
     protected override void ShootToTarget()
     {

@@ -184,13 +184,14 @@ MonoBehaviour:
   hitParticle: {fileID: 0}
   shootingPoint: {fileID: 4939705454168804452}
   shootDelay: 0.15
-  towerDamage: 7
+  towerDamage: 8
   shootSpeed: 0
   upwardsOffset: 0.2
   detectionDistance: 5
   extraDetectionDistance: 3
   headRotationSpeed: 18
   targetEnemyInRange: {fileID: 0}
+  currentShootDelay: 0
   laserEffect: {fileID: 1818483698145146, guid: 5ef207190f0475843a714c18f0be30a4,
     type: 3}
   enemyMask:

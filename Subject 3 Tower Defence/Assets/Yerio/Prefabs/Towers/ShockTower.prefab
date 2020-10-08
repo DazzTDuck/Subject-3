@@ -152,7 +152,7 @@ MonoBehaviour:
   hitParticle: {fileID: 0}
   shootingPoint: {fileID: 0}
   shootDelay: 6
-  towerDamage: 40
+  towerDamage: 50
   shootSpeed: 1.5
   upwardsOffset: 0
   detectionDistance: 4

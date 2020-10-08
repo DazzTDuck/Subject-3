@@ -72,4 +72,11 @@ MonoBehaviour:
     pitch: 0.9
     loop: 0
     source: {fileID: 0}
+  - name: UpgradePurchace
+    clip: {fileID: 8300000, guid: 8642aa102ddc4ea42ac91659dee6c5c8, type: 3}
+    mixer: {fileID: 24300002, guid: c6e82527aa3eb6d4d92431c2f49a53cd, type: 2}
+    volume: 0.1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   awakeBGMusic: 0

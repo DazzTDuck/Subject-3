@@ -20,10 +20,12 @@ public class BaseEnemy : MonoBehaviour
     [SerializeField, Range(0, 1), Tooltip("Distance between the enemy and the current checkpoint needed to go to the next checkpoint")]
     private float minDistanceToCP = 0.6f;
 
+    [Header("---Scrap Drop---")]
     [SerializeField, Tooltip("Minimum amount of scrap that can be dropped on death")]
     private int minAmountCurrencyOnDrop = 2;
     [SerializeField, Tooltip("Maximum amount of scrap that can be dropped on death")]
     private int maxAmountCurrencyOnDrop = 5;
+    [SerializeField] GameObject ScrapPrefab;
 
     [HideInInspector] public Health health;
     [HideInInspector] public float actualMoveSpeed;
@@ -108,7 +110,10 @@ public class BaseEnemy : MonoBehaviour
     protected virtual void DropOnDeath()
     {
         var amountScrapDropped = CurrencyDropped();
-        currency.AddCurrency(amountScrapDropped);
+        var instantiatedScrapPrefab = Instantiate(ScrapPrefab, transform.position + Vector3.up, ScrapPrefab.transform.rotation);
+        var scrap = instantiatedScrapPrefab.GetComponent<Scrap>();
+        scrap.amount = amountScrapDropped;
+        //currency.AddCurrency(amountScrapDropped);
         //Debug.Log($"Amount scrap dropped: {amountScrapToDrop}");
     }
 

@@ -43,9 +43,9 @@ MonoBehaviour:
   - 7
   costDamageLevels:
   - 10
+  - 13
   - 15
-  - 20
-  - 20
+  - 15
   costShootDelayLevels:
   - 0
   - 0

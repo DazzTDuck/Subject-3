@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-#pragma warning disable
     public GameObject hitEffect;
     BaseEnemy targetEnemy = null;
     float offset;

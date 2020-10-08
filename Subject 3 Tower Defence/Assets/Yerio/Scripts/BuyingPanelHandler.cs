@@ -7,11 +7,13 @@ using TMPro;
 
 public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    
+
     [Header("---Panels---")]
     [SerializeField] GameObject buySelectPanel;
     [SerializeField] GameObject upgradeSelectPanel;
     [SerializeField] GameObject upgradePanel;
+
+    [HideInInspector]
     public bool isHoveringOverMenu = false;
 
     [Header("---Tower Upgrades---")]
@@ -35,6 +37,7 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler, IPointerE
     TowerUpgradesSO selectedUpgrade;
     CurrencyManager currencyManager;
     TowerManager towerManager;
+    AudioManager audioManager;
     int towerCostIndex;
 
     private void Awake()
@@ -42,6 +45,8 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler, IPointerE
         animator = GetComponent<Animator>();
         currencyManager = FindObjectOfType<CurrencyManager>();
         towerManager = FindObjectOfType<TowerManager>();
+        audioManager = FindObjectOfType<AudioManager>();
+
         ResetAllUpgrades();
         UpdateTowerCostText();
     }
@@ -164,56 +169,50 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler, IPointerE
                 {
                     currencyManager.currentCurrency -= selectedUpgrade.costTowerCostLevels[selectedUpgrade.costUpgradeIndex];
                     selectedUpgrade.UpgradeCost();
+                    audioManager.PlaySound("UpgradePurchace");
                 }
                 else
-                {
                     NotEnoughMoney();
-                }
                 break;
             case 1: //Tower Damage Button
                 if (selectedUpgrade.costDamageLevels[selectedUpgrade.damageUpgradeIndex] <= currencyManager.currentCurrency)
                 {
                     currencyManager.currentCurrency -= selectedUpgrade.costDamageLevels[selectedUpgrade.damageUpgradeIndex];
                     selectedUpgrade.UpgradeDamage();
+                    audioManager.PlaySound("UpgradePurchace");
                 }
                 else
-                {
                     NotEnoughMoney();
-                }
-
                 break;
             case 2: //Tower Shoot Delay Button
                 if (selectedUpgrade.costShootDelayLevels[selectedUpgrade.delayUpgradeIndex] <= currencyManager.currentCurrency)
                 {
                     currencyManager.currentCurrency -= selectedUpgrade.costShootDelayLevels[selectedUpgrade.delayUpgradeIndex];
                     selectedUpgrade.UpgradeShootDelay();
+                    audioManager.PlaySound("UpgradePurchace");
                 }
                 else
-                {
                     NotEnoughMoney();
-                }
                 break;
             case 3: //Tower Shoot Speed Button
                 if (selectedUpgrade.costShootSpeedLevels[selectedUpgrade.shootUpgradeIndex] <= currencyManager.currentCurrency)
                 {
                     currencyManager.currentCurrency -= selectedUpgrade.costShootSpeedLevels[selectedUpgrade.shootUpgradeIndex];
                     selectedUpgrade.UpgradeShootSpeed();
+                    audioManager.PlaySound("UpgradePurchace");
                 }
                 else
-                {
                     NotEnoughMoney();
-                }
                 break;
             case 4: //Tower Radius Detection Button
                 if (selectedUpgrade.costRadiusDetectionLevels[selectedUpgrade.radiusUpgradeIndex] <= currencyManager.currentCurrency)
                 {
                     currencyManager.currentCurrency -= selectedUpgrade.costRadiusDetectionLevels[selectedUpgrade.radiusUpgradeIndex];
                     selectedUpgrade.UpgradeRadiusDetection();
+                    audioManager.PlaySound("UpgradePurchace");
                 }
                 else
-                {
                     NotEnoughMoney();
-                }
                 break;
         }
         UpdateUpgradeButtons();

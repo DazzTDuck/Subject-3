@@ -23,9 +23,8 @@ public class WaveManager : MonoBehaviour
     int enemiesSpawned = 0;
     int amountTanksCanSpawn;
     int amountTanksSpawned = 0;
-    int addTanksPerWave = 0;
     float healthMultiplier = 1f;
-    int enemySelectedIndex;
+    int enemySelectedIndex = 0;
     int lastEnemyIndex;
 
     [Header("---Bewteen Waves---")]
@@ -45,7 +44,7 @@ public class WaveManager : MonoBehaviour
     //public but Hidden
     [HideInInspector]
     public List<BaseEnemy> enemiesAlive = new List<BaseEnemy>();
-    //[HideInInspector]
+    [HideInInspector]
     public bool allEnemiesSpawned;
 
     //private variables
@@ -53,7 +52,7 @@ public class WaveManager : MonoBehaviour
     bool inPreperation;
     UIAnimations animations;
     Animator preptimerAnimator;
-    int currentWave = 0;
+    int currentWave = 1;
     bool canLoad = false;
     bool canSpawn = false;
     bool canSkipPreperation = false;
@@ -88,7 +87,6 @@ public class WaveManager : MonoBehaviour
 
     void WaveSetup()
     {
-        //currentWave = allWavesInLevel[currentWaveIndex];
         ResetEnemySpawning();
         allEnemiesSpawned = false;
         enemiesSpawned = 0;
@@ -134,37 +132,45 @@ public class WaveManager : MonoBehaviour
 
     void SpawnEnemy()
     {
+        //0 == soldier enemy
+        //1 == drone enemy
+        //2 == tank enemy
+
         if (canSpawn && !allEnemiesSpawned)
         {
-            lastEnemyIndex = enemySelectedIndex;
-            enemySelectedIndex = Random.Range(0, enemies.Length);
-
-            if (lastEnemyIndex == 2 && enemySelectedIndex == 2)
-                return;
+            ChooseEnemyFromList();
 
             //check if amount of tanks already has spawned
             //if has all spawned return
-            if (amountTanksSpawned >= amountTanksCanSpawn && enemySelectedIndex == 2) 
-                return;       
+            if (amountTanksSpawned >= amountTanksCanSpawn && enemySelectedIndex == 2 || lastEnemyIndex == 2 && enemySelectedIndex == 2)
+                return;
             else if (enemySelectedIndex == 2)
                 amountTanksSpawned++;
 
             var currentEnemy = enemies[enemySelectedIndex];
+            SpawnEnemy(currentEnemy);
 
-            SpawnEnemy(currentEnemy);           
+            //Debug.Log("enemy spawned: " + currentEnemy);
 
             if (enemiesSpawned == enemiesAmountToSpawn)
                 allEnemiesSpawned = true;
             else
                 enemiesSpawned++;
 
-            if(allEnemiesSpawned && amountTanksSpawned < amountTanksCanSpawn)
-            {
-                SpawnEnemy(enemies[2]); //spawn a tank if the amount hasn't been spawned yet
-            }
-
             canSpawn = false;
         }
+
+        if (allEnemiesSpawned && amountTanksSpawned < amountTanksCanSpawn)
+        {
+            SpawnEnemy(enemies[2]); //spawn a tank if the amount hasn't been spawned yet
+            amountTanksSpawned++;
+            //Debug.Log("Spawned Extra Tank");
+        }
+    }
+    void ChooseEnemyFromList()
+    {
+        lastEnemyIndex = enemySelectedIndex;
+        enemySelectedIndex = Random.Range(0, enemies.Length);
     }
 
     void SpawnEnemy(GameObject enemyToSpawn)
@@ -206,7 +212,7 @@ public class WaveManager : MonoBehaviour
 
     void NextWave()
     {
-        if (currentWave == amountOfWaves && !inPreperation)
+        if (currentWave == amountOfWaves - 1 && !inPreperation)
         {
             inPreperation = true;
             prepTimer += 2;

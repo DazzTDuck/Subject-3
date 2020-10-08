@@ -35,9 +35,10 @@ MonoBehaviour:
   - 0
   costTowerCostLevels:
   - 10
+  - 15
   - 20
-  - 30
-  costTowerDamageLevels:
+  costDamageLevels:
+  - 0
   - 0
   - 0
   - 0
@@ -53,3 +54,8 @@ MonoBehaviour:
   - 5
   - 10
   - 15
+  costUpgradeIndex: 0
+  damageUpgradeIndex: 0
+  delayUpgradeIndex: 0
+  shootUpgradeIndex: 0
+  radiusUpgradeIndex: 0

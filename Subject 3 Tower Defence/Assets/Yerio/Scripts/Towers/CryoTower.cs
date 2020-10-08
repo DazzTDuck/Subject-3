@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class CryoTower : BaseTower
 {
-#pragma warning disable
     [Header("---Cryo Tower---")]
     [SerializeField] AudioClip cryoBeamSound;
-    AudioSource source;
     [SerializeField] LayerMask enemyMask;
     [SerializeField] GameObject cryoBeam;
     [SerializeField] GameObject cryoHitEffect;
@@ -17,7 +15,6 @@ public class CryoTower : BaseTower
 
     GameObject instantiatedCryoBeam;
     GameObject instantiatedHitEffect;
-    //float cryoBeamTimer;
     bool cryoDeactivated;
 
     Timer cryoBeamTimer;
@@ -26,7 +23,6 @@ public class CryoTower : BaseTower
     {
         base.Start();
         cryoBeamTimer = gameObject.AddComponent<Timer>();
-        source = GetComponent<AudioSource>();
     }
 
     protected override void ShootToTarget()
@@ -58,6 +54,7 @@ public class CryoTower : BaseTower
                 {
                     if (instantiatedCryoBeam)
                     {
+                        source.Stop();
                         Destroy(instantiatedCryoBeam, 0.1f);
                     }
                 }
@@ -67,6 +64,7 @@ public class CryoTower : BaseTower
         {
             if (instantiatedCryoBeam)
             {
+                source.Stop();
                 Destroy(instantiatedCryoBeam, 0.1f);
             }
         }

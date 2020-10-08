@@ -75,8 +75,10 @@ MonoBehaviour:
   - {fileID: 6379679561373632125, guid: 684cee443b9221a4881a1156101ff6fe, type: 3}
   amountEnemiesStart: 8
   addEnemiesPerWave: 3
+  extraTanksPerWave: 1
   amountOfWaves: 3
-  timeToSpawnNewEmemy: 1
+  maxTimeToSpawnNewEmemy: 1.5
+  minTimeToSpawnNewEnemy: 0.8
   enemyExtraHealthMuliplierPerWave: 0.2
   prepTimeNewWave: 22
   prepTimerPanel: {fileID: 0}
@@ -137,10 +139,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerPrefabs:
   - {fileID: 5466703457133454502, guid: 08a40153035d59d40957534235bc71b7, type: 3}
-  - {fileID: 4952468819694136093, guid: c6d7279f68419da48a1d9dffe1493194, type: 3}
+  - {fileID: 7826593571935399825, guid: c2f164fe10954b64fb4d7111ee7ae41e, type: 3}
   - {fileID: 5791119593385285582, guid: fa375770af2c0f14898ff3d86955f90c, type: 3}
   - {fileID: 5753643088281295, guid: 6a14229239f21844c80dd546b1767c9e, type: 3}
-  - {fileID: 4952468819694136093, guid: c6d7279f68419da48a1d9dffe1493194, type: 3}
+  - {fileID: 7826593571935399825, guid: c2f164fe10954b64fb4d7111ee7ae41e, type: 3}
   manager: {fileID: 8605008950558809803}
 --- !u!114 &500742221
 MonoBehaviour:

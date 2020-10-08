@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,8 +10,7 @@ public class Health : MonoBehaviour
     public float maxHealth = 100;
     //[HideInInspector]
     public float currentHealth;
-
-    float healthLerpSpeed = 50f;
+    readonly float healthLerpSpeed = 50f;
 
     public Image healthBar;
     [Tooltip("Only needed for the enemies, to rotate it to look at the camera")]

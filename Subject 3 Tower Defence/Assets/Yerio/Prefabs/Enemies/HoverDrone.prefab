@@ -366,6 +366,8 @@ MonoBehaviour:
   minDistanceToCP: 0.6
   minAmountCurrencyOnDrop: 3
   maxAmountCurrencyOnDrop: 5
+  ScrapPrefab: {fileID: 8103596017382021174, guid: 1e8c26386f3776348abc17e4841af439,
+    type: 3}
   health: {fileID: 0}
   actualMoveSpeed: 0
 --- !u!114 &7673024352984338260
@@ -413,6 +415,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   strength: 0.2
   timeStrength: 3.5
+  rotate: 0
 --- !u!1 &7897203571807520978
 GameObject:
   m_ObjectHideFlags: 0
