@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 399bcad84434847409fa8d2bfe689c53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentCurrency: 20
+  currentCurrency: 500
   currencyText: {fileID: 1344111800}
   textDefaultColor: {r: 0.44313726, g: 0.81960785, b: 0.83137256, a: 1}
 --- !u!114 &534295761
@@ -3583,6 +3583,12 @@ PrefabInstance:
       propertyPath: minTimeToSpawnNewEnemy
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8605008950558809802, guid: 5de957a50839a804f83631a3c44df07b,
+        type: 3}
+      propertyPath: towerPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 1462671883630521259, guid: c84162d11825d7a4891e028722e93233,
+        type: 3}
     - target: {fileID: 8605008950558809846, guid: 5de957a50839a804f83631a3c44df07b,
         type: 3}
       propertyPath: m_Name

@@ -147,6 +147,7 @@ MonoBehaviour:
   towerUpgrade: {fileID: 11400000, guid: 4693ab1c855e47e41b88a0272cb634aa, type: 2}
   activeAI: 0
   detectionSphereOffset: {x: 0, y: -1.05, z: 0}
+  radiusCircleOffset: {x: 0, y: -0.5, z: 0}
   towerHead: {fileID: 2020190162180108985}
   projectile: {fileID: 0}
   hitParticle: {fileID: 0}

@@ -22,7 +22,7 @@ public class PickupScrap : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 10000f, scrapLayer))
             {
                 var scrapHit = hit.transform.GetComponent<Scrap>();
-                scrapHit.PickupScrap(currency);
+                scrapHit.CollectScrap(currency);
             }
         }
         

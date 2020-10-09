@@ -80,6 +80,7 @@ MonoBehaviour:
   towerUpgrade: {fileID: 11400000, guid: 9bfccc9e61413264fa69fdb2e9c86df9, type: 2}
   activeAI: 0
   detectionSphereOffset: {x: 0, y: -0.2, z: 0}
+  radiusCircleOffset: {x: 0, y: -0.5, z: 0}
   towerHead: {fileID: 7716667409302014293}
   projectile: {fileID: 0}
   hitParticle: {fileID: 0}

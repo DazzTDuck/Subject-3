@@ -33,11 +33,38 @@ public class TowerUpgradesSO : ScriptableObject
     public int shootUpgradeIndex;
     public int radiusUpgradeIndex;
 
-    public static string towerCostUpgradeName = "Tower Cost";
-    public static string towerDamageUpgradeName = "Tower Damage";
-    public static string shootDelayUpgradeName = "Shoot Delay";
-    public static string shootSpeedUpgradeName = "Shoot Speed";
-    public static string radiusDetectionUpgradeName = "Tower Range";
+    public static string towerCostUpgradeName = "null";
+    public static string towerDamageUpgradeName = "null";
+    public static string shootDelayUpgradeName = "null";
+    public static string shootSpeedUpgradeName = "null";
+    public static string radiusDetectionUpgradeName = "null";
+
+    public static void SetUpgradeName(int upgradeIndex, string name)
+    {
+        //0 = towerCost
+        //1 = towerDamage
+        //2 = shootDelay
+        //3 = shootSpeed
+        //4 = radiusDetection
+        switch (upgradeIndex)
+        {
+            case 0:
+                towerCostUpgradeName = name;
+                break;
+            case 1:
+                towerDamageUpgradeName = name;
+                break;
+            case 2:
+                shootDelayUpgradeName = name;
+                break;
+            case 3:
+                shootSpeedUpgradeName = name;
+                break;
+            case 4:
+                radiusDetectionUpgradeName = name;
+                break;
+        }
+    }
 
     public void ResetUpgradeIndexes()
     {

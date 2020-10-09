@@ -11,6 +11,7 @@ public class BaseTower : MonoBehaviour
 
     public bool activeAI = false;
     public Vector3 detectionSphereOffset;
+    public Vector3 radiusCircleOffset = new Vector3(0, -0.5f, 0);
 
     [Header("---Shooting---")]
     public Transform towerHead;
@@ -27,7 +28,7 @@ public class BaseTower : MonoBehaviour
     [Header("---Enemy Detection---")]
     [Range(0, 25)] public float detectionDistance = 6f;
     [Tooltip("makes the distance smaller so in this case the tower won't switch to the other enemy as fast when detected")]
-    [SerializeField] float extraDetectionDistance = 4f;
+    [SerializeField] protected float extraDetectionDistance = 4f;
     [SerializeField] protected float headRotationSpeed = 5f;
 
     //private variables
@@ -39,7 +40,7 @@ public class BaseTower : MonoBehaviour
     [HideInInspector] protected float currentTowerDamage;
     [HideInInspector] public float currentShootDelay;
     [HideInInspector] protected float currentShootSpeed;
-    [HideInInspector] protected float currentDetectionDistance;
+    [HideInInspector] public float currentDetectionDistance;
 
     protected AudioManager audioManager;
     protected AudioSource source;
@@ -61,6 +62,7 @@ public class BaseTower : MonoBehaviour
         buyingHandler.UpdateTowerCostText();
 
         shootDelayTimer = gameObject.AddComponent<Timer>();
+
     }
 
     void ApplyTowerValues()
@@ -175,6 +177,7 @@ public class BaseTower : MonoBehaviour
 
     public void UpdateOriginalHeadRotation()
     {
+        if(towerHead)
         originalHeadRotation = towerHead.rotation;
     }
 

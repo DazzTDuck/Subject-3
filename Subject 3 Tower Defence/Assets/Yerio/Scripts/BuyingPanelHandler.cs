@@ -35,7 +35,8 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler, IPointerE
     Animator animator;
     bool panelOpen;
     TowerUpgradesSO selectedUpgrade;
-    CurrencyManager currencyManager;
+    [HideInInspector]
+    public CurrencyManager currencyManager;
     TowerManager towerManager;
     AudioManager audioManager;
     int towerCostIndex;
@@ -49,6 +50,9 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler, IPointerE
 
         ResetAllUpgrades();
         UpdateTowerCostText();
+
+        //set tower upgrade names
+        SetUpgradeNames();
     }
 
     public void ResetAllUpgrades()
@@ -92,22 +96,27 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler, IPointerE
             case 0:
                 selectedUpgrade = turretUpgrades;
                 towerSelectedName.text = "Gun Tower Upgrades";
+                SetUpgradeNames("Tower Cost", "Turret Damage");
                 break;
             case 1:
                 selectedUpgrade = laserUpgrades;
                 towerSelectedName.text = "Laser Tower Upgrades";
+                SetUpgradeNames("Tower Cost", "Laser Damage");
                 break;
             case 2:
                 selectedUpgrade = shockUpgrades;
                 towerSelectedName.text = "Shock Tower Upgrades";
+                SetUpgradeNames("Tower Cost", "Shock Damage", "Shock Delay");
                 break;
             case 3:
                 selectedUpgrade = cryoUpgrades;
                 towerSelectedName.text = "Cryo Tower Upgrades";
+                SetUpgradeNames("Tower Cost", "Freeze Damage");
                 break;
             case 4:
                 selectedUpgrade = scrapCollectorUpgrades;
                 towerSelectedName.text = "Scrap Collector Upgrades";
+                SetUpgradeNames("Tower Cost", "Tower Damage", "Collection Speed", "Collection Delay");
                 break;
         }
 
@@ -158,6 +167,16 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler, IPointerE
         upgradeButtons[2].ChangeUpgradeText(TowerUpgradesSO.shootDelayUpgradeName, selectedUpgrade.delayUpgradeIndex, selectedUpgrade.shootDelayUpgradeLevels.Length - 1, costTowerShootDelay);
         upgradeButtons[3].ChangeUpgradeText(TowerUpgradesSO.shootSpeedUpgradeName, selectedUpgrade.shootUpgradeIndex, selectedUpgrade.shootSpeedUpgradeLevels.Length - 1, costTowerShootSpeed);
         upgradeButtons[4].ChangeUpgradeText(TowerUpgradesSO.radiusDetectionUpgradeName, selectedUpgrade.radiusUpgradeIndex, selectedUpgrade.radiusDetectionUpgradeLevels.Length - 1, costTowerDetection);
+    }
+
+    public void SetUpgradeNames(string upgrade0 = "Tower Cost", string upgrade1 = "Tower Damage", string upgrade2 = "Shoot Delay",
+        string upgrade3 = "Shoot Speed", string upgrade4 = "Tower Range")
+    {
+        TowerUpgradesSO.SetUpgradeName(0, upgrade0);
+        TowerUpgradesSO.SetUpgradeName(1, upgrade1);
+        TowerUpgradesSO.SetUpgradeName(2, upgrade2);
+        TowerUpgradesSO.SetUpgradeName(3, upgrade3);
+        TowerUpgradesSO.SetUpgradeName(4, upgrade4);
     }
 
     public void UpgradeTower(int buttonIndex)

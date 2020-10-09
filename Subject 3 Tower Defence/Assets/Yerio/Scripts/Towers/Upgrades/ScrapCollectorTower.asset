@@ -12,50 +12,59 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dba1beb9dc3be841a12bba20d2bc49f, type: 3}
   m_Name: ScrapCollectorTower
   m_EditorClassIdentifier: 
-  towerUpgradesInactive: 0001010100
+  towerUpgradesInactive: 0001000000
   towerCostUpgradeLevels:
-  - 0
-  - 0
-  - 0
+  - 10
+  - 8
+  - 6
+  - 4
   towerDamageUpgradeLevels:
+  - 0
   - 0
   - 0
   - 0
   shootDelayUpgradeLevels:
   - 0
-  - 0
-  - 0
+  - 0.3
+  - 0.4
+  - 0.5
   shootSpeedUpgradeLevels:
   - 0
-  - 0
-  - 0
-  radiusDetectionUpgradeLevels:
-  - 0
-  - 0
-  - 0
-  costTowerCostLevels:
   - 10
   - 15
   - 20
+  radiusDetectionUpgradeLevels:
+  - 0
+  - 2
+  - 4
+  - 6
+  costTowerCostLevels:
+  - 5
+  - 7
+  - 10
+  - 10
   costDamageLevels:
   - 0
   - 0
   - 0
   - 0
   costShootDelayLevels:
-  - 0
-  - 0
-  - 0
+  - 4
+  - 6
+  - 8
+  - 8
   costShootSpeedLevels:
-  - 0
-  - 0
-  - 0
+  - 5
+  - 6
+  - 7
+  - 7
   costRadiusDetectionLevels:
   - 5
+  - 8
   - 10
-  - 15
-  costUpgradeIndex: 0
+  - 10
+  costUpgradeIndex: 3
   damageUpgradeIndex: 0
-  delayUpgradeIndex: 0
-  shootUpgradeIndex: 0
-  radiusUpgradeIndex: 0
+  delayUpgradeIndex: 3
+  shootUpgradeIndex: 3
+  radiusUpgradeIndex: 3

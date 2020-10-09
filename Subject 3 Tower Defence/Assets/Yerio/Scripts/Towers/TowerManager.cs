@@ -92,6 +92,7 @@ public class TowerManager : MonoBehaviour
     public void SelectTower(BaseTower tower)
     {
         selectedTower = tower;
+        selectedTower.UpdateTowerValues();
         instantiatedDetectionSphere = Instantiate(VisualDetectionSphere, selectedTower.transform.position, Quaternion.identity);
         instantiatedRadiusCircle = Instantiate(visualRadiusCircle, selectedTower.transform.position, visualRadiusCircle.transform.rotation);
         SetCorrectScaleForDetectionSphere(instantiatedDetectionSphere.transform);
@@ -106,9 +107,9 @@ public class TowerManager : MonoBehaviour
         tower.UpdateOriginalHeadRotation();
         audioManager.PlaySound("BuildTower");
 
-        tower.UpdateTowerValues();
         //to move the head up and down to create hovering effect
-        tower.towerHead.gameObject.AddComponent<SignWave>();
+        if (tower.towerHead)
+            tower.towerHead.gameObject.AddComponent<SignWave>();
     }
 
     public void DeselectTower()
@@ -131,7 +132,7 @@ public class TowerManager : MonoBehaviour
     {
         if (instantiatedRadiusCircle)
         {
-            instantiatedRadiusCircle.transform.position = selectedTower.transform.position - new Vector3(0, 0.5f, 0);
+            instantiatedRadiusCircle.transform.position = selectedTower.transform.position + selectedTower.radiusCircleOffset;
         }
     }
 
@@ -143,7 +144,7 @@ public class TowerManager : MonoBehaviour
 
     void SetCorrectScaleForRadiusCirle(Transform cirlce)
     {
-        var detectionDistance = selectedTower.detectionDistance;
+        var detectionDistance = selectedTower.currentDetectionDistance;
         var scale = detectionDistance / 12f; // 0.120 is the default radius for a 150 scale
         cirlce.GetComponent<ChangeRadius>().SetScale(scale);
     }
