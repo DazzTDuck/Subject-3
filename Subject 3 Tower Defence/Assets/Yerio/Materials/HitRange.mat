@@ -97,7 +97,7 @@ Material:
     m_Colors:
     - Color_B18FBE4B: {r: 0.15528616, g: 1.059274, b: 0.14974025, a: 1}
     - Color_C50D1CDE: {r: 0, g: 1.23824, b: 2.839216, a: 0}
-    - Color_F39BCDAD: {r: 0, g: 0.35730073, b: 1, a: 1}
+    - Color_F39BCDAD: {r: 0.16509432, g: 0.951739, b: 1, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

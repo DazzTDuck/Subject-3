@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 5753643088281295}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.85, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children:
   - {fileID: 1565684626325611574}
   - {fileID: 7656098474927667422}
@@ -161,6 +161,7 @@ MonoBehaviour:
   headRotationSpeed: 8
   targetEnemyInRange: {fileID: 0}
   currentShootDelay: 0
+  currentDetectionDistance: 0
   cryoBeamSound: {fileID: 0}
   enemyMask:
     serializedVersion: 2
