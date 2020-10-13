@@ -10,7 +10,15 @@ public class TowerBuilder : MonoBehaviour
 
      public TowerManager manager;
 
+    BuyingPanelHandler handler;
+
     float extraYPos;
+
+
+    private void Awake()
+    {
+        handler = FindObjectOfType<BuyingPanelHandler>();
+    }
 
     void Update()
     {
@@ -23,8 +31,9 @@ public class TowerBuilder : MonoBehaviour
         if (currentHeldTower)
         {
             MoveTowerToMouse();
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && !handler.isHoveringOverMenu)
             {
+                
                 ConfirmPlace();
             }
         }
@@ -34,19 +43,12 @@ public class TowerBuilder : MonoBehaviour
     {
         if (!Camera.main.GetComponent<MainCam>().isGunFocus)
         {
-            if (!currentHeldTower)
-            {
-                extraYPos = towerPrefabs[index].transform.position.y;
-                currentHeldTower = Instantiate(towerPrefabs[index], towerPrefabs[index].transform.position, towerPrefabs[index].transform.rotation);
-                manager.SelectTower(currentHeldTower.GetComponent<BaseTower>());
-            }
-            else
-            {
-                CancelPlacement();
-                extraYPos = towerPrefabs[index].transform.position.y;
-                currentHeldTower = Instantiate(towerPrefabs[index], towerPrefabs[index].transform.position, towerPrefabs[index].transform.rotation);
-                manager.SelectTower(currentHeldTower.GetComponent<BaseTower>());
-            }
+            CancelPlacement();
+            extraYPos = towerPrefabs[index].transform.position.y;
+            currentHeldTower = Instantiate(towerPrefabs[index], towerPrefabs[index].transform.position, towerPrefabs[index].transform.rotation);
+            manager.SelectTower(currentHeldTower.GetComponent<BaseTower>());
+
+
         }
     }
 

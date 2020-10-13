@@ -16,7 +16,7 @@ public class MainCam : MonoBehaviour
     public float topCamRotX;
     public float topCamRotY;
 
-    public bool isGunFocus;
+    public bool isGunFocus = false;
     public GameObject focusGun;
     public Vector3 focusGunOffset;
     public float gunZoom = 35f;
@@ -35,7 +35,6 @@ public class MainCam : MonoBehaviour
     void Awake()
     {
         MoveCamera(StartPosistion(), StartRotation());
-        //MoveCamToStartLocation();
     }
 
     // Update is called once per frame
@@ -45,23 +44,23 @@ public class MainCam : MonoBehaviour
         FocusOnGun();
 
         UpdateCameraLerp();
+       
     }
 
     void CamChangeTopView()
     {
-        if (Input.GetButtonDown("Debug1"))
+        if (Input.GetButtonDown("Sprint"))
         {
             if (!isTopView)
             {
-                //MoveCamToTopLocation();
                 MoveCamera(TopPosistion(), TopRotation());
                 isTopView = true;
                 isGunFocus = false;
+                Cursor.lockState = CursorLockMode.Confined;
             }
             else
             {
                 MoveCamera(StartPosistion(), StartRotation());
-                //MoveCamToStartLocation();
                 isTopView = false;
             }
         }
@@ -75,15 +74,15 @@ public class MainCam : MonoBehaviour
             if (!isGunFocus)
             {
                 MoveCamera(TowerPosistion(), TowerRotation());
-                //MoveCamToTower();
                 isGunFocus = true;
+                Cursor.lockState = CursorLockMode.Locked;
             }
             else
             {
                 MoveCamera(StartPosistion(), StartRotation());
-                //MoveCamToStartLocation();
                 isGunFocus = false;
                 isTopView = false;
+                Cursor.lockState = CursorLockMode.Confined;
             }
             Camera.main.fieldOfView = camDefaultFov;
             manager.GetComponent<TowerBuilder>().CancelPlacement();

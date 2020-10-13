@@ -31,9 +31,7 @@ public class LevelManager : MonoBehaviour
         if (levelSelectButtons != null)
         {
             UpdateLvlSelectUi();
-            print("not empty");
         }
-        print("Empty");
     }
 
     private void UpdateLvlSelectUi()
