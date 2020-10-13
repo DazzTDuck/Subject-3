@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.XR.WSA.Input;
 
 public class MainCam : MonoBehaviour
 {
@@ -26,15 +28,19 @@ public class MainCam : MonoBehaviour
     [HideInInspector]
     public bool isTopView;
 
+    bool canLerp = true;
+    bool startLerp = false;
     readonly float lerpSpeed = 7;
     Vector3 currentCamPos;
     Quaternion currentCamRot;
+    BuyingPanelHandler buyingPanelHandler;
 
 
     // Start is called before the first frame update
     void Awake()
     {
         MoveCamera(StartPosistion(), StartRotation());
+        buyingPanelHandler = FindObjectOfType<BuyingPanelHandler>();
     }
 
     // Update is called once per frame
@@ -43,8 +49,7 @@ public class MainCam : MonoBehaviour
         CamChangeTopView();
         FocusOnGun();
 
-        UpdateCameraLerp();
-       
+        UpdateCameraLerp();     
     }
 
     void CamChangeTopView()
@@ -76,9 +81,11 @@ public class MainCam : MonoBehaviour
                 MoveCamera(TowerPosistion(), TowerRotation());
                 isGunFocus = true;
                 Cursor.lockState = CursorLockMode.Locked;
+                buyingPanelHandler.ClosePanel();
             }
             else
             {
+                //reset rotaton player tower
                 MoveCamera(StartPosistion(), StartRotation());
                 isGunFocus = false;
                 isTopView = false;
@@ -97,15 +104,27 @@ public class MainCam : MonoBehaviour
     {
         currentCamPos = position;
         currentCamRot = rotation;
+        canLerp = true;
     }
 
     void LerpCamera(Vector3 position, Quaternion rotation)
     {
-        if (transform.position != position)
+        if (transform.position != position && canLerp)
+        {
             transform.position = Vector3.Lerp(transform.position, position, lerpSpeed * Time.deltaTime);
+        }
+        else canLerp = false;
 
-        if(transform.rotation != rotation)
+        if (transform.rotation != rotation && canLerp)
+        {
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, lerpSpeed * Time.deltaTime);
+        }
+        else canLerp = false;
+    }
+
+    public bool CanLerp()
+    {
+        return canLerp;
     }
 
     Vector3 TowerPosistion()

@@ -72,6 +72,11 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler, IPointerE
             panelOpen = !panelOpen;
             return;
         }
+        ClosePanel();
+    }
+    
+    public void ClosePanel()
+    {
         panelOpen = !panelOpen;
         animator.SetTrigger("ClosePanel");
         ClearSelectedUpgrade();

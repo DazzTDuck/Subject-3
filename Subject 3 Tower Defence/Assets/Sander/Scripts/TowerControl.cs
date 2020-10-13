@@ -38,7 +38,7 @@ public class TowerControl : MonoBehaviour
 
     void Update()
     {
-        if (cam.isGunFocus)
+        if (cam.isGunFocus && !cam.CanLerp())
         {
             float mouseX = Input.GetAxis("Mouse X") * mouseSense * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSense * Time.deltaTime;
@@ -65,7 +65,7 @@ public class TowerControl : MonoBehaviour
         {
             source.Play();
             instantiatedProjectile = Instantiate(projectile, shootingPoint.position, Quaternion.identity);
-            instantiatedProjectile.ShootProjectile(projectileSpeed, towerDamage, shootingPoint.transform.forward, upwardsOffset);
+            instantiatedProjectile.ShootProjectile(projectileSpeed, towerDamage, towerHead.forward, upwardsOffset);
             StartCoroutine(ShotDelay());
             StopCoroutine(ShotDelay());
         }
