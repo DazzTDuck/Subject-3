@@ -154,6 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickSound: 1
   hoverSound: 1
+  showHoverTooltip: 0
+  tooltipText: 
 --- !u!1 &5789073104445461065
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +221,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4f25341f9255249489a83a24f31a3812, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fff607e20b5b1b242957697ea3533310, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -322,7 +324,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 55.65
+  m_fontSize: 55.7
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -778,6 +780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0fa123ab9b6dc42ac9e93d72626d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 0}
   winImage: {fileID: 21300000, guid: cd21b066a56d86547b544c1cdb6295d5, type: 3}
   loseImage: {fileID: 21300000, guid: 4f25341f9255249489a83a24f31a3812, type: 3}
   gameEndBG: {fileID: 5789073104445461431}
@@ -948,6 +951,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clickSound: 1
   hoverSound: 1
+  showHoverTooltip: 0
+  tooltipText: 
 --- !u!1 &5789073105626014859
 GameObject:
   m_ObjectHideFlags: 0

@@ -77,9 +77,9 @@ MonoBehaviour:
   addEnemiesPerWave: 3
   extraTanksPerWave: 1
   amountOfWaves: 3
-  maxTimeToSpawnNewEmemy: 1.5
-  minTimeToSpawnNewEnemy: 0.8
-  enemyExtraHealthMuliplierPerWave: 0.2
+  maxTimeToSpawnNewEmemy: 3
+  minTimeToSpawnNewEnemy: 2
+  enemyExtraHealthMuliplierPerWave: 0.5
   prepTimeNewWave: 22
   prepTimerPanel: {fileID: 0}
   popupText: {fileID: 0}
@@ -142,7 +142,7 @@ MonoBehaviour:
   - {fileID: 7826593571935399825, guid: c2f164fe10954b64fb4d7111ee7ae41e, type: 3}
   - {fileID: 5791119593385285582, guid: fa375770af2c0f14898ff3d86955f90c, type: 3}
   - {fileID: 5753643088281295, guid: 6a14229239f21844c80dd546b1767c9e, type: 3}
-  - {fileID: 7826593571935399825, guid: c2f164fe10954b64fb4d7111ee7ae41e, type: 3}
+  - {fileID: 4505299112538330723, guid: ee1be4db56f3fb44384a45fad403ccc3, type: 3}
   manager: {fileID: 8605008950558809803}
 --- !u!114 &500742221
 MonoBehaviour:

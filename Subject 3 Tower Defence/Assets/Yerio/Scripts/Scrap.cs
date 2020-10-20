@@ -18,17 +18,15 @@ public class Scrap : MonoBehaviour
     bool lerpDown;
     bool pickupLerp;
 
-    Vector3 lerpPos;
     Vector3 pickupPos;
 
     private void Start()
     {
-        lerpPos = transform.position;
         signWave = GetComponent<SignWave>();
         scrapPickupTimer = gameObject.AddComponent<Timer>();
         if (!stayOnScreen)
         {
-            scrapPickupTimer.SetTimer(pickupTime, () => { StartCoroutine(OnTimerEnd()); signWave.DeactivateSignWave(); canBePickedUp = false; });
+            scrapPickupTimer.SetTimer(pickupTime, () => { StartCoroutine(OnTimerEnd()); signWave.DeactivateSignWave(); canBePickedUp = false;});
         }
     }
     private void Update()
@@ -44,14 +42,11 @@ public class Scrap : MonoBehaviour
     }
     IEnumerator OnTimerEnd()
     {
-        if (!canBePickedUp)
-        {
-            lerpDown = true;
+        lerpDown = true;
 
-            yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2);
 
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 
     public void PickupScrap(Vector3 posistion, float collectionSpeed)
