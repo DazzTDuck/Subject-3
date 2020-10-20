@@ -1536,6 +1536,11 @@ PrefabInstance:
       propertyPath: mouseSense
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 9047177189517321734, guid: 21f66c8491829ac43a4de07320905f9b,
+        type: 3}
+      propertyPath: shotDelayTime
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21f66c8491829ac43a4de07320905f9b, type: 3}
 --- !u!1001 &2750253893175901429
