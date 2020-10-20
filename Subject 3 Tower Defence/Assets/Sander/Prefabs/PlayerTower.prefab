@@ -179,10 +179,11 @@ MonoBehaviour:
   hitParticle: {fileID: 1570927096764274, guid: 643639841fb531e4ba8097fed4eb9ac7,
     type: 3}
   shootingPoint: {fileID: 1978582247671583960}
-  shootDelay: 0.6
+  shotDelayTime: 0.5
   towerDamage: 30
-  shootSpeed: 7
+  projectileSpeed: 7
   upwardsOffset: 0
+  mouseSense: 500
 --- !u!1001 &1978582247249628467
 PrefabInstance:
   m_ObjectHideFlags: 0
