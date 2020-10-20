@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 772931ad0575f6f4b9387166a1f9b1fa,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -585,7 +585,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 51.55
+  m_fontSize: 51.65
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1584,7 +1584,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &726190156
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1760,10 +1760,10 @@ RectTransform:
   m_Father: {fileID: 1190780165}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.43574768, y: 0.37880412}
-  m_AnchorMax: {x: 0.5646524, y: 0.7575878}
-  m_AnchoredPosition: {x: 0, y: 0.25219727}
-  m_SizeDelta: {x: 0, y: 0.5044098}
+  m_AnchorMin: {x: 0.61865187, y: 0.38450232}
+  m_AnchorMax: {x: 0.74778104, y: 0.7651006}
+  m_AnchoredPosition: {x: 0, y: -0.5}
+  m_SizeDelta: {x: 0, y: -0.4955902}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &833819195
 Animator:
@@ -1915,7 +1915,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860102192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.19, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1339633058}
@@ -1961,8 +1961,8 @@ RectTransform:
   m_Father: {fileID: 1190780165}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.41230476, y: 0.21700001}
-  m_AnchorMax: {x: 0.587, y: 0.34458774}
+  m_AnchorMin: {x: 0.59469634, y: 0.2226982}
+  m_AnchorMax: {x: 0.7706519, y: 0.35020122}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2014,7 +2014,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 45.9
+  m_fontSize: 46.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2891,7 +2891,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 52.65
+  m_fontSize: 52.5
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3304,10 +3304,10 @@ RectTransform:
   m_Father: {fileID: 320049719}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.24129103, y: 0.67800003}
-  m_AnchorMax: {x: 0.7644004, y: 0.96047455}
-  m_AnchoredPosition: {x: 0, y: -20}
-  m_SizeDelta: {x: 0, y: -0.0000009536743}
+  m_AnchorMin: {x: 0.23847917, y: 0.6851497}
+  m_AnchorMax: {x: 0.762, y: 0.9675988}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1231187823
 MonoBehaviour:
@@ -3647,7 +3647,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1489734700
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4252,8 +4252,8 @@ RectTransform:
   m_Father: {fileID: 1190780165}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.101, y: 0.37880412}
-  m_AnchorMax: {x: 0.23269527, y: 0.7575878}
+  m_AnchorMin: {x: 0.2583927, y: 0.37880412}
+  m_AnchorMax: {x: 0.38969636, y: 0.7575878}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4833,10 +4833,10 @@ RectTransform:
   m_Father: {fileID: 1190780165}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.07630475, y: 0.21700001}
-  m_AnchorMax: {x: 0.261, y: 0.34458774}
+  m_AnchorMin: {x: 0.23369634, y: 0.21700001}
+  m_AnchorMax: {x: 0.41869527, y: 0.34458774}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -0.0000076293945}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2119418289
 MonoBehaviour:
@@ -4886,7 +4886,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 48.55
+  m_fontSize: 48.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
