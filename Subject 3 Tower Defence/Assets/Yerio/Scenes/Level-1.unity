@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 48e06e3cdbb099f41a5aa81b996bbf5f,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -25242,6 +25242,12 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5880649674879250593, guid: 5e773543b7eb3214687ac9ebca4ca295,
+        type: 3}
+      propertyPath: postFx
+      value: 
+      objectReference: {fileID: 11400000, guid: 67c3c0c185b8bf0449c735e073758a9e,
+        type: 2}
     - target: {fileID: 5880649674879250594, guid: 5e773543b7eb3214687ac9ebca4ca295,
         type: 3}
       propertyPath: m_Name
@@ -29436,17 +29442,17 @@ PrefabInstance:
     - target: {fileID: 7225884419735180244, guid: 1386074c48df0dc48a66b011e9ee386b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.3251877
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7225884419735180244, guid: 1386074c48df0dc48a66b011e9ee386b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -143.22304
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7225884419735180244, guid: 1386074c48df0dc48a66b011e9ee386b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -60.112156
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7225884419735180244, guid: 1386074c48df0dc48a66b011e9ee386b,
         type: 3}
@@ -29488,6 +29494,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7225884419735180245, guid: 1386074c48df0dc48a66b011e9ee386b,
+        type: 3}
+      propertyPath: sharedProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 67c3c0c185b8bf0449c735e073758a9e,
+        type: 2}
     - target: {fileID: 7225884419735180246, guid: 1386074c48df0dc48a66b011e9ee386b,
         type: 3}
       propertyPath: m_Name

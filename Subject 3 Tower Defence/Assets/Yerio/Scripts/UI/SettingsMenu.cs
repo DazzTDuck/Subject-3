@@ -4,21 +4,35 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Audio;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering;
+using UnityEngine.Assertions.Must;
+using System.Linq;
 
 public class SettingsMenu : MonoBehaviour
 {
+    [Header("Mixer")]
     public AudioMixer masterMixer;
-    [Space]
+
+    [Header("Dropdowns")]
     public TMP_Dropdown resolutionDropdown;
-    [Space]
+    public TMP_Dropdown qualityDropdown;
+
+    [Header("Sliders")]
     public Slider master;
     public Slider sfx;
     public Slider music;
-    [Space]
+
+    [Header("Toggles")]
     public Toggle fullscreenToggle;
-    [Space]
-    public TMP_Dropdown qualityDropdown;
+    public Toggle motionBlurToggle;
+
+    [Header("PostFX Profile")]
+    public VolumeProfile postFx;
+
+    List<VolumeComponent> componentsPostFX = new List<VolumeComponent>();
+    MotionBlur motionBlur;
 
     //values
     public static float masterVolume = 1f;
@@ -34,10 +48,14 @@ public class SettingsMenu : MonoBehaviour
 
     Animator settingsAnimator;
 
-
     private void Start()
     {
-        if(resolutionDropdown)
+        GetAllPlayerPrefsValues();
+
+        //get all post fx components
+        componentsPostFX = postFx.components;
+
+        if (resolutionDropdown)
         GetResolutions();
 
         SetMasterVolume(masterVolume);
@@ -69,10 +87,29 @@ public class SettingsMenu : MonoBehaviour
             fullscreenToggle.isOn = fullscreen;
         }
 
+        //get motion blur
+        for (int i = 0; i < componentsPostFX.Count; i++)
+        {
+            if(componentsPostFX[3] is MotionBlur blur)
+            {
+                motionBlur = blur;
+                Debug.Log(motionBlur);
+            }
+        }
+
         settingsAnimator = GetComponentInChildren<Animator>();
     }
 
-        public void GetResolutions()
+    public void SetAllPlayerPrefsValues()
+    {
+        //this function sets all the current settings values to the player prefs
+    }
+    public void GetAllPlayerPrefsValues()
+    {
+        //this function gets all the player prefs and sets the static values
+    }
+
+    public void GetResolutions()
     {
         //get and set the resolutions for the dropdown
         resolutions = Screen.resolutions;
@@ -111,6 +148,8 @@ public class SettingsMenu : MonoBehaviour
         Resolution res = resolutions[resIndex];
         Screen.SetResolution(res.width, res.height, Screen.fullScreen);
         currentResIndex = resIndex;
+
+        SetAllPlayerPrefsValues();
     }
 
     //control the different volume sliders
@@ -118,16 +157,22 @@ public class SettingsMenu : MonoBehaviour
     {
         masterMixer.SetFloat("MasterValue", Mathf.Log10(volume) * 20);
         masterVolume = volume;
+
+        SetAllPlayerPrefsValues();
     }
     public void SetMusicVolume(float volume)
     {
         masterMixer.SetFloat("MusicValue", Mathf.Log10(volume) * 20);
         musicVolume = volume;
+
+        SetAllPlayerPrefsValues();
     }
     public void SetSFXVolume(float volume)
     {
         masterMixer.SetFloat("SFXValue", Mathf.Log10(volume) * 20);
         sfxVolume = volume;
+
+        SetAllPlayerPrefsValues();
     }
 
     //set the quality of the game
@@ -135,6 +180,8 @@ public class SettingsMenu : MonoBehaviour
     {
         QualitySettings.SetQualityLevel(qualityIndex);
         qualityIndexSave = qualityIndex;
+
+        SetAllPlayerPrefsValues();
     }
 
     //set the fullscreen of the game
@@ -142,6 +189,8 @@ public class SettingsMenu : MonoBehaviour
     {
         Screen.fullScreen = isFullscreen;
         fullscreen = isFullscreen;
+
+        SetAllPlayerPrefsValues();
     }
 
 }
