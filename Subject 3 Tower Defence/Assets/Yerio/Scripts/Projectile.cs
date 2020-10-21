@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
         }
         else
         {
-            transform.rotation = Quaternion.LookRotation(transform.forward);
+            transform.rotation = Quaternion.LookRotation(direction);
             transform.position += direction * shootSpeed * Time.deltaTime;
         }
     }

@@ -27,19 +27,22 @@ public class SettingsMenu : MonoBehaviour
     [Header("Toggles")]
     public Toggle fullscreenToggle;
     public Toggle motionBlurToggle;
+    public Toggle bloomToggle;
 
     [Header("PostFX Profile")]
     public VolumeProfile postFx;
 
-    List<VolumeComponent> componentsPostFX = new List<VolumeComponent>();
     MotionBlur motionBlur;
+    Bloom bloom;
 
     //values
     public static float masterVolume = 1f;
     public static float sfxVolume = 1f;
     public static float musicVolume = 1f;
 
-    public static bool fullscreen = false;
+    public static bool fullscreen = true;
+    public static bool bloomOn = true;
+    public static bool motionBlurOn = true;
 
     public Resolution[] resolutions;
     public static int currentResIndex;
@@ -52,8 +55,8 @@ public class SettingsMenu : MonoBehaviour
     {
         GetAllPlayerPrefsValues();
 
-        //get all post fx components
-        componentsPostFX = postFx.components;
+        postFx.TryGet(out bloom);
+        postFx.TryGet(out motionBlur);
 
         if (resolutionDropdown)
         GetResolutions();
@@ -86,15 +89,15 @@ public class SettingsMenu : MonoBehaviour
             SetFullscreen(fullscreen);
             fullscreenToggle.isOn = fullscreen;
         }
-
-        //get motion blur
-        for (int i = 0; i < componentsPostFX.Count; i++)
+        if (bloomToggle)
         {
-            if(componentsPostFX[3] is MotionBlur blur)
-            {
-                motionBlur = blur;
-                Debug.Log(motionBlur);
-            }
+            SetBloom(bloomOn);
+            bloomToggle.isOn = bloomOn;
+        }
+        if (motionBlurToggle)
+        {
+            SetMotionBlur(motionBlurOn);
+            motionBlurToggle.isOn = motionBlurOn;
         }
 
         settingsAnimator = GetComponentInChildren<Animator>();
@@ -155,21 +158,21 @@ public class SettingsMenu : MonoBehaviour
     //control the different volume sliders
     public void SetMasterVolume(float volume)
     {
-        masterMixer.SetFloat("MasterValue", Mathf.Log10(volume) * 20);
+        masterMixer.SetFloat("MasterValue", volume);
         masterVolume = volume;
 
         SetAllPlayerPrefsValues();
     }
     public void SetMusicVolume(float volume)
     {
-        masterMixer.SetFloat("MusicValue", Mathf.Log10(volume) * 20);
+        masterMixer.SetFloat("MusicValue", volume);
         musicVolume = volume;
 
         SetAllPlayerPrefsValues();
     }
     public void SetSFXVolume(float volume)
     {
-        masterMixer.SetFloat("SFXValue", Mathf.Log10(volume) * 20);
+        masterMixer.SetFloat("SFXValue", volume);
         sfxVolume = volume;
 
         SetAllPlayerPrefsValues();
@@ -189,6 +192,21 @@ public class SettingsMenu : MonoBehaviour
     {
         Screen.fullScreen = isFullscreen;
         fullscreen = isFullscreen;
+
+        SetAllPlayerPrefsValues();
+    }
+    public void SetBloom(bool isBloom)
+    {
+        bloom.active = isBloom;
+        bloomOn = isBloom;
+
+
+        SetAllPlayerPrefsValues();
+    }
+    public void SetMotionBlur(bool isMB)
+    {
+        motionBlur.active = isMB;
+        motionBlurOn = isMB;
 
         SetAllPlayerPrefsValues();
     }

@@ -46,36 +46,41 @@ MonoBehaviour:
   sounds:
   - name: ButtonClick
     clip: {fileID: 8300000, guid: aff36d43b53bce848a13be6fd9c186f1, type: 3}
-    mixer: {fileID: 24300002, guid: c6e82527aa3eb6d4d92431c2f49a53cd, type: 2}
-    volume: 0.1
+    mixer: {fileID: -6191888513926684019, guid: c6e82527aa3eb6d4d92431c2f49a53cd,
+      type: 2}
+    volume: 0.3
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: ButtonHover
     clip: {fileID: 8300000, guid: 936ba848091a2b34fb51c8c107ce521e, type: 3}
-    mixer: {fileID: 24300002, guid: c6e82527aa3eb6d4d92431c2f49a53cd, type: 2}
-    volume: 0.1
+    mixer: {fileID: -6191888513926684019, guid: c6e82527aa3eb6d4d92431c2f49a53cd,
+      type: 2}
+    volume: 0.3
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Error
     clip: {fileID: 8300000, guid: d15051b2a5c3c1341aeaa9afa2d1fc70, type: 3}
-    mixer: {fileID: 24300002, guid: c6e82527aa3eb6d4d92431c2f49a53cd, type: 2}
-    volume: 0.1
+    mixer: {fileID: -6191888513926684019, guid: c6e82527aa3eb6d4d92431c2f49a53cd,
+      type: 2}
+    volume: 0.3
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: BuildTower
     clip: {fileID: 8300000, guid: f822257e62e261d40acde332765d62e0, type: 3}
-    mixer: {fileID: 24300002, guid: c6e82527aa3eb6d4d92431c2f49a53cd, type: 2}
-    volume: 0.2
+    mixer: {fileID: -6191888513926684019, guid: c6e82527aa3eb6d4d92431c2f49a53cd,
+      type: 2}
+    volume: 0.4
     pitch: 0.9
     loop: 0
     source: {fileID: 0}
   - name: UpgradePurchace
     clip: {fileID: 8300000, guid: 8642aa102ddc4ea42ac91659dee6c5c8, type: 3}
-    mixer: {fileID: 24300002, guid: c6e82527aa3eb6d4d92431c2f49a53cd, type: 2}
-    volume: 0.1
+    mixer: {fileID: -6191888513926684019, guid: c6e82527aa3eb6d4d92431c2f49a53cd,
+      type: 2}
+    volume: 0.4
     pitch: 1
     loop: 0
     source: {fileID: 0}

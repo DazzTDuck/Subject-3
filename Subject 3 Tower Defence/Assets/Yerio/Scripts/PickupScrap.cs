@@ -8,16 +8,18 @@ public class PickupScrap : MonoBehaviour
 
     RaycastHit hit;
     CurrencyManager currency;
+    MainCam mainCam;
     private void Awake()
     {
         currency = FindObjectOfType<CurrencyManager>();
+        mainCam = GetComponent<MainCam>();
     }
 
     private void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !mainCam.isGunFocus)
         {
             if (Physics.Raycast(ray, out hit, 10000f, scrapLayer))
             {

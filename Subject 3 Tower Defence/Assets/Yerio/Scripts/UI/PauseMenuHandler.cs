@@ -16,6 +16,8 @@ public class PauseMenuHandler : MonoBehaviour
     Button[] buttons;
     GameEndHandler endHandler;
 
+    bool settingsOpen = false;
+
     private void Awake()
     {
         pauseMenuAnimator = GetComponent<Animator>();
@@ -40,7 +42,7 @@ public class PauseMenuHandler : MonoBehaviour
                 return;
             }
 
-            if (!pausemenuAnimationStart && pausemenuAnimationOpen && !popup.isActive)
+            if (!pausemenuAnimationStart && pausemenuAnimationOpen && !popup.isActive && !settingsOpen)
                 StartCloseMenu();
         }
     }
@@ -49,6 +51,9 @@ public class PauseMenuHandler : MonoBehaviour
     {
         StartCoroutine(CloseMenu());
     }
+
+    public void SettingsOpen() { settingsOpen = true; }
+    public void SettingsClose() { settingsOpen = false; }
 
     public IEnumerator CloseMenu()
     {
