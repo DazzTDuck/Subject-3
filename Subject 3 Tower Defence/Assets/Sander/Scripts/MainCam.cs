@@ -58,6 +58,7 @@ public class MainCam : MonoBehaviour
         {
             if (!isTopView)
             {
+                focusGun.GetComponentInParent<TowerControl>().ResetHeadRot();
                 MoveCamera(TopPosistion(), TopRotation());
                 isTopView = true;
                 isGunFocus = false;
@@ -85,7 +86,7 @@ public class MainCam : MonoBehaviour
             }
             else
             {
-                //reset rotaton player tower
+                focusGun.GetComponentInParent<TowerControl>().ResetHeadRot();
                 MoveCamera(StartPosistion(), StartRotation());
                 isGunFocus = false;
                 isTopView = false;

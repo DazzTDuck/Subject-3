@@ -25,19 +25,19 @@ public class TowerControl : MonoBehaviour
     private float xRotation = 0f;
     private float yRotation = 90f;
 
+    public Quaternion defHeadRot;
+
     private void Awake()
     {
+        defHeadRot = towerHead.rotation;
+
         cam = Camera.main.GetComponent<MainCam>();
         source = GetComponent<AudioSource>();
     }
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
+
         if (cam.isGunFocus && !cam.CanLerp())
         {
             float mouseX = Input.GetAxis("Mouse X") * mouseSense * Time.deltaTime;
@@ -56,6 +56,8 @@ public class TowerControl : MonoBehaviour
                 ShootToTarget();
             }
         }
+    
+        
        
     }
 
@@ -78,4 +80,10 @@ public class TowerControl : MonoBehaviour
         canShoot = true;
     }
 
+    public void ResetHeadRot()
+    {
+        towerHead.rotation = defHeadRot;
+        xRotation = 0f;
+        yRotation = 90f;
+    }
 }
