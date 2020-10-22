@@ -124,6 +124,7 @@ public class SettingsMenu : MonoBehaviour
             if (!options.Contains(option))
             {
                 options.Add(option);
+                Debug.Log(option + " " + i);
             }
         }
 
