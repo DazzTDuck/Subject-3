@@ -14367,6 +14367,8 @@ MonoBehaviour:
   scrapLayer:
     serializedVersion: 2
     m_Bits: 4096
+  pickupEffect: {fileID: 5964977884070987449, guid: 59b6f71c3907c8e4a8bea6e7489ed363,
+    type: 3}
 --- !u!4 &1112287841 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fde36b36deb75854a95f5d35c6f5fa16,

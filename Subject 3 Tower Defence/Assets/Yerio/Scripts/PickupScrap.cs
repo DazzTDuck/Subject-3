@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickupScrap : MonoBehaviour
 {
     [SerializeField] LayerMask scrapLayer;
+    [SerializeField] GameObject pickupEffect;
 
     RaycastHit hit;
     CurrencyManager currency;
@@ -25,6 +26,9 @@ public class PickupScrap : MonoBehaviour
             {
                 var scrapHit = hit.transform.GetComponent<Scrap>();
                 scrapHit.CollectScrap(currency);
+
+                var instantiatedEffect = Instantiate(pickupEffect, hit.transform.position, Quaternion.identity);
+                Destroy(instantiatedEffect, 1f);
             }
         }
         
