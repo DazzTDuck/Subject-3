@@ -33,7 +33,7 @@ public class SignWave : MonoBehaviour
 
         if (rotate)
         { 
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.x, transform.eulerAngles.y + 45, transform.eulerAngles.z + 45), Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(transform.rotation.x, transform.eulerAngles.y + 45, transform.rotation.z), Time.deltaTime);
         }
     }
 

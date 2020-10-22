@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BaseEnemy : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class BaseEnemy : MonoBehaviour
     private int minAmountCurrencyOnDrop = 2;
     [SerializeField, Tooltip("Maximum amount of scrap that can be dropped on death")]
     private int maxAmountCurrencyOnDrop = 5;
-    [SerializeField] GameObject ScrapPrefab;
+    [SerializeField] List<GameObject> scrapModels = new List<GameObject>();
 
     [HideInInspector] public Health health;
     [HideInInspector] public float actualMoveSpeed;
@@ -110,7 +111,8 @@ public class BaseEnemy : MonoBehaviour
     protected virtual void DropOnDeath()
     {
         var amountScrapDropped = CurrencyDropped();
-        var instantiatedScrapPrefab = Instantiate(ScrapPrefab, transform.position + Vector3.up, ScrapPrefab.transform.rotation);
+        var scrapIndex = Random.Range(0, scrapModels.Count);
+        var instantiatedScrapPrefab = Instantiate(scrapModels[scrapIndex], transform.position + Vector3.up, scrapModels[scrapIndex].transform.rotation);
         var scrap = instantiatedScrapPrefab.GetComponent<Scrap>();
         scrap.amount = amountScrapDropped;
         //currency.AddCurrency(amountScrapDropped);

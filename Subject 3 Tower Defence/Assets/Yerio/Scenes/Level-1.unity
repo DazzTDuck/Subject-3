@@ -6016,27 +6016,6 @@ PrefabInstance:
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 1110373811}
-    - target: {fileID: 8605008950558809801, guid: 5de957a50839a804f83631a3c44df07b,
-        type: 3}
-      propertyPath: stopWaves
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8605008950558809802, guid: 5de957a50839a804f83631a3c44df07b,
-        type: 3}
-      propertyPath: towerPrefabs.Array.data[4]
-      value: 
-      objectReference: {fileID: 1462671883630521259, guid: c84162d11825d7a4891e028722e93233,
-        type: 3}
-    - target: {fileID: 8605008950558809803, guid: 5de957a50839a804f83631a3c44df07b,
-        type: 3}
-      propertyPath: safePlacementRadius
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 8605008950558809803, guid: 5de957a50839a804f83631a3c44df07b,
-        type: 3}
-      propertyPath: minTowerPlacementDistance
-      value: 1.9
-      objectReference: {fileID: 0}
     - target: {fileID: 8605008950558809846, guid: 5de957a50839a804f83631a3c44df07b,
         type: 3}
       propertyPath: m_Name
@@ -15840,7 +15819,7 @@ PrefabInstance:
     - target: {fileID: 6905168630529847515, guid: b4793d48e6cd1394886c4af51ca634c6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -58.099915
+      value: -58.099854
       objectReference: {fileID: 0}
     - target: {fileID: 6905168630800303196, guid: b4793d48e6cd1394886c4af51ca634c6,
         type: 3}
@@ -29609,3 +29588,4 @@ MonoBehaviour:
   projectileSpeed: 13
   upwardsOffset: 0
   mouseSense: 70
+  defHeadRot: {x: 0, y: 0, z: 0, w: 0}

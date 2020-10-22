@@ -82,6 +82,8 @@ public class MainCam : MonoBehaviour
                 MoveCamera(TowerPosistion(), TowerRotation());
                 isGunFocus = true;
                 Cursor.lockState = CursorLockMode.Locked;
+
+                if(buyingPanelHandler.PanelOpen())
                 buyingPanelHandler.ClosePanel();
             }
             else

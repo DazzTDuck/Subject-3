@@ -88,6 +88,8 @@ public class BuyingPanelHandler : MonoBehaviour, IPointerClickHandler, IPointerE
         }
     }
 
+    public bool PanelOpen() { return panelOpen; }
+
     public void GetUpgradeInfo(int towerIndex)
     {
         //0 = turret tower

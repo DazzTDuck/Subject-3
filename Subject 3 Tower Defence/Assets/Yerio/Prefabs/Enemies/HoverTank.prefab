@@ -9816,8 +9816,10 @@ MonoBehaviour:
   minDistanceToCP: 0.7
   minAmountCurrencyOnDrop: 8
   maxAmountCurrencyOnDrop: 15
-  ScrapPrefab: {fileID: 8103596017382021174, guid: 1e8c26386f3776348abc17e4841af439,
-    type: 3}
+  scrapModels:
+  - {fileID: 8657221163296932377, guid: f803c744c628ff2408ee393e648f0191, type: 3}
+  - {fileID: 4072741778072065086, guid: 704abf4063cc2d84bad1b8ad549988b4, type: 3}
+  - {fileID: 3151239018862551520, guid: 9c441b2a3cab00c409a0afa8ed53c7ac, type: 3}
   health: {fileID: 0}
   actualMoveSpeed: 0
 --- !u!114 &-7845880567163949837

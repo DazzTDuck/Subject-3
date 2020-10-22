@@ -108,7 +108,7 @@ public class TowerManager : MonoBehaviour
         audioManager.PlaySound("BuildTower");
 
         //to move the head up and down to create hovering effect
-        if (tower.towerHead)
+        if (tower.towerHead && !tower.towerHead.gameObject.GetComponent<SignWave>())
             tower.towerHead.gameObject.AddComponent<SignWave>();
     }
 

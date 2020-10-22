@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 772931ad0575f6f4b9387166a1f9b1fa,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -492,6 +492,7 @@ RectTransform:
   m_Children:
   - {fileID: 1231187822}
   - {fileID: 1190780165}
+  - {fileID: 512543884}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -857,13 +858,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1642372378}
-  m_Father: {fileID: 1190780165}
-  m_RootOrder: 9
+  m_Father: {fileID: 320049719}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.41869527, y: 0.785}
-  m_AnchorMax: {x: 0.5823048, y: 0.97400004}
-  m_AnchoredPosition: {x: 5.6366, y: -548}
-  m_SizeDelta: {x: 100.25, y: 12.363373}
+  m_AnchorMin: {x: 0.40774998, y: 0}
+  m_AnchorMax: {x: 0.59000003, y: 0.10444768}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &512543885
 MonoBehaviour:
@@ -2760,7 +2761,6 @@ RectTransform:
   - {fileID: 2119418288}
   - {fileID: 965542351}
   - {fileID: 726190156}
-  - {fileID: 512543884}
   m_Father: {fileID: 320049719}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3989,7 +3989,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 38.6
+  m_fontSize: 38.95
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
