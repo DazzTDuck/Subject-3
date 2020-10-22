@@ -15681,6 +15681,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1592742833, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
+      propertyPath: tooltipText
+      value: 'Buy Scrap Collector
+
+        This will double your scrap if it collects
+        it'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1592742834, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
+      propertyPath: tooltipText
+      value: 'Buy Cryo Tower
+
+        Freezes anyone who passes by!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1592742835, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
+      propertyPath: tooltipText
+      value: 'Buy Shock Tower
+
+        Shocks enemies in range'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1592742836, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
+      propertyPath: tooltipText
+      value: 'Buy Laser Tower
+
+        A high damage laser to blast your enemies!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1592742837, guid: b4793d48e6cd1394886c4af51ca634c6, type: 3}
+      propertyPath: tooltipText
+      value: 'Buy Turret Tower
+
+        This is the basic tower for damage'
+      objectReference: {fileID: 0}
     - target: {fileID: 6905168629419512552, guid: b4793d48e6cd1394886c4af51ca634c6,
         type: 3}
       propertyPath: m_IsActive

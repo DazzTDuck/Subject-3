@@ -11,7 +11,7 @@ public class ButtonEvents : MonoBehaviour, IPointerExitHandler
 
     [Header("---Show Tooltip---")]
     [SerializeField, Tooltip("Turn this bool on if you want to display a tooltip when this button is hovered over")] bool showHoverTooltip;
-    [SerializeField, Tooltip("This text will be displayed when tooltip is activated")] string tooltipText;
+    [SerializeField, Tooltip("This text will be displayed when tooltip is activated"), TextArea(1, 4)] string tooltipText;
 
     AudioManager manager;
 
