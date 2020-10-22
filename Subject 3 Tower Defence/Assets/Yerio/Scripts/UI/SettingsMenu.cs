@@ -74,8 +74,8 @@ public class SettingsMenu : MonoBehaviour
 
         if (resolutionDropdown)
         {
-            SetResolution(PlayerPrefs.GetInt("resIndex"));
-            resolutionDropdown.value = PlayerPrefs.GetInt("resIndex");
+            SetResolution(PlayerPrefs.GetInt("resIndex", resolutions.Length));
+            resolutionDropdown.value = PlayerPrefs.GetInt("resIndex", resolutions.Length);
             resolutionDropdown.RefreshShownValue();
         }
         if (fullscreenToggle)
@@ -125,15 +125,10 @@ public class SettingsMenu : MonoBehaviour
             {
                 options.Add(option);
             }
-
-            if (resolutions[i].width == Screen.currentResolution.width
-                && resolutions[i].height == Screen.currentResolution.height)
-            {
-                PlayerPrefs.SetInt("resIndex", i);
-                PlayerPrefs.Save();
-            }
         }
 
+        PlayerPrefs.SetInt("resIndex", resolutions.Length); //the last in the list
+        PlayerPrefs.Save();
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = PlayerPrefs.GetInt("resIndex");
         resolutionDropdown.RefreshShownValue();
@@ -147,7 +142,10 @@ public class SettingsMenu : MonoBehaviour
     public void SetResolution(int resIndex)
     {
         Resolution res = resolutions[resIndex];
-        Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+        //Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+        Screen.SetResolution(1920, 1080, Screen.fullScreen);
+
+        //Debug.Log(resIndex + " " + res.width + " " + res.height);
 
         PlayerPrefs.SetInt("resIndex", resIndex);
         PlayerPrefs.Save();
