@@ -51,16 +51,16 @@ public class GameEndHandler : MonoBehaviour
         {
             levelManager.LvlCompleted();
             sprite = winImage;
-            text = "Next Level";
+            text = "Level Selector";
             //set button OnClick to restart the level
-            button1.onClick.AddListener(() => { levelLoader.LoadNextScene(); });
+            button1.onClick.AddListener(() => levelLoader.LoadNewScene(1));
         }
         else
         {
             sprite = loseImage;
             text = "Restart Level";
             //set button OnClick to load the next level 
-            button1.onClick.AddListener(() => { levelLoader.LoadNewScene(SceneManager.GetActiveScene().buildIndex); });
+            button1.onClick.AddListener(() => levelLoader.LoadNewScene(SceneManager.GetActiveScene().buildIndex));
         }
 
         gameEndBG.sprite = sprite;

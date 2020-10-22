@@ -7,7 +7,7 @@ using UnityEngine.XR.WSA.Input;
 
 public class MainCam : MonoBehaviour
 {
-    public Vector3 camOffset;
+    public Vector3 camPos;
     public float defaultCamRotX;
     public float defaultCamRotY;
 
@@ -29,7 +29,6 @@ public class MainCam : MonoBehaviour
     public bool isTopView;
 
     bool canLerp = true;
-    bool startLerp = false;
     readonly float lerpSpeed = 7;
     Vector3 currentCamPos;
     Quaternion currentCamRot;
@@ -39,6 +38,7 @@ public class MainCam : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        camPos = transform.position;
         MoveCamera(StartPosistion(), StartRotation());
         buyingPanelHandler = FindObjectOfType<BuyingPanelHandler>();
     }
@@ -140,7 +140,7 @@ public class MainCam : MonoBehaviour
     }
     Vector3 StartPosistion()
     {
-        return Vector3.zero + camOffset;
+        return camPos;
     }
     Quaternion StartRotation()
     {

@@ -84,4 +84,19 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  awakeBGMusic: 0
+  - name: MainMenu
+    clip: {fileID: 8300000, guid: 275158bff02e38d4fabce552b108adb8, type: 3}
+    mixer: {fileID: 2275778615782231991, guid: c6e82527aa3eb6d4d92431c2f49a53cd, type: 2}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: InGame
+    clip: {fileID: 8300000, guid: fef41313808950743bc80391ad54d848, type: 3}
+    mixer: {fileID: 2275778615782231991, guid: c6e82527aa3eb6d4d92431c2f49a53cd, type: 2}
+    volume: 0.15
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  awakeMainMenuMusic: 0
+  awakeInGameMusic: 0

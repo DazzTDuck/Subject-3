@@ -47,19 +47,19 @@ public class SettingsMenu : MonoBehaviour
     public Resolution[] resolutions;
     public static int currentResIndex;
 
-    public static int qualityIndexSave = 2;
+    public static int currentQualityIndex = 2;
 
     Animator settingsAnimator;
 
     private void Start()
     {
+        if (resolutionDropdown)
+            GetResolutions();
+
         GetAllPlayerPrefsValues();
 
         postFx.TryGet(out bloom);
         postFx.TryGet(out motionBlur);
-
-        if (resolutionDropdown)
-        GetResolutions();
 
         SetMasterVolume(masterVolume);
         if(master)
@@ -75,8 +75,8 @@ public class SettingsMenu : MonoBehaviour
 
         if (qualityDropdown)
         {
-            SetQuality(qualityIndexSave);
-            qualityDropdown.value = qualityIndexSave;
+            SetQuality(currentQualityIndex);
+            qualityDropdown.value = currentQualityIndex;
         }
 
         if (resolutionDropdown)
@@ -106,10 +106,42 @@ public class SettingsMenu : MonoBehaviour
     public void SetAllPlayerPrefsValues()
     {
         //this function sets all the current settings values to the player prefs
+
+        PlayerPrefs.SetFloat("MasterVolume", masterVolume);
+        PlayerPrefs.SetFloat("MusicVolume", musicVolume);
+        PlayerPrefs.SetFloat("SFXVolume", sfxVolume);
+
+        PlayerPrefs.SetInt("ResIndex", currentResIndex);
+        PlayerPrefs.SetInt("QualityIndex", currentQualityIndex);
+
+        PlayerPrefs.SetInt("FullscreenBool", fullscreen ? 1 : 0);
+        PlayerPrefs.SetInt("BloomBool", bloomOn ? 1 : 0);
+        PlayerPrefs.SetInt("MotionBlurBool", motionBlurOn ? 1 : 0);
+
+        PlayerPrefs.Save();
+
+        //--set a bool--
+        //PlayerPrefs.SetInt("Name", yourBool ? 1 : 0);
+        //----
     }
     public void GetAllPlayerPrefsValues()
     {
         //this function gets all the player prefs and sets the static values
+
+        masterVolume = PlayerPrefs.GetFloat("MasterVolume");
+        musicVolume = PlayerPrefs.GetFloat("MusicVolume");
+        sfxVolume = PlayerPrefs.GetFloat("SFXVolume");
+
+        currentResIndex = PlayerPrefs.GetInt("ResIndex");
+        currentQualityIndex = PlayerPrefs.GetInt("QualityIndex");
+
+        fullscreen = PlayerPrefs.GetInt("FullscreenBool") != 0;
+        bloomOn =  PlayerPrefs.GetInt("BloomBool") != 0;
+        motionBlurOn = PlayerPrefs.GetInt("MotionBlurBool") != 0;
+
+        //--get a bool--
+        //yourBool = (PlayerPrefs.GetInt("Name") != 0);
+        //----
     }
 
     public void GetResolutions()
@@ -151,7 +183,6 @@ public class SettingsMenu : MonoBehaviour
         Resolution res = resolutions[resIndex];
         Screen.SetResolution(res.width, res.height, Screen.fullScreen);
         currentResIndex = resIndex;
-
         SetAllPlayerPrefsValues();
     }
 
@@ -182,7 +213,7 @@ public class SettingsMenu : MonoBehaviour
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
-        qualityIndexSave = qualityIndex;
+        SettingsMenu.currentQualityIndex = qualityIndex;
 
         SetAllPlayerPrefsValues();
     }
