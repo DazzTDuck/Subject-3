@@ -74,8 +74,8 @@ public class SettingsMenu : MonoBehaviour
 
         if (resolutionDropdown)
         {
-            SetResolution(PlayerPrefs.GetInt("resIndex", resolutions.Length - 1));
-            resolutionDropdown.value = PlayerPrefs.GetInt("resIndex", resolutions.Length - 1);
+            SetResolution(PlayerPrefs.GetInt("resIndex"));
+            resolutionDropdown.value = PlayerPrefs.GetInt("resIndex");
             resolutionDropdown.RefreshShownValue();
         }
         if (fullscreenToggle)
