@@ -10715,7 +10715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camPos: {x: 0, y: 0, z: 0}
-  defaultCamRotX: 45
+  defaultCamRotX: 56
   defaultCamRotY: 180
   manager: {fileID: 500742219}
   topCamPos: {x: -1.52, y: 13.87, z: 3.88}
