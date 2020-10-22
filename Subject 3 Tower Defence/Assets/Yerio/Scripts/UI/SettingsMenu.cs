@@ -35,113 +35,78 @@ public class SettingsMenu : MonoBehaviour
     MotionBlur motionBlur;
     Bloom bloom;
 
-    //values
-    public static float masterVolume = 1f;
-    public static float sfxVolume = 1f;
-    public static float musicVolume = 1f;
-
-    public static bool fullscreen = true;
-    public static bool bloomOn = true;
-    public static bool motionBlurOn = true;
-
-    public Resolution[] resolutions;
-    public static int currentResIndex;
-
-    public static int currentQualityIndex = 2;
+    Resolution[] resolutions;
 
     Animator settingsAnimator;
 
-    private void Start()
+    private void Awake()
+    {
+        LoadSettings();
+        settingsAnimator = GetComponentInChildren<Animator>();
+    }
+
+    void LoadSettings()
     {
         if (resolutionDropdown)
             GetResolutions();
 
-        GetAllPlayerPrefsValues();
-
         postFx.TryGet(out bloom);
         postFx.TryGet(out motionBlur);
 
-        SetMasterVolume(masterVolume);
-        if(master)
-        master.value = masterVolume;
+        SetMasterVolume(PlayerPrefs.GetFloat("masterVolume", 1f));
+        if (master)
+            master.value = PlayerPrefs.GetFloat("masterVolume", 1f);
 
-        SetSFXVolume(sfxVolume);
-        if(sfx)
-        sfx.value = sfxVolume;
+        SetSFXVolume(PlayerPrefs.GetFloat("sfxVolume", 1f));
+        if (sfx)
+            sfx.value = PlayerPrefs.GetFloat("sfxVolume", 1f);
 
-        SetMusicVolume(musicVolume);
-        if(music)
-        music.value = musicVolume;
+        SetMusicVolume(PlayerPrefs.GetFloat("musicVolume", 1f));
+        if (music)
+            music.value = PlayerPrefs.GetFloat("musicVolume", 1f);
 
         if (qualityDropdown)
         {
-            SetQuality(currentQualityIndex);
-            qualityDropdown.value = currentQualityIndex;
+            SetQuality(PlayerPrefs.GetInt("qualityIndex", 2));
+            qualityDropdown.value = PlayerPrefs.GetInt("qualityIndex", 2); ;
+            qualityDropdown.RefreshShownValue();
         }
 
         if (resolutionDropdown)
         {
-            SetResolution(currentResIndex);
-            resolutionDropdown.value = currentResIndex;
+            SetResolution(PlayerPrefs.GetInt("resIndex", resolutions.Length - 1));
+            resolutionDropdown.value = PlayerPrefs.GetInt("resIndex", resolutions.Length - 1);
+            resolutionDropdown.RefreshShownValue();
         }
         if (fullscreenToggle)
         {
-            SetFullscreen(fullscreen);
-            fullscreenToggle.isOn = fullscreen;
+            SetFullscreen(PlayerPrefs.GetInt("fullscreenBool", 1) != 0);
+            fullscreenToggle.isOn = PlayerPrefs.GetInt("fullscreenBool", 1) != 0;
         }
         if (bloomToggle)
         {
-            SetBloom(bloomOn);
-            bloomToggle.isOn = bloomOn;
+            SetBloom(PlayerPrefs.GetInt("bloomBool", 1) != 0);
+            bloomToggle.isOn = PlayerPrefs.GetInt("bloomBool", 1) != 0;
         }
         if (motionBlurToggle)
         {
-            SetMotionBlur(motionBlurOn);
-            motionBlurToggle.isOn = motionBlurOn;
+            SetMotionBlur(PlayerPrefs.GetInt("motionBlurBool", 1) != 0);
+            motionBlurToggle.isOn = PlayerPrefs.GetInt("motionBlurBool", 1) != 0;
         }
-
-        settingsAnimator = GetComponentInChildren<Animator>();
     }
 
-    public void SetAllPlayerPrefsValues()
+    public void ResetAllSettings()
     {
-        //this function sets all the current settings values to the player prefs
+        PlayerPrefs.DeleteKey("masterVolume");
+        PlayerPrefs.DeleteKey("sfxVolume");
+        PlayerPrefs.DeleteKey("musicVolume");
+        PlayerPrefs.DeleteKey("resIndex");
+        PlayerPrefs.DeleteKey("qualityIndex");
+        PlayerPrefs.DeleteKey("motionBlurBool");
+        PlayerPrefs.DeleteKey("bloomBool");
+        PlayerPrefs.DeleteKey("fullscreenBool");
 
-        PlayerPrefs.SetFloat("MasterVolume", masterVolume);
-        PlayerPrefs.SetFloat("MusicVolume", musicVolume);
-        PlayerPrefs.SetFloat("SFXVolume", sfxVolume);
-
-        PlayerPrefs.SetInt("ResIndex", currentResIndex);
-        PlayerPrefs.SetInt("QualityIndex", currentQualityIndex);
-
-        PlayerPrefs.SetInt("FullscreenBool", fullscreen ? 1 : 0);
-        PlayerPrefs.SetInt("BloomBool", bloomOn ? 1 : 0);
-        PlayerPrefs.SetInt("MotionBlurBool", motionBlurOn ? 1 : 0);
-
-        PlayerPrefs.Save();
-
-        //--set a bool--
-        //PlayerPrefs.SetInt("Name", yourBool ? 1 : 0);
-        //----
-    }
-    public void GetAllPlayerPrefsValues()
-    {
-        //this function gets all the player prefs and sets the static values
-
-        masterVolume = PlayerPrefs.GetFloat("MasterVolume");
-        musicVolume = PlayerPrefs.GetFloat("MusicVolume");
-        sfxVolume = PlayerPrefs.GetFloat("SFXVolume");
-
-        currentResIndex = PlayerPrefs.GetInt("ResIndex");
-        currentQualityIndex = PlayerPrefs.GetInt("QualityIndex");
-
-        fullscreen = PlayerPrefs.GetInt("FullscreenBool") != 0;
-        bloomOn =  PlayerPrefs.GetInt("BloomBool") != 0;
-        motionBlurOn = PlayerPrefs.GetInt("MotionBlurBool") != 0;
-
-        //--get a bool--
-        //yourBool = (PlayerPrefs.GetInt("Name") != 0);
-        //----
+        LoadSettings();
     }
 
     public void GetResolutions()
@@ -158,18 +123,19 @@ public class SettingsMenu : MonoBehaviour
             string option = resolutions[i].width + "x" + resolutions[i].height;
             if (!options.Contains(option))
             {
-                options.Add(option);               
-            }       
+                options.Add(option);
+            }
 
             if (resolutions[i].width == Screen.currentResolution.width
                 && resolutions[i].height == Screen.currentResolution.height)
             {
-                currentResIndex = i;
+                PlayerPrefs.SetInt("resIndex", i);
+                PlayerPrefs.Save();
             }
         }
 
         resolutionDropdown.AddOptions(options);
-        resolutionDropdown.value = currentResIndex;
+        resolutionDropdown.value = PlayerPrefs.GetInt("resIndex");
         resolutionDropdown.RefreshShownValue();
     }
 
@@ -182,64 +148,64 @@ public class SettingsMenu : MonoBehaviour
     {
         Resolution res = resolutions[resIndex];
         Screen.SetResolution(res.width, res.height, Screen.fullScreen);
-        currentResIndex = resIndex;
-        SetAllPlayerPrefsValues();
-    }
 
-    //control the different volume sliders
-    public void SetMasterVolume(float volume)
-    {
-        masterMixer.SetFloat("MasterValue", volume);
-        masterVolume = volume;
-
-        SetAllPlayerPrefsValues();
-    }
-    public void SetMusicVolume(float volume)
-    {
-        masterMixer.SetFloat("MusicValue", volume);
-        musicVolume = volume;
-
-        SetAllPlayerPrefsValues();
-    }
-    public void SetSFXVolume(float volume)
-    {
-        masterMixer.SetFloat("SFXValue", volume);
-        sfxVolume = volume;
-
-        SetAllPlayerPrefsValues();
+        PlayerPrefs.SetInt("resIndex", resIndex);
+        PlayerPrefs.Save();
     }
 
     //set the quality of the game
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
-        SettingsMenu.currentQualityIndex = qualityIndex;
 
-        SetAllPlayerPrefsValues();
+        PlayerPrefs.SetInt("qualityIndex", qualityIndex);
+        PlayerPrefs.Save();
+    }
+
+    //control the different volume sliders
+    public void SetMasterVolume(float volume)
+    {
+        masterMixer.SetFloat("MasterValue", volume);
+
+        PlayerPrefs.SetFloat("masterVolume", volume);
+        PlayerPrefs.Save();
+    }
+    public void SetMusicVolume(float volume)
+    {
+        masterMixer.SetFloat("MusicValue", volume);
+
+        PlayerPrefs.SetFloat("musicVolume", volume);
+        PlayerPrefs.Save();
+    }
+    public void SetSFXVolume(float volume)
+    {
+        masterMixer.SetFloat("SFXValue", volume);
+
+        PlayerPrefs.SetFloat("sfxVolume", volume);
+        PlayerPrefs.Save();
     }
 
     //set the fullscreen of the game
     public void SetFullscreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
-        fullscreen = isFullscreen;
 
-        SetAllPlayerPrefsValues();
+        PlayerPrefs.SetInt("fullscreenBool", isFullscreen ? 1 : 0);
+        PlayerPrefs.Save();
     }
     public void SetBloom(bool isBloom)
     {
         bloom.active = isBloom;
-        bloomOn = isBloom;
 
-
-        SetAllPlayerPrefsValues();
+        PlayerPrefs.SetInt("bloomBool", isBloom ? 1 : 0);
+        PlayerPrefs.Save();
     }
     public void SetMotionBlur(bool isMB)
     {
         motionBlur.active = isMB;
-        motionBlurOn = isMB;
 
-        SetAllPlayerPrefsValues();
+        PlayerPrefs.SetInt("motionBlurBool", isMB ? 1 : 0);
+        PlayerPrefs.Save();
+
     }
-
 }
