@@ -37,6 +37,8 @@ public class SettingsMenu : MonoBehaviour
 
     Resolution[] resolutions;
 
+    List<Resolution> resolutionsList = new List<Resolution>();
+
     Animator settingsAnimator;
 
     private void Awake()
@@ -115,6 +117,7 @@ public class SettingsMenu : MonoBehaviour
         resolutions = Screen.resolutions;
 
         resolutionDropdown.ClearOptions();
+        resolutionsList.Clear();
 
         List<string> options = new List<string>();
 
@@ -124,6 +127,7 @@ public class SettingsMenu : MonoBehaviour
             if (!options.Contains(option))
             {
                 options.Add(option);
+                resolutionsList.Add(resolutions[i]);
                 Debug.Log(option + " " + i);
             }
         }
@@ -142,11 +146,11 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetResolution(int resIndex)
     {
-        Resolution res = resolutions[resIndex];
-        //Screen.SetResolution(res.width, res.height, Screen.fullScreen);
-        Screen.SetResolution(1920, 1080, Screen.fullScreen);
+        Resolution res = resolutionsList[resIndex];
+        Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+        //Screen.SetResolution(1920, 1080, Screen.fullScreen);
 
-        //Debug.Log(resIndex + " " + res.width + " " + res.height);
+        Debug.Log(resIndex + " " + res.width + " " + res.height);
 
         PlayerPrefs.SetInt("resIndex", resIndex);
         PlayerPrefs.Save();
