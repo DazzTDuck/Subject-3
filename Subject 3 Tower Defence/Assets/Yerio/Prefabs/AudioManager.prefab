@@ -96,7 +96,7 @@ MonoBehaviour:
     mixer: {fileID: 2275778615782231991, guid: c6e82527aa3eb6d4d92431c2f49a53cd, type: 2}
     volume: 0.15
     pitch: 1
-    loop: 0
+    loop: 1
     source: {fileID: 0}
   awakeMainMenuMusic: 0
   awakeInGameMusic: 0

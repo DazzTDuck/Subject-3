@@ -44,6 +44,8 @@ public class GameEndHandler : MonoBehaviour
         Sprite sprite;
 
         Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         button1.onClick.AddListener(() => { Time.timeScale = 1f; animator.SetTrigger("Close"); });
 

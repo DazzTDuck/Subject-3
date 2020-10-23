@@ -128,7 +128,7 @@ public class SettingsMenu : MonoBehaviour
             {
                 options.Add(option);
                 resolutionsList.Add(resolutions[i]);
-                Debug.Log(option + " " + i);
+               // Debug.Log(option + " " + i);
             }
         }
 
