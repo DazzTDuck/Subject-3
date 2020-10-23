@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: e5c2641a645cb704885a6ba3988ae02a,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4693,6 +4693,40 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636820703910379715, guid: 5e773543b7eb3214687ac9ebca4ca295,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a8b7c12dfa3cdf4cb15a7137cf46037,
+        type: 2}
+    - target: {fileID: 5636820703910379715, guid: 5e773543b7eb3214687ac9ebca4ca295,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -423969264528323621, guid: 9a8b7c12dfa3cdf4cb15a7137cf46037,
+        type: 2}
+    - target: {fileID: 5636820703910379715, guid: 5e773543b7eb3214687ac9ebca4ca295,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 22.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 5880649674384168252, guid: 5e773543b7eb3214687ac9ebca4ca295,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a8b7c12dfa3cdf4cb15a7137cf46037,
+        type: 2}
+    - target: {fileID: 5880649674384168252, guid: 5e773543b7eb3214687ac9ebca4ca295,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -423969264528323621, guid: 9a8b7c12dfa3cdf4cb15a7137cf46037,
+        type: 2}
+    - target: {fileID: 5880649674384168252, guid: 5e773543b7eb3214687ac9ebca4ca295,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 34.35
       objectReference: {fileID: 0}
     - target: {fileID: 5880649674746618034, guid: 5e773543b7eb3214687ac9ebca4ca295,
         type: 3}
